@@ -24,6 +24,16 @@ module.exports = {
           900: '#3C3C3C',
         },
       },
+      fontFamily: {
+        kronaOne: ['"Krona One"'],
+        poppins: ['Poppins'],
+        openSans: ['"Open Sans"'],
+      },
+      boxShadow: {
+        '2px': '0px 0px 2px 1px rgba(0, 14, 51, 0.2)',
+        '4px': '0px 0px 4px 1px rgba(0, 14, 51, 0.2)',
+        '8px': '0px 0px 8px 2px rgba(0, 14, 51, 0.2)',
+      },
     },
   },
   plugins: [],
