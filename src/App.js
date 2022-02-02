@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
+import Navbar from './components/Navbar/Navbar';
 import { toggle } from './slices/themeSlice';
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
 
   // return <button onClick={() => toggleTheme(theme)}>Toggle theme!</button>;
 
-  return <p>hello wordl!</p>;
+  return <Navbar />;
 }
 
 export default App;
