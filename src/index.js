@@ -5,6 +5,7 @@ import App from './App';
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import themeReducer from './slices/themeSlice';
+import ThemeWrapper from './components/ThemeWrapper';
 
 const store = configureStore({
   reducer: {
@@ -14,7 +15,9 @@ const store = configureStore({
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <ThemeWrapper>
+      <App />
+    </ThemeWrapper>
   </Provider>,
   document.getElementById('root')
 );

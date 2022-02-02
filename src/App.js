@@ -2,11 +2,18 @@ import { useSelector, useDispatch } from 'react-redux';
 import { toggle } from './slices/themeSlice';
 
 function App() {
-  const store = useSelector((store) => store);
-  const dispatch = useDispatch();
+  // placeholder code until navbar implemented
+  // const theme = useSelector((store) => store.theme);
+  // const dispatch = useDispatch();
 
-  console.log('store:', store);
-  return <button onClick={() => dispatch(toggle())}>Toggle theme!</button>;
+  // const toggleTheme = (theme) => {
+  //   dispatch(toggle());
+  //   localStorage.setItem('theme', theme === 'light' ? 'dark' : 'light');
+  // };
+
+  // return <button onClick={() => toggleTheme(theme)}>Toggle theme!</button>;
+
+  return <p>hello wordl!</p>;
 }
 
 export default App;
