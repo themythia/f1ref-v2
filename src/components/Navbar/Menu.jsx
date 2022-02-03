@@ -12,11 +12,11 @@ const Menu = () => {
       <ul className='font-poppins text-lg pt-4'>
         <li className='mb-2 flex justify-between'>
           <span>Dark Theme</span>
-          <ToggleSwitch />
+          <ToggleSwitch type='theme' />
         </li>
         <li className='mb-2 flex justify-between'>
           <span>Measurement Unit</span>
-          <ToggleSwitch />
+          <ToggleSwitch type='unit' />
         </li>
       </ul>
     </div>
