@@ -3,8 +3,10 @@ import ToggleSwitch from './ToggleSwitch';
 const Menu = () => {
   return (
     <div className='bg-bg-50 dark:bg-bg-800 w-screen h-screen pt-14 px-4'>
-      <ul className='font-poppins text-lg pt-4 pb-2 border-b border-bg-300'>
-        <li className='mb-2'>Home</li>
+      <ul className='font-poppins text-lg pt-4 pb-2 border-b border-bg-300 dark:border-bg-600'>
+        <li className="mb-2 hover:after:content-['>'] hover:after:ml-1 hover:after:text-lg">
+          Home
+        </li>
         <li className='mb-2'>Schedule</li>
         <li className='mb-2'>Drivers</li>
         <li className='mb-2'>Constructors</li>
