@@ -10,7 +10,7 @@ const Navbar = () => {
 
   return (
     <Fragment>
-      <nav className='fixed flex items-center justify-center h-14 w-full bg-bg-50 dark:bg-bg-800 px-4 shadow-2px top-0'>
+      <nav className='fixed flex items-center justify-center h-14 w-screen bg-bg-50 dark:bg-bg-800 px-4 shadow-2px top-0'>
         <button
           onClick={() => dispatch(toggleMenu())}
           className='absolute left-4'
