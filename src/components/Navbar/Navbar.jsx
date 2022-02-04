@@ -18,7 +18,7 @@ const Navbar = () => {
           {showMenu ? <MdClose size={32} /> : <MdMenu size={32} />}
         </button>
         <p className='font-kronaOne text-2xl text-center'>
-          F1<span className='text-alfaromeo'>/</span>REF
+          F1<span className='text-mercedes'>/</span>REF
         </p>
       </nav>
       <Menu />
