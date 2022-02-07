@@ -6,9 +6,7 @@ const scrapeNews = () => {
     .then((res) => res.text())
     .then((str) => new window.DOMParser().parseFromString(str, 'text/xml'))
     .then((data) => {
-      console.log(data);
       const newsItems = [...data.querySelectorAll('item')].slice(0, 5);
-      console.log(newsItems);
       const newsObj = newsItems.map((news) => {
         const newsChildren = [...news.children];
         return {
@@ -23,10 +21,10 @@ const scrapeNews = () => {
             .attributes.url.textContent,
         };
       });
-      console.log(newsObj);
       return newsObj;
     })
-    .then((newsObj) => newsObj);
+    .then((newsObj) => newsObj)
+    .catch((e) => console.warn('Scraping news unsuccessful', e));
 };
 
 export default scrapeNews;
