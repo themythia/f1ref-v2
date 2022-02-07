@@ -7,11 +7,11 @@ export const scheduleSlice = createSlice({
     schedule: {},
   },
   reducers: {
-    getNextRace: (state, action) => {
-      state.push(...action.payload);
+    addNextRace: (state, action) => {
+      state.nextRace = action.payload;
     },
   },
 });
 
-export const { getNextRace } = scheduleSlice.actions;
+export const { addNextRace } = scheduleSlice.actions;
 export default scheduleSlice.reducer;
