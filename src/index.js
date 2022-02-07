@@ -5,10 +5,12 @@ import App from './App';
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import settingsReducer from './slices/settingsSlice';
+import newsReducer from './slices/newsSlice';
 
 const store = configureStore({
   reducer: {
     settings: settingsReducer,
+    news: newsReducer,
   },
 });
 
