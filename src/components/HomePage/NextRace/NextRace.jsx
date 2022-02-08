@@ -1,35 +1,33 @@
 import Container from '../Container';
 import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getNextRace } from '../../../utils/api';
+import { addNextRace } from '../../../slices/scheduleSlice';
+import Flag from '../../shared/Flag';
+import Selector from '../../shared/Selector/Selector';
 
 const NextRace = () => {
+  const nextRace = useSelector((store) => store.schedule.nextRace);
+  const dispatch = useDispatch();
+  console.log('nextRace:', nextRace);
+
   useEffect(() => {
-    fetch('https://ergast.com/api/f1/current/next.json')
-      .then((res) => res.json())
-      .then((data) => {
-        console.log('data:', data);
-        const nextRaceData = data.MRData.RaceTable.Races[0];
-        console.log('nextRaceData', nextRaceData);
-        const nextRace = {
-          circuit: {
-            name: nextRaceData.Circuit.circuitName,
-            id: nextRaceData.Circuit.circuitId,
-            location: {
-              locality: nextRaceData.Circuit.Location.locality,
-              country: nextRaceData.Circuit.Location.country,
-            },
-          },
-          date: nextRaceData.date,
-          time: nextRaceData.time,
-          name: nextRaceData.raceName,
-        };
-        console.log(nextRace);
-      });
-  }, []);
+    getNextRace().then((data) => dispatch(addNextRace(data)));
+  }, [dispatch]);
+
   return (
     <Container>
       <p className='font-poppins text-lg text-bg-800 dark:text-bg-50 mb-4'>
         Next Race:
       </p>
+      <div className='flex'>
+        <Flag country={nextRace.countryCode} size='36' />
+        <div className='flex flex-col font-openSans text-bg-800 dark:text-bg-50 ml-4'>
+          <span className='font-semibold text-sm'>{nextRace.raceName}</span>
+          <span className='text-xs'>{nextRace.circuitName}</span>
+        </div>
+      </div>
+      <Selector />
     </Container>
   );
 };

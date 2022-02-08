@@ -4,7 +4,7 @@ import NextRace from './NextRace/NextRace';
 
 const HomePage = () => {
   return (
-    <div className='pt-14 px-4'>
+    <div className='mt-14 px-4 pb-4'>
       <News />
       <NextRace />
     </div>

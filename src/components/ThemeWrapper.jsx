@@ -34,7 +34,7 @@ const ThemeWrapper = ({ children }) => {
   }, [dispatch, storedtheme]);
   return (
     <div className={theme}>
-      <div className='bg-bg-200 dark:bg-bg-900 text-bg-800 dark:text-bg-50 h-full min-h-screen w-screen'>
+      <div className='bg-bg-200 dark:bg-bg-900 text-bg-800 dark:text-bg-50 h-full min-h-screen w-screen overflow-x-hidden'>
         {children}
       </div>
     </div>

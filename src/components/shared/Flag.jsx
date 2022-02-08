@@ -6,7 +6,7 @@ const Flag = (props) => {
       : props.size === '40'
       ? 'h-10'
       : props.size === '26' && 'h-[26px]';
-
+  if (!props.country) return null;
   return (
     <img alt='United States' src={source} className={`rounded-full ${size}`} />
   );
