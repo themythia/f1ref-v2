@@ -15,9 +15,7 @@ const News = () => {
 
   return (
     <Container>
-      <p className='font-poppins text-lg text-bg-800 dark:text-bg-50 mb-4'>
-        News:
-      </p>
+      <p className='font-poppins text-lg text-bg-800 dark:text-bg-50'>News:</p>
       <div className='flex flex-col gap-y-2'>
         {newsArray.map((news, index) => (
           <NewsItem key={index} news={news} />

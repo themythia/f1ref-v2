@@ -16,7 +16,7 @@ const Menu = () => {
       }}
       timeout={500}
     >
-      <div className='bg-bg-50 dark:bg-bg-800 w-screen h-screen pt-14 px-4 absolute z-50'>
+      <div className='bg-bg-50 dark:bg-bg-800 w-screen h-screen pt-14 px-4 fixed z-50'>
         <ul className='font-poppins text-lg pt-4 pb-2 border-b border-bg-300 dark:border-bg-600'>
           <li className="mb-2 hover:after:content-['>'] hover:after:ml-1 hover:after:text-lg">
             Home
