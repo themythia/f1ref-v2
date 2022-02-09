@@ -1,16 +1,20 @@
 import SelectorButton from './SelectorButton';
 import { useState } from 'react';
 
-const Selector = () => {
+const Selector = (props) => {
   const [activeButton, setActiveButton] = useState(0);
 
-  const dataSet = {
-    sessionSelector: ['FP1', 'FP2', 'FP3', 'Quali', 'Race'],
-    sprintSessionSelector: ['FP1', 'Quali', 'FP2', 'Sprint', 'Race'],
+  const labels = {
+    normalSession: ['FP1', 'FP2', 'FP3', 'Quali', 'Race'],
+    sprintSession: ['FP1', 'Quali', 'FP2', 'Sprint', 'Race'],
+    race: ['Schedule', 'Circuit'],
+    afterRace: ['Circuit', 'Results'],
+    driver: ['Achievements', 'Stats'],
   };
+
   return (
     <div className='flex gap-x-2 justify-center my-4'>
-      {dataSet.sessionSelector.map((session, index) => (
+      {labels[props.type].map((session, index) => (
         <SelectorButton
           key={index}
           text={session}
