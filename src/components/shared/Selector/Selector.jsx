@@ -10,6 +10,7 @@ const Selector = (props) => {
     race: ['Schedule', 'Circuit'],
     afterRace: ['Circuit', 'Results'],
     driver: ['Achievements', 'Stats'],
+    standings: ['Drivers', 'Constructors'],
   };
 
   return (
@@ -18,8 +19,8 @@ const Selector = (props) => {
         <SelectorButton
           key={index}
           text={session}
-          active={activeButton === index}
-          setActive={setActiveButton}
+          active={props.active === index}
+          setActive={props.setActive}
           index={index}
         />
       ))}

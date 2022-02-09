@@ -7,12 +7,14 @@ import { Provider } from 'react-redux';
 import settingsReducer from './slices/settingsSlice';
 import newsReducer from './slices/newsSlice';
 import scheduleReducer from './slices/scheduleSlice';
+import standingsReducer from './slices/standingsSlice';
 
 const store = configureStore({
   reducer: {
     settings: settingsReducer,
     news: newsReducer,
     schedule: scheduleReducer,
+    standings: standingsReducer,
   },
 });
 

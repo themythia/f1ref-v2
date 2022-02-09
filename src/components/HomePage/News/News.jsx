@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addNews } from '../../slices/newsSlice';
-import Container from './Container';
-import scrapeNews from '../../utils/scrapeNews';
-import NewsItem from './News/NewsItem';
+import { addNews } from '../../../slices/newsSlice';
+import Container from '../Container';
+import scrapeNews from '../../../utils/scrapeNews';
+import NewsItem from './NewsItem';
 
 const News = () => {
   const dispatch = useDispatch();

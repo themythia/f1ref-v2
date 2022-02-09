@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setTheme } from '../slices/settingsSlice';
+import { setTheme } from '../../slices/settingsSlice';
 
 const ThemeWrapper = ({ children }) => {
   const theme = useSelector((store) => store.settings.theme);

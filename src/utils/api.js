@@ -20,3 +20,52 @@ export const getNextRace = () => {
     .then((nextRace) => nextRace)
     .catch((e) => console.warn('Fetching next race failed', e));
 };
+
+export const getDriverStandings = () => {
+  return fetch('https://ergast.com/api/f1/current/driverStandings.json')
+    .then((res) => res.json())
+    .then((data) => {
+      const standingsData =
+        data.MRData.StandingsTable.StandingsLists[0].DriverStandings;
+      const driverStandings = standingsData.map((driver) => ({
+        name: driver.Driver.givenName + ' ' + driver.Driver.familyName,
+        position: driver.position,
+        team: driver.Constructors[0].constructorId,
+        points: driver.points,
+      }));
+      return driverStandings;
+    })
+    .catch((e) => console.warn('Fetching driver standings failed', e));
+};
+
+export const getTeamStandings = () => {
+  return fetch('https://ergast.com/api/f1/current/constructorStandings.json')
+    .then((res) => res.json())
+    .then((data) => {
+      const standingsData =
+        data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings;
+      console.log('standingsData:', standingsData);
+      const teamStandings = standingsData.map((team) => ({
+        name:
+          team.Constructor.name === 'Alpine F1 Team'
+            ? 'Alpine'
+            : team.Constructor.name === 'Haas F1 Team'
+            ? 'Haas'
+            : team.Constructor.name,
+        position: team.position,
+        team: team.Constructor.constructorId,
+        points: team.points,
+      }));
+      return teamStandings;
+    })
+    .catch((e) => console.warn('Fetching driver standings failed', e));
+};
+
+export const getStandings = () => {
+  return Promise.all([getDriverStandings(), getTeamStandings()]).then(
+    ([driverStandings, teamStandings]) => ({
+      drivers: driverStandings,
+      constructors: teamStandings,
+    })
+  );
+};

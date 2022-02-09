@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import Navbar from './components/Navbar/Navbar';
-import ThemeWrapper from './components/ThemeWrapper';
+import ThemeWrapper from './components/shared/ThemeWrapper';
 import { toggleTheme } from './slices/settingsSlice';
 import HomePage from './components/HomePage/HomePage';
 

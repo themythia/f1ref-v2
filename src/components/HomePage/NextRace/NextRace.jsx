@@ -1,5 +1,5 @@
 import Container from '../Container';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getNextRace } from '../../../utils/api';
 import { addNextRace } from '../../../slices/scheduleSlice';
@@ -10,6 +10,8 @@ import Countdown from './Countdown';
 const NextRace = () => {
   const nextRace = useSelector((store) => store.schedule.nextRace);
   const dispatch = useDispatch();
+  const [activeButton, setActiveButton] = useState(0);
+
   console.log('nextRace:', nextRace);
 
   useEffect(() => {
@@ -28,7 +30,11 @@ const NextRace = () => {
           <span className='text-xs'>{nextRace.circuitName}</span>
         </div>
       </div>
-      <Selector type='normalSession' />
+      <Selector
+        type='normalSession'
+        active={activeButton}
+        setActive={setActiveButton}
+      />
       <Countdown time={nextRace.date + 'T' + nextRace.time} />
     </Container>
   );
