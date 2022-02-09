@@ -3,6 +3,7 @@ import Navbar from './components/Navbar/Navbar';
 import ThemeWrapper from './components/shared/ThemeWrapper';
 import { toggleTheme } from './slices/settingsSlice';
 import HomePage from './components/HomePage/HomePage';
+import Footer from './components/Footer/Footer';
 
 function App() {
   //todo
@@ -14,6 +15,7 @@ function App() {
     <ThemeWrapper>
       <Navbar />
       <HomePage />
+      <Footer />
     </ThemeWrapper>
   );
 }
