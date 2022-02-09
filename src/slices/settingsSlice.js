@@ -6,6 +6,7 @@ export const themeSlice = createSlice({
     theme: 'light',
     showMenu: false,
     unit: 'km',
+    hideLastRace: true,
   },
   reducers: {
     toggleTheme: (state) => {
@@ -20,9 +21,12 @@ export const themeSlice = createSlice({
     toggleUnit: (state) => {
       state.unit = state.unit === 'km' ? 'mile' : 'km';
     },
+    toggleLastRace: (state) => {
+      state.hideLastRace = !state.hideLastRace;
+    },
   },
 });
 
-export const { toggleTheme, setTheme, toggleMenu, toggleUnit } =
+export const { toggleTheme, setTheme, toggleMenu, toggleUnit, toggleLastRace } =
   themeSlice.actions;
 export default themeSlice.reducer;

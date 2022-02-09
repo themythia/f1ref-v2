@@ -40,7 +40,6 @@ export const getLastRace = () => {
           team: driver.Constructor.constructorId,
         })),
       };
-      console.log('lastRace', lastRace);
       return lastRace;
     })
     .catch((e) => console.warn('Fetching last race failed', e));

@@ -5,11 +5,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addLastRace } from '../../../slices/scheduleSlice';
 import Flag from '../../shared/Flag';
 import LastRaceResult from '../NextRace/LastRaceResult';
+import { IoMdEyeOff } from 'react-icons/io';
+import { toggleLastRace } from '../../../slices/settingsSlice';
+import SpoilerOverlay from './SpoilerOverlay';
 
 const LastRace = () => {
   const lastRace = useSelector((store) => store.schedule.lastRace);
   const dispatch = useDispatch();
-  console.log('lastrace satte', lastRace);
 
   useEffect(() => {
     getLastRace().then((data) => dispatch(addLastRace(data)));
@@ -27,10 +29,11 @@ const LastRace = () => {
         </div>
       </div>
       <div>
-        <div className='flex flex-col mt-4 gap-y-2'>
-          {lastRace.results.map((driver, index) => (
+        <div className='flex flex-col mt-4 gap-y-2 relative'>
+          {lastRace?.results?.map((driver, index) => (
             <LastRaceResult key={index} data={driver} />
           ))}
+          <SpoilerOverlay />
         </div>
       </div>
     </Container>

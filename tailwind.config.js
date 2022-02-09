@@ -25,6 +25,7 @@ module.exports = {
           50: '#FFFFFF',
           900: '#3C3C3C',
         },
+        spoiler: '#e8eef019',
       },
       fontFamily: {
         kronaOne: ['"Krona One"'],
