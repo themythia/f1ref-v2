@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getStandings } from '../../../utils/api';
 import StandingsItem from './StandingsItem';
 import Selector from '../../shared/Selector/Selector';
+import 'animate.css';
+import { CSSTransition, SwitchTransition } from 'react-transition-group';
 
 const Standings = (props) => {
   const dispatch = useDispatch();
@@ -27,11 +29,22 @@ const Standings = (props) => {
         active={activeButton}
         setActive={setActiveButton}
       />
-      <div className='flex flex-col gap-y-2'>
-        {standings.map((driver, index) => (
-          <StandingsItem key={index} data={driver} />
-        ))}
-      </div>
+      <SwitchTransition mode='out-in'>
+        <CSSTransition
+          key={activeButton}
+          classNames={{
+            enterActive: 'animate__animated animate__fadeIn animate__faster',
+            exitActive: 'animate__animated animate__fadeOut animate__faster',
+          }}
+          timeout={200}
+        >
+          <div className='flex flex-col gap-y-2'>
+            {standings.map((driver, index) => (
+              <StandingsItem key={index} data={driver} />
+            ))}
+          </div>
+        </CSSTransition>
+      </SwitchTransition>
     </Container>
   );
 };
