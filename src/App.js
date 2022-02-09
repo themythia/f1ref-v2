@@ -7,6 +7,7 @@ import HomePage from './components/HomePage/HomePage';
 function App() {
   //todo
   // - dark mode shadows
+  // - next race session times
   const store = useSelector((store) => store);
   console.log('store', store);
   return (

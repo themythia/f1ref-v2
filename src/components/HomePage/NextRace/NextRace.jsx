@@ -5,6 +5,7 @@ import { getNextRace } from '../../../utils/api';
 import { addNextRace } from '../../../slices/scheduleSlice';
 import Flag from '../../shared/Flag';
 import Selector from '../../shared/Selector/Selector';
+import Countdown from './Countdown';
 
 const NextRace = () => {
   const nextRace = useSelector((store) => store.schedule.nextRace);
@@ -27,7 +28,8 @@ const NextRace = () => {
           <span className='text-xs'>{nextRace.circuitName}</span>
         </div>
       </div>
-      <Selector />
+      <Selector type='normalSession' />
+      <Countdown time={nextRace.date + 'T' + nextRace.time} />
     </Container>
   );
 };
