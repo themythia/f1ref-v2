@@ -18,7 +18,7 @@ const SpoilerOverlay = () => {
       timeout={200}
     >
       <div
-        className='h-[124px] w-full bg-spoiler backdrop-blur-lg absolute shadow-4px flex justify-center items-center'
+        className='h-[124px] w-full bg-spoiler backdrop-blur-lg absolute shadow-4px flex justify-center items-center cursor-pointer'
         onClick={() => dispatch(toggleLastRace())}
       >
         <IoMdEyeOff />
