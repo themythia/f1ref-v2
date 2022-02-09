@@ -12,8 +12,6 @@ const NextRace = () => {
   const dispatch = useDispatch();
   const [activeButton, setActiveButton] = useState(0);
 
-  console.log('nextRace:', nextRace);
-
   useEffect(() => {
     getNextRace().then((data) => dispatch(addNextRace(data)));
   }, [dispatch]);

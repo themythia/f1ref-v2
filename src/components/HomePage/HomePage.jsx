@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import LastRace from './LastRace/LastRace';
 import News from './News/News';
 import NextRace from './NextRace/NextRace';
 import Standings from './Standings/Standings';
@@ -8,6 +9,7 @@ const HomePage = () => {
     <div className='mt-14 p-4 flex flex-col gap-y-4'>
       <News />
       <NextRace />
+      <LastRace />
       <Standings />
     </div>
   );
