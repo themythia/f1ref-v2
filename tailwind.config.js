@@ -50,6 +50,9 @@ module.exports = {
           '50%': { opacity: '.5' },
         },
       },
+      aspectRatio: {
+        '3/2': '3 / 2',
+      },
     },
   },
   plugins: [require('@tailwindcss/forms'), require('@tailwindcss/line-clamp')],
