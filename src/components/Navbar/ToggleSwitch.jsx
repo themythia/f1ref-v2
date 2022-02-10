@@ -5,9 +5,11 @@ const ToggleSwitch = (props) => {
   const type = useSelector((store) => store.settings[props.type]);
   const dispatch = useDispatch();
 
-  const handleToggle = (type) => {
-    if (type === 'theme') dispatch(toggleTheme());
-    else if (type === 'unit') dispatch(toggleUnit());
+  const handleToggle = (toggleType) => {
+    if (toggleType === 'theme') {
+      dispatch(toggleTheme());
+      localStorage.setItem('theme', type === 'light' ? 'dark' : 'light');
+    } else if (toggleType === 'unit') dispatch(toggleUnit());
   };
 
   const leftText =
