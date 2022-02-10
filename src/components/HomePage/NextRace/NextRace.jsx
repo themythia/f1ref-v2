@@ -17,7 +17,7 @@ const NextRace = () => {
   }, [dispatch]);
 
   return (
-    <Container>
+    <Container size='half'>
       <p className='font-poppins text-lg text-bg-800 dark:text-bg-50 mb-4'>
         Next Race:
       </p>

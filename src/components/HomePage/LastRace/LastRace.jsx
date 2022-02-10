@@ -18,7 +18,7 @@ const LastRace = () => {
     getLastRace().then((data) => dispatch(addLastRace(data)));
   }, []);
   return (
-    <Container>
+    <Container size='half'>
       <p className='font-poppins text-lg text-bg-800 dark:text-bg-50 mb-4'>
         Last Race:
       </p>
