@@ -18,11 +18,11 @@ const SpoilerOverlay = () => {
       timeout={200}
     >
       <div
-        className='h-[124px] w-full bg-spoiler backdrop-blur-lg absolute shadow-4px flex justify-center items-center cursor-pointer'
+        className='h-[124px] w-full bg-spoiler backdrop-blur-lg absolute shadow-4px flex justify-center items-center cursor-pointer group'
         onClick={() => dispatch(toggleLastRace())}
       >
         <IoMdEyeOff />
-        <span className='text-sm font-semibold font-openSans ml-2'>
+        <span className='text-sm font-semibold font-openSans ml-2 group-hover:underline duration-200'>
           Show Race Results
         </span>
       </div>
