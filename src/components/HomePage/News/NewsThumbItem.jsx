@@ -15,6 +15,7 @@ const NewsThumbItem = ({ news, size }) => {
           src={image}
           alt={description}
           className='rounded group-hover:scale-105 duration-200'
+          loading='lazy'
         />
         <div className='w-full rounded absolute bottom-0 bg-gradient-to-t from-bg-800'>
           <p className='p-2 font-openSans font-semibold text-sm text-bg-50 drop-shadow group-hover:underline'>
