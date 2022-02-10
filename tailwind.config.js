@@ -37,7 +37,16 @@ module.exports = {
         '4px': '0px 0px 4px 1px rgba(0, 14, 51, 0.2)',
         '8px': '0px 0px 8px 2px rgba(0, 14, 51, 0.2)',
       },
+      animation: {
+        'pulse-tw': 'pulse-tw 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+      },
+      keyframes: {
+        'pulse-tw': {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '.5' },
+        },
+      },
     },
   },
-  plugins: [require('@tailwindcss/forms')],
+  plugins: [require('@tailwindcss/forms'), require('@tailwindcss/line-clamp')],
 };
