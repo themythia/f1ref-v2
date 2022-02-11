@@ -114,3 +114,22 @@ export const getStandings = () => {
     })
   );
 };
+
+export const getDrivers = () => {
+  return fetch('http://ergast.com/api/f1/current/drivers.json')
+    .then((res) => res.json())
+    .then((data) => {
+      const driverData = data.MRData.DriverTable.Drivers;
+      const drivers = driverData.map((driver) => ({
+        dateOfBirth: driver.dateOfBirth,
+        id: driver.driverId,
+        name: driver.givenName + ' ' + driver.familyName,
+        nationality: driver.nationality,
+        no: driver.permanentNumber,
+        countryCode: countryCodes(driver.nationality, 'nationality'),
+      }));
+      console.log('drivers:', drivers);
+      return driverData;
+    })
+    .catch((e) => console.warn('Fetching driver data failed', e));
+};
