@@ -14,8 +14,11 @@ export const scheduleSlice = createSlice({
     addLastRace: (state, action) => {
       state.lastRace = action.payload;
     },
+    addSchedule: (state, action) => {
+      state.schedule = action.payload;
+    },
   },
 });
 
-export const { addNextRace, addLastRace } = scheduleSlice.actions;
+export const { addNextRace, addLastRace, addSchedule } = scheduleSlice.actions;
 export default scheduleSlice.reducer;

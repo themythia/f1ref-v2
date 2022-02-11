@@ -21,6 +21,28 @@ export const getNextRace = () => {
     .catch((e) => console.warn('Fetching next race failed', e));
 };
 
+export const getSchedule = () => {
+  return fetch('http://ergast.com/api/f1/2022.json')
+    .then((res) => res.json())
+    .then((data) => {
+      const calendarData = data.MRData.RaceTable.Races;
+      const calendar = calendarData.map((race) => ({
+        circuitName: race.Circuit.circuitName,
+        circuitId: race.Circuit.circuitId,
+        locality: race.Circuit.Location.locality,
+        country: race.Circuit.Location.country,
+        countryCode: countryCodes(race.Circuit.Location.country),
+        date: race.date,
+        time: race.time,
+        raceName: race.raceName,
+        round: race.round,
+      }));
+      return calendar;
+    })
+    .then((calendar) => calendar)
+    .catch((e) => console.warn('Fetching race calendar failed', e));
+};
+
 export const getLastRace = () => {
   return fetch('https://ergast.com/api/f1/current/last/results.json')
     .then((res) => res.json())
