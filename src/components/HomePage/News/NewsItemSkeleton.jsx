@@ -13,13 +13,13 @@ const NewsItemSkeleton = ({ size }) => {
         </div>
       </div>
       <div
-        className={`relative rounded shadow-2px bg-bg-200 dark:bg-bg-900 aspect-3/2 ${
+        className={`hidden md:block relative rounded shadow-2px bg-bg-200 dark:bg-bg-900 aspect-3/2 ${
           size === 'big' ? 'w-[calc(50%-8px)]' : 'w-[calc((100%-32px)/3)]'
         }`}
       >
         <div className='w-full h-16 rounded absolute bottom-0 bg-gradient-to-t from-bg-800 p-4'>
-          <div className='bg-bg-50 w-full h-[14px] my-[3px] rounded animate-pulse-tw'></div>
-          <div className='bg-bg-50 w-2/3 h-[14px] my-[3px] rounded animate-pulse-tw'></div>
+          <div className='bg-bg-50 w-full h-[14px] my-[3px] rounded-full animate-pulse-tw'></div>
+          <div className='bg-bg-50 w-2/3 h-[14px] my-[3px] rounded-full animate-pulse-tw'></div>
         </div>
       </div>
     </Fragment>
