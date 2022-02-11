@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addSchedule } from '../../slices/scheduleSlice';
 import CalendarItem from './CalendarItem';
 import CalendarItemSkeleton from './CalendarItemSkeleton';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const CalendarPage = () => {
   const dispatch = useDispatch();
