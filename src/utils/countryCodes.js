@@ -8,6 +8,7 @@ const countryCodes = (country, type = 'country') => {
     if (country === 'UAE') return 'AE';
     else return countries.getAlpha2Code(country, 'en');
   } else if (type === 'nationality') {
+    if (country === 'Monegasque') return 'MC';
     return nationalities.getAlpha2Code(country, 'en');
   }
 };
