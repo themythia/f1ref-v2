@@ -18,13 +18,16 @@ const DriversPage = () => {
   }, [dispatch]);
   console.log('drivers state:', drivers);
 
+  const range = (min, max) =>
+    Array.from({ length: max - min + 1 }, (_, i) => min + i);
+
   return (
     <main className='mt-14 p-4 md:p-8 lg:px-48 lg:py-6 flex flex-col md:flex-row md:flex-wrap gap-x-4 gap-y-4 lg:gap-x-6 lg:gap-y-6'>
       {!loading &&
         drivers.map((driver, index) => (
           <DriverItem key={index} driver={driver} />
         ))}
-      {loading && <DriverItemSkeleton />}
+      {loading && range(0, 20).map((item) => <DriverItemSkeleton key={item} />)}
     </main>
   );
 };
