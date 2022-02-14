@@ -19,6 +19,7 @@ module.exports = {
         redbull: '#0800EF',
         mercedes: '#00D2BD',
         mclaren: '#FF9900',
+        mclarennew: '#FF8000',
         ferrari: '#DC0000',
         alphatauri: '#2B4562',
         astonmartin: '#006F62',

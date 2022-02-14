@@ -1,4 +1,5 @@
 import countryCodes from './countryCodes';
+import driverPics from './driverPics';
 
 export const getNextRace = () => {
   return fetch('https://ergast.com/api/f1/current/next.json')
@@ -120,16 +121,95 @@ export const getDrivers = () => {
     .then((res) => res.json())
     .then((data) => {
       const driverData = data.MRData.DriverTable.Drivers;
-      const drivers = driverData.map((driver) => ({
-        dateOfBirth: driver.dateOfBirth,
-        id: driver.driverId,
-        name: driver.givenName + ' ' + driver.familyName,
-        nationality: driver.nationality,
-        no: driver.permanentNumber,
-        countryCode: countryCodes(driver.nationality, 'nationality'),
-      }));
-      console.log('drivers:', drivers);
-      return driverData;
+      const drivers = driverData.map((driver) => {
+        const driverObj = {
+          no: driver.permanentNumber,
+          dateOfBirth: driver.dateOfBirth,
+          id: driver.driverId,
+          name: driver.givenName + ' ' + driver.familyName,
+          nationality: driver.nationality,
+          countryCode: countryCodes(driver.nationality, 'nationality'),
+          image: driverPics(driver.code),
+        };
+
+        switch (driver.code) {
+          case 'HAM':
+          case 'BOT':
+            return {
+              ...driverObj,
+              team: 'Mercedes',
+              teamCode: 'mercedes',
+            };
+          case 'VER':
+          case 'PER':
+            return {
+              ...driverObj,
+              team: 'Red Bull',
+              teamCode: 'red_bull',
+            };
+
+          case 'NOR':
+          case 'RIC':
+            return {
+              ...driverObj,
+              team: 'McLaren',
+              teamCode: 'mclaren',
+            };
+          case 'STR':
+          case 'VET':
+            return {
+              ...driverObj,
+              team: 'Aston Martin',
+              teamCode: 'aston_martin',
+            };
+          case 'OCO':
+          case 'ALO':
+            return {
+              ...driverObj,
+              team: 'Alpine',
+              teamCode: 'alpine',
+            };
+          case 'LEC':
+          case 'SAI':
+            return {
+              ...driverObj,
+              team: 'Ferrari',
+              teamCode: 'ferrari',
+            };
+          case 'GAS':
+          case 'TSU':
+            return {
+              ...driverObj,
+              team: 'AlphaTauri',
+              teamCode: 'alphatauri',
+            };
+          case 'RAI':
+          case 'GIO':
+          case 'KUB':
+            return {
+              ...driverObj,
+              team: 'Alfa Romeo',
+              teamCode: 'alfa',
+            };
+          case 'MSC':
+          case 'MAZ':
+            return {
+              ...driverObj,
+              team: 'Haas',
+              teamCode: 'haas',
+            };
+          case 'RUS':
+          case 'LAT':
+            return {
+              ...driverObj,
+              team: 'Wiliams',
+              teamCode: 'williams',
+            };
+          default:
+            return driverObj;
+        }
+      });
+      return drivers.sort((a, b) => a.no - b.no);
     })
     .catch((e) => console.warn('Fetching driver data failed', e));
 };
