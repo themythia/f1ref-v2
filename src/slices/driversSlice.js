@@ -5,7 +5,8 @@ export const driversSlice = createSlice({
   initialState: [],
   reducers: {
     addDrivers: (state, action) => {
-      state.push(...action.payload);
+      state = action.payload;
+      return state;
     },
   },
 });
