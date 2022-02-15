@@ -14,8 +14,8 @@ const Selector = (props) => {
   };
 
   return (
-    <div className=' py-2 my-2 max-w-full overflow-auto'>
-      <div className='overflow-hidden flex gap-x-2 justify-center min-w-fit'>
+    <div className='max-w-full overflow-auto'>
+      <div className='py-2 my-2 overflow-hidden flex gap-x-2 justify-center min-w-fit'>
         {labels[props.type].map((session, index) => (
           <SelectorButton
             key={index}

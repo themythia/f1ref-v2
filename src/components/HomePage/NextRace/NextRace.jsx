@@ -1,4 +1,3 @@
-import Container from '../Container';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getNextRace } from '../../../utils/api';
@@ -17,8 +16,8 @@ const NextRace = () => {
   }, [dispatch]);
 
   return (
-    <div className='bg-bg-50 dark:bg-bg-800 rounded shadow-2px p-4 lg:p-6 w-full col-span-full sm:col-span-4 md:col-span-6 mb-4 lg:mb-6'>
-      <p className='font-poppins text-lg text-bg-800 dark:text-bg-50 mb-4'>
+    <div className='bg-bg-50 dark:bg-bg-800 rounded shadow-2px p-4 md:p-6 w-full col-span-full sm:col-span-4 md:col-span-6 mb-4 md:mb-6'>
+      <p className='font-poppins text-lg text-bg-800 dark:text-bg-50 mb-4 md:mb-6'>
         Next Race:
       </p>
       <div className='flex'>

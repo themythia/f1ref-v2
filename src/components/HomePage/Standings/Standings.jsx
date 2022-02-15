@@ -6,7 +6,11 @@ import { getStandings } from '../../../utils/api';
 import StandingsItem from './StandingsItem';
 import Selector from '../../shared/Selector/Selector';
 import 'animate.css';
-import { CSSTransition, SwitchTransition } from 'react-transition-group';
+import {
+  CSSTransition,
+  SwitchTransition,
+  TransitionGroup,
+} from 'react-transition-group';
 
 const Standings = (props) => {
   const dispatch = useDispatch();
@@ -21,7 +25,7 @@ const Standings = (props) => {
 
   return (
     <div className='bg-bg-50 dark:bg-bg-800 rounded shadow-2px p-4 lg:p-6 w-full col-span-full'>
-      <p className='font-poppins text-lg text-bg-800 dark:text-bg-50 mb-4'>
+      <p className='font-poppins text-lg text-bg-800 dark:text-bg-50 md:mb-2'>
         Standings:
       </p>
       <Selector

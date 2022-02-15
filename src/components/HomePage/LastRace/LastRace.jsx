@@ -1,12 +1,9 @@
-import Container from '../Container';
 import { useEffect } from 'react';
 import { getLastRace } from '../../../utils/api';
 import { useSelector, useDispatch } from 'react-redux';
 import { addLastRace } from '../../../slices/scheduleSlice';
 import Flag from '../../shared/Flag';
 import LastRaceResult from './LastRaceResult';
-import { IoMdEyeOff } from 'react-icons/io';
-import { toggleLastRace } from '../../../slices/settingsSlice';
 import SpoilerOverlay from './SpoilerOverlay';
 
 const LastRace = () => {
@@ -16,10 +13,11 @@ const LastRace = () => {
 
   useEffect(() => {
     getLastRace().then((data) => dispatch(addLastRace(data)));
-  }, []);
+  }, [dispatch]);
+
   return (
-    <div className='bg-bg-50 dark:bg-bg-800 rounded shadow-2px p-4 lg:p-6 w-full col-span-full sm:col-span-4 md:col-span-6 mb-4 lg:mb-6'>
-      <p className='font-poppins text-lg text-bg-800 dark:text-bg-50 mb-4'>
+    <div className='bg-bg-50 dark:bg-bg-800 rounded shadow-2px p-4 md:p-6 w-full col-span-full sm:col-span-4 md:col-span-6 mb-4 md:mb-6'>
+      <p className='font-poppins text-lg text-bg-800 dark:text-bg-50 mb-4 md:mb-6'>
         Last Race:
       </p>
       <div className='flex'>
@@ -30,9 +28,9 @@ const LastRace = () => {
         </div>
       </div>
       <div>
-        <div className='flex flex-col mt-4 gap-y-2 relative'>
+        <div className='flex flex-col mt-4 md:mt-6 gap-y-2 md:gap-y-3 relative'>
           <div
-            className={`flex flex-col gap-y-2 relative ${
+            className={`flex flex-col gap-y-2 md:gap-y-3 relative ${
               hideLastRace && 'blur-md'
             }`}
           >
