@@ -18,12 +18,12 @@ const News = () => {
   }, [dispatch]);
 
   return (
-    <Container>
+    <div className='bg-bg-50 dark:bg-bg-800 rounded shadow-2px p-4 lg:p-6 w-full col-span-full mb-4 lg:mb-6'>
       <p className='font-poppins text-lg text-bg-800 dark:text-bg-50 mb-4'>
         News:
       </p>
       <NewsList loading={loading} newsArray={newsArray} />
-    </Container>
+    </div>
   );
 };
 export default News;

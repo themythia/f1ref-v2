@@ -18,7 +18,7 @@ const LastRace = () => {
     getLastRace().then((data) => dispatch(addLastRace(data)));
   }, []);
   return (
-    <Container size='half'>
+    <div className='bg-bg-50 dark:bg-bg-800 rounded shadow-2px p-4 lg:p-6 w-full col-span-full sm:col-span-4 md:col-span-6 mb-4 lg:mb-6'>
       <p className='font-poppins text-lg text-bg-800 dark:text-bg-50 mb-4'>
         Last Race:
       </p>
@@ -43,7 +43,7 @@ const LastRace = () => {
           <SpoilerOverlay />
         </div>
       </div>
-    </Container>
+    </div>
   );
 };
 export default LastRace;
