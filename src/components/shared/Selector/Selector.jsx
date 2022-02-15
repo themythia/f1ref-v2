@@ -14,16 +14,18 @@ const Selector = (props) => {
   };
 
   return (
-    <div className='flex gap-x-2 justify-center my-4'>
-      {labels[props.type].map((session, index) => (
-        <SelectorButton
-          key={index}
-          text={session}
-          active={props.active === index}
-          setActive={props.setActive}
-          index={index}
-        />
-      ))}
+    <div className=' py-2 my-2 max-w-full overflow-auto'>
+      <div className='overflow-hidden flex gap-x-2 justify-center min-w-fit'>
+        {labels[props.type].map((session, index) => (
+          <SelectorButton
+            key={index}
+            text={session}
+            active={props.active === index}
+            setActive={props.setActive}
+            index={index}
+          />
+        ))}
+      </div>
     </div>
   );
 };
