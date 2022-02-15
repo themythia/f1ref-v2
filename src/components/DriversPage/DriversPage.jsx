@@ -16,13 +16,12 @@ const DriversPage = () => {
       setLoading(false);
     });
   }, [dispatch]);
-  console.log('drivers state:', drivers);
 
   const range = (min, max) =>
     Array.from({ length: max - min + 1 }, (_, i) => min + i);
 
   return (
-    <main className='mt-14 p-4 md:p-8 lg:px-48 lg:py-6 flex flex-col md:flex-row md:flex-wrap gap-x-4 gap-y-4 lg:gap-x-6 lg:gap-y-6'>
+    <main className='mt-14 p-4 md:p-8 lg:px-48 lg:py-6 grid grid-cols-2 sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-x-4 gap-y-4 lg:gap-x-6 lg:gap-y-6'>
       {!loading &&
         drivers.map((driver, index) => (
           <DriverItem key={index} driver={driver} />
@@ -32,3 +31,10 @@ const DriversPage = () => {
   );
 };
 export default DriversPage;
+
+// 320;
+// sm 256;
+// md 341;
+// lg 320
+// xl: 307.2
+// 256
