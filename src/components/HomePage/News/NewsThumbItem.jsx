@@ -6,8 +6,10 @@ const NewsThumbItem = ({ news, size }) => {
       href={link}
       target='_blank'
       rel='noreferrer'
-      className={`md:flex rounded bg-bg-200 dark:bg-bg-900 shadow-2px relative hidden ${
-        size === 'big' ? 'w-[calc(50%-8px)]' : 'w-[calc((100%-32px)/3)]'
+      className={`sm:flex rounded bg-bg-200 dark:bg-bg-900 shadow-2px relative hidden ${
+        size === 'big'
+          ? 'w-[calc((100%-8px)/2)] lg:w-[calc((100%-12px)/2)]'
+          : 'w-[calc((100%-16px)/3)] lg:w-[calc((100%-24px)/3)]'
       }`}
     >
       <div className='overflow-hidden group rounded'>

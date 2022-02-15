@@ -6,9 +6,9 @@ const NewsListItem = ({ news }) => {
       href={link}
       target='_blank'
       rel='noreferrer'
-      className={`md:hidden rounded bg-bg-200 dark:bg-bg-900 shadow-2px relative`}
+      className={`sm:hidden rounded bg-bg-200 dark:bg-bg-900 shadow-2px relative`}
     >
-      <div className='flex flex-row items-center w-full rounded shadow-2px bg-bg-200 dark:bg-bg-900 md:hidden'>
+      <div className='flex flex-row items-center w-full rounded shadow-2px bg-bg-200 dark:bg-bg-900 sm:hidden'>
         <div className='basis-2/5'>
           <img
             src={image}
