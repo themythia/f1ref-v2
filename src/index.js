@@ -9,6 +9,7 @@ import newsReducer from './slices/newsSlice';
 import scheduleReducer from './slices/scheduleSlice';
 import standingsReducer from './slices/standingsSlice';
 import driversReducer from './slices/driversSlice';
+import teamsReducer from './slices/teamsSlice';
 
 const store = configureStore({
   reducer: {
@@ -17,6 +18,7 @@ const store = configureStore({
     schedule: scheduleReducer,
     standings: standingsReducer,
     drivers: driversReducer,
+    teams: teamsReducer,
   },
 });
 

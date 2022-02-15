@@ -48,7 +48,6 @@ export const getLastRace = () => {
   return fetch('https://ergast.com/api/f1/current/last/results.json')
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
       const lastRaceData = data.MRData.RaceTable.Races[0];
       const lastRace = {
         circuitName: lastRaceData.Circuit.circuitName,
@@ -212,4 +211,26 @@ export const getDrivers = () => {
       return drivers.sort((a, b) => a.no - b.no);
     })
     .catch((e) => console.warn('Fetching driver data failed', e));
+};
+
+export const getTeams = () => {
+  return fetch('http://ergast.com/api/f1/current/constructors.json')
+    .then((res) => res.json())
+    .then((data) => {
+      const constructorData = data.MRData.ConstructorTable.Constructors;
+      const constructors = constructorData.map((team) => {
+        return {
+          id: team.constructorId,
+          name:
+            team.name === 'Alpine F1 Team'
+              ? 'Alpine'
+              : team.name === 'Haas F1 Team'
+              ? 'Haas'
+              : team.name,
+          countryCode: countryCodes(team.nationality, 'nationality'),
+        };
+      });
+      return constructors;
+    })
+    .catch((e) => console.warn('Fetching teams data failed', e));
 };
