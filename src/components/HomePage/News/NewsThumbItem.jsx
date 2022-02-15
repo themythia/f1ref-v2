@@ -8,8 +8,8 @@ const NewsThumbItem = ({ news, size }) => {
       rel='noreferrer'
       className={`sm:flex rounded bg-bg-200 dark:bg-bg-900 shadow-2px relative hidden ${
         size === 'big'
-          ? 'w-[calc((100%-8px)/2)] lg:w-[calc((100%-12px)/2)]'
-          : 'w-[calc((100%-16px)/3)] lg:w-[calc((100%-24px)/3)]'
+          ? 'w-[calc((100%-8px)/2)] md:w-[calc((100%-12px)/2)]'
+          : 'w-[calc((100%-16px)/3)] md:w-[calc((100%-24px)/3)]'
       }`}
     >
       <div className='overflow-hidden group rounded'>
