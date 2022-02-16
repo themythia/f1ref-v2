@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import CalendarPage from './components/CalendarPage/CalendarPage';
 import DriversPage from './components/DriversPage/DriversPage';
 import TeamsPage from './components/TeamsPage/TeamsPage';
+import RacePage from './components/RacePage/RacePage';
 
 function App() {
   //todo
@@ -21,6 +22,7 @@ function App() {
         <Routes>
           <Route path='/' element={<HomePage />} />
           <Route path='calendar' element={<CalendarPage />} />
+          <Route path='calendar/:round' element={<RacePage />} />
           <Route path='drivers' element={<DriversPage />} />
           <Route path='teams' element={<TeamsPage />} />
         </Routes>
