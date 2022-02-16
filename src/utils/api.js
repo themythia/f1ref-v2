@@ -116,7 +116,7 @@ export const getStandings = () => {
 };
 
 export const getDrivers = () => {
-  return fetch('http://ergast.com/api/f1/current/drivers.json')
+  return fetch('https://ergast.com/api/f1/current/drivers.json')
     .then((res) => res.json())
     .then((data) => {
       const driverData = data.MRData.DriverTable.Drivers;
@@ -215,7 +215,7 @@ export const getDrivers = () => {
 };
 
 export const getTeams = () => {
-  return fetch('http://ergast.com/api/f1/current/constructors.json')
+  return fetch('https://ergast.com/api/f1/current/constructors.json')
     .then((res) => res.json())
     .then((data) => {
       const constructorData = data.MRData.ConstructorTable.Constructors;
