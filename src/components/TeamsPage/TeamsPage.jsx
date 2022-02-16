@@ -2,14 +2,13 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { addTeams } from '../../slices/teamsSlice';
-import { getTeams, getTeamsAndDrivers } from '../../utils/api';
+import { getTeamsAndDrivers } from '../../utils/api';
 import TeamItem from './TeamItem';
 import TeamItemSkeleton from './TeamItemSkeleton';
 
 const TeamsPage = () => {
   const dispatch = useDispatch();
   const teams = useSelector((store) => store.teams);
-  const drivers = useSelector((store) => store.drivers);
 
   const [loading, setLoading] = useState();
   console.log('teamsState', teams);
