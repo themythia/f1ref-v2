@@ -126,6 +126,7 @@ export const getDrivers = () => {
           dateOfBirth: driver.dateOfBirth,
           id: driver.driverId,
           name: driver.givenName + ' ' + driver.familyName,
+          familyName: driver.familyName,
           nationality: driver.nationality,
           countryCode: countryCodes(driver.nationality, 'nationality'),
           image: driverPics(driver.code),
@@ -233,4 +234,20 @@ export const getTeams = () => {
       return constructors;
     })
     .catch((e) => console.warn('Fetching teams data failed', e));
+};
+
+export const getTeamsAndDrivers = () => {
+  return Promise.all([getTeams(), getDrivers()])
+    .then(([teams, drivers]) => ({
+      teams,
+      drivers,
+    }))
+    .then((obj) => {
+      const newTeams = obj.teams.map((team) => ({
+        ...team,
+        drivers: obj.drivers.filter((driver) => driver.teamCode === team.id),
+      }));
+      return newTeams;
+    })
+    .then((teams) => teams);
 };

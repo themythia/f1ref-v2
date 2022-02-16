@@ -3,8 +3,7 @@ import alphatauri from '../../assets/alphatauri.svg';
 import alpine from '../../assets/alpine.svg';
 import aston_martin from '../../assets/astonmartin.svg';
 import ferrari from '../../assets/ferrari.svg';
-import haasDark from '../../assets/haas_dark.svg';
-import haas from '../../assets/haas_light.svg';
+import haas from '../../assets/haas.svg';
 import mclaren from '../../assets/mclaren.svg';
 import mercedes from '../../assets/mercedes.svg';
 import red_bull from '../../assets/redbull.svg';
@@ -23,7 +22,14 @@ const TeamLogo = ({ team }) => {
     red_bull,
     williams,
   };
-  console.log('logo', logo.team);
-  return <img src={logo[team]} alt={team} className='' loading='lazy' />;
+
+  return (
+    <img
+      src={logo[team]}
+      alt={team}
+      className=' max-h-20 w-full'
+      loading='lazy'
+    />
+  );
 };
 export default TeamLogo;

@@ -2,13 +2,15 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { addTeams } from '../../slices/teamsSlice';
-import { getTeams } from '../../utils/api';
+import { getTeams, getTeamsAndDrivers } from '../../utils/api';
 import TeamItem from './TeamItem';
 import TeamItemSkeleton from './TeamItemSkeleton';
 
 const TeamsPage = () => {
   const dispatch = useDispatch();
   const teams = useSelector((store) => store.teams);
+  const drivers = useSelector((store) => store.drivers);
+
   const [loading, setLoading] = useState();
   console.log('teamsState', teams);
 
@@ -16,13 +18,13 @@ const TeamsPage = () => {
     Array.from({ length: max - min + 1 }, (_, i) => min + i);
 
   useEffect(() => {
-    getTeams().then((data) => {
+    getTeamsAndDrivers().then((data) => {
       dispatch(addTeams(data));
       setLoading(false);
     });
   }, [dispatch]);
   return (
-    <main className='mt-14 p-4 md:p-8 lg:px-48 lg:py-6 flex flex-col md:flex-row md:flex-wrap gap-x-4 gap-y-4 lg:gap-x-6 lg:gap-y-6'>
+    <main className='mt-14 p-4 sm:p-8 md:p-6 lg:px-[200px] xl:px-[calc((100vw-1128px)/2)] grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12 gap-x-4 md:gap-x-6 gap-y-4 md:gap-y-6'>
       {!loading &&
         teams.map((team, index) => <TeamItem key={index} team={team} />)}
       {loading && range(0, 20).map((item) => <TeamItemSkeleton key={item} />)}
