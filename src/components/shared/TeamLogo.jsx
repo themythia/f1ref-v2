@@ -1,13 +1,13 @@
-import alfa from '../../assets/alfa_romeo.svg';
-import alphatauri from '../../assets/alphatauri.svg';
-import alpine from '../../assets/alpine.svg';
-import aston_martin from '../../assets/astonmartin.svg';
-import ferrari from '../../assets/ferrari.svg';
-import haas from '../../assets/haas.svg';
-import mclaren from '../../assets/mclaren.svg';
-import mercedes from '../../assets/mercedes.svg';
-import red_bull from '../../assets/redbull.svg';
-import williams from '../../assets/williams.svg';
+import alfa from '../../assets/teamlogos/alfa_romeo.svg';
+import alphatauri from '../../assets/teamlogos/alphatauri.svg';
+import alpine from '../../assets/teamlogos/alpine.svg';
+import aston_martin from '../../assets/teamlogos/astonmartin.svg';
+import ferrari from '../../assets/teamlogos/ferrari.svg';
+import haas from '../../assets/teamlogos/haas.svg';
+import mclaren from '../../assets/teamlogos/mclaren.svg';
+import mercedes from '../../assets/teamlogos/mercedes.svg';
+import red_bull from '../../assets/teamlogos/redbull.svg';
+import williams from '../../assets/teamlogos/williams.svg';
 
 const TeamLogo = ({ team }) => {
   const logo = {
