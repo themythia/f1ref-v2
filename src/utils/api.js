@@ -23,7 +23,7 @@ export const getNextRace = () => {
 };
 
 export const getSchedule = () => {
-  return fetch('https://ergast.com/api/f1/current.json')
+  return fetch('https://ergast.com/api/f1/2022.json')
     .then((res) => res.json())
     .then((data) => {
       const calendarData = data.MRData.RaceTable.Races;
