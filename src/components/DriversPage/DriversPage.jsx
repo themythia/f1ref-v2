@@ -21,7 +21,7 @@ const DriversPage = () => {
     Array.from({ length: max - min + 1 }, (_, i) => min + i);
 
   return (
-    <main className='mt-14 p-4 sm:p-8 md:p-6 lg:px-[200px] xl:px-[calc((100vw-1128px)/2)] grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12 gap-x-4 md:gap-x-6 gap-y-4 md:gap-y-6'>
+    <main className='p-4 sm:p-8 md:p-6 lg:px-[200px] xl:px-[calc((100vw-1128px)/2)] grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12 gap-x-4 md:gap-x-6 gap-y-4 md:gap-y-6 row-start-2 row-end-3'>
       {!loading &&
         drivers.map((driver, index) => (
           <DriverItem key={index} driver={driver} />
