@@ -60,6 +60,9 @@ module.exports = {
       aspectRatio: {
         '3/2': '3 / 2',
       },
+      gridTemplateRows: {
+        rows: '56px 1fr minmax(0, min-content)',
+      },
     },
   },
   plugins: [require('@tailwindcss/forms'), require('@tailwindcss/line-clamp')],
