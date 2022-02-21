@@ -251,3 +251,25 @@ export const getTeamsAndDrivers = () => {
     })
     .then((teams) => teams);
 };
+
+export const getRaceResults = (round) => {
+  return fetch(`https://ergast.com/api/f1/current/${round}/results.json`)
+    .then((res) => res.json())
+    .then((data) => data.MRData.RaceTable.Races[0].Results)
+    .then((results) => results)
+    .catch((e) => console.warn('Fetching race results failed', e));
+};
+
+export const getScheduleAndResults = (round) => {
+  return Promise.all([getSchedule(), getRaceResults(round)]).then(
+    ([schedule, results]) => {
+      return {
+        ...schedule,
+        [round - 1]: {
+          ...schedule[round - 1],
+          results,
+        },
+      };
+    }
+  );
+};
