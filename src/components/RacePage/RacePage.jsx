@@ -1,15 +1,30 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getRaceResults } from '../../utils/api';
+import {
+  getRaceResults,
+  getSchedule,
+  getScheduleAndResults,
+} from '../../utils/api';
+import { addResults, addSchedule } from '../../slices/scheduleSlice';
 
 const RacePage = () => {
   const { round } = useParams();
   const dispatch = useDispatch();
+  const schedule = useSelector((store) => store.schedule.schedule);
 
   useEffect(() => {
-    getRaceResults(round).then((data) => console.log('data'));
-  }, [round]);
+    if (
+      Object.keys(schedule).length > 0 &&
+      !schedule.hasOwnProperty('results')
+    ) {
+      getRaceResults(round).then((data) => {
+        dispatch(addResults({ round, results: data.Results }));
+      });
+    } else if (Object.keys(schedule).length === 0) {
+      getScheduleAndResults(round).then((data) => dispatch(addSchedule(data)));
+    }
+  }, [round, dispatch]);
 
   return (
     <main className='mt-14 p-4 sm:p-8 md:p-6 lg:px-[200px] xl:px-[calc((100vw-1128px)/2)] grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12 gap-x-4 md:gap-x-6'>
