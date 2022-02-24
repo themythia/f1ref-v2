@@ -59,6 +59,7 @@ module.exports = {
       },
       aspectRatio: {
         '3/2': '3 / 2',
+        '16/9': '16 / 9',
       },
       gridTemplateRows: {
         rows: '56px 1fr minmax(0, min-content)',
