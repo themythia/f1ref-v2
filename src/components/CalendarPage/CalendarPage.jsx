@@ -14,10 +14,12 @@ const CalendarPage = () => {
     Array.from({ length: max - min + 1 }, (_, i) => min + i);
 
   useEffect(() => {
-    getSchedule().then((data) => {
-      dispatch(addSchedule(data));
-      setLoading(false);
-    });
+    if (Object.keys(calendar).length === 0) {
+      getSchedule().then((data) => {
+        dispatch(addSchedule(data));
+        setLoading(false);
+      });
+    } else setLoading(false);
   }, [dispatch]);
 
   const navigate = useNavigate();
