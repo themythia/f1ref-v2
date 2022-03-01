@@ -5,6 +5,7 @@ import { getRaceResults, getScheduleAndResults } from '../../utils/api';
 import { addResults, addSchedule } from '../../slices/scheduleSlice';
 import CircuitMap from '../shared/CircuitMap';
 import Flag from '../shared/Flag';
+import Selector from '../shared/Selector/Selector';
 
 const RacePage = () => {
   const { round } = useParams();
@@ -14,10 +15,7 @@ const RacePage = () => {
   console.log('race', race);
 
   useEffect(() => {
-    if (
-      Object.keys(schedule).length > 0 &&
-      !schedule.hasOwnProperty('results')
-    ) {
+    if (Object.keys(schedule).length > 0 && !race.hasOwnProperty('results')) {
       getRaceResults(round)
         .then((results) => {
           dispatch(addResults({ round, results }));
@@ -26,7 +24,7 @@ const RacePage = () => {
     } else if (Object.keys(schedule).length === 0) {
       getScheduleAndResults(round).then((data) => dispatch(addSchedule(data)));
     }
-  }, [round, dispatch]);
+  }, [round, dispatch, race, schedule]);
 
   if (Object.keys(schedule).length === 0) return <p>Loading...</p>;
 
@@ -40,6 +38,7 @@ const RacePage = () => {
             {race.raceName}
           </span>
         </div>
+        {/* <Selector type='' /> */}
       </div>
     </main>
   );
