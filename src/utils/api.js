@@ -256,24 +256,28 @@ export const getRaceResults = (round) => {
   return fetch(`https://ergast.com/api/f1/current/${round}/results.json`)
     .then((res) => res.json())
     .then((data) => {
-      const resultsData = data.MRData.RaceTable.Races[0].Results;
-      const results = resultsData.map((driver) => ({
-        name: driver.Driver.givenName + ' ' + driver.Driver.familyName,
-        teamCode: driver.Constructor.constructorId,
-        fastestLap: {
-          rank: driver?.FastestLap?.rank,
-          time: driver?.FastestLap?.Time?.time,
-        },
-        time: driver.status === 'Finished' ? driver.Time.time : driver.status,
-        laps: driver.laps,
-        points: driver.points,
-        position: driver.position,
-        positionText: driver.positionText,
-        status: driver.status,
-      }));
-      return results;
+      console.log('data', data);
+      if (data.MRData.RaceTable.Races.length === 0) return [];
+      else {
+        const resultsData = data.MRData.RaceTable.Races[0].Results;
+        const results = resultsData.map((driver) => ({
+          name: driver.Driver.givenName + ' ' + driver.Driver.familyName,
+          teamCode: driver.Constructor.constructorId,
+          fastestLap: {
+            rank: driver?.FastestLap?.rank,
+            time: driver?.FastestLap?.Time?.time,
+          },
+          time: driver.status === 'Finished' ? driver.Time.time : driver.status,
+          laps: driver.laps,
+          points: driver.points,
+          position: driver.position,
+          positionText: driver.positionText,
+          status: driver.status,
+        }));
+        return results;
+      }
     })
-    .then((results) => results)
+
     .catch((e) => console.warn('Fetching race results failed', e));
 };
 
