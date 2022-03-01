@@ -19,8 +19,8 @@ const RacePage = () => {
       !schedule.hasOwnProperty('results')
     ) {
       getRaceResults(round)
-        .then((data) => {
-          dispatch(addResults({ round, results: data.Results }));
+        .then((results) => {
+          dispatch(addResults({ round, results }));
         })
         .catch((e) => console.log('failed fetch in useeffect', e));
     } else if (Object.keys(schedule).length === 0) {
