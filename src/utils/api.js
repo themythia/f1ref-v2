@@ -280,13 +280,9 @@ export const getRaceResults = (round) => {
 export const getScheduleAndResults = (round) => {
   return Promise.all([getSchedule(), getRaceResults(round)]).then(
     ([schedule, results]) => {
-      return {
-        ...schedule,
-        [round - 1]: {
-          ...schedule[round - 1],
-          results,
-        },
-      };
+      return schedule.map((race) =>
+        race.round === round ? { ...race, results } : race
+      );
     }
   );
 };
