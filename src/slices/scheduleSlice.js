@@ -4,7 +4,7 @@ export const scheduleSlice = createSlice({
   name: 'schedule',
   initialState: {
     nextRace: {},
-    schedule: {},
+    schedule: [],
     lastRace: {},
   },
   reducers: {
