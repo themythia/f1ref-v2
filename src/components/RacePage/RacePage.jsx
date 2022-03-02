@@ -18,20 +18,24 @@ const RacePage = () => {
   const race = useSelector((store) => store.schedule.schedule[round - 1]);
   console.log('race', race);
   const [activeButton, setActiveButton] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (Object.keys(schedule).length > 0 && !race.hasOwnProperty('results')) {
       getRaceResults(round)
         .then((results) => {
           dispatch(addResults({ round, results }));
+          setLoading(false);
         })
         .catch((e) => console.log('failed fetch in useeffect', e));
     } else if (Object.keys(schedule).length === 0) {
-      getScheduleAndResults(round).then((data) => dispatch(addSchedule(data)));
+      getScheduleAndResults(round)
+        .then((data) => dispatch(addSchedule(data)))
+        .then(() => setLoading(false));
     }
   }, [round, dispatch, race, schedule]);
 
-  if (!race) return <p>Loading...</p>;
+  if (loading) return <p>Loading...</p>;
 
   return (
     <main className='p-4 sm:p-8 md:p-6 lg:px-[200px] xl:px-[calc((100vw-1128px)/2)] grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12 gap-x-4 md:gap-x-6 row-start-2 row-end-3'>
@@ -61,7 +65,8 @@ const RacePage = () => {
               {race.results.length === 0 && activeButton === 0 ? (
                 <RaceSchedule circuitId={race.circuitId} />
               ) : null}
-              {race.results.length === 0 && activeButton === 1 ? (
+              {(race.results.length === 0 && activeButton === 1) ||
+              (race.results.length > 0 && activeButton === 0) ? (
                 <CircuitInfo race={race} />
               ) : null}
             </div>
