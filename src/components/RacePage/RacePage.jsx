@@ -10,6 +10,7 @@ import RaceSchedule from './RaceSchedule';
 import CircuitInfo from './CircuitInfo';
 import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import 'animate.css';
+import RaceResults from './RaceResults';
 
 const RacePage = () => {
   const { round } = useParams();
@@ -62,12 +63,18 @@ const RacePage = () => {
             timeout={200}
           >
             <div>
+              {/* if pre-race and selector button is schedule */}
               {race.results.length === 0 && activeButton === 0 ? (
                 <RaceSchedule circuitId={race.circuitId} />
               ) : null}
+              {/* if pre-race and selector button is circuit info OR if post-race and selector button is circuit info */}
               {(race.results.length === 0 && activeButton === 1) ||
               (race.results.length > 0 && activeButton === 0) ? (
                 <CircuitInfo race={race} />
+              ) : null}
+              {/* if post-race and selector button is race results */}
+              {race.results.length > 0 && activeButton === 1 ? (
+                <RaceResults results={race.results} />
               ) : null}
             </div>
           </CSSTransition>
