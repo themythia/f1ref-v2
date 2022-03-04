@@ -54,7 +54,7 @@ const CircuitMap = ({ circuit }) => {
       src={circuitObj[circuit]}
       alt='track map'
       loading='lazy'
-      className='w-full aspect-16/9'
+      className='w-full aspect-16/9 col-span-4 sm:col-span-8'
     />
   );
 };

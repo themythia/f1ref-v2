@@ -253,7 +253,7 @@ export const getTeamsAndDrivers = () => {
 };
 
 export const getRaceResults = (round) => {
-  return fetch(`https://ergast.com/api/f1/current/${round}/results.json`)
+  return fetch(`https://ergast.com/api/f1/2022/${round}/results.json`)
     .then((res) => res.json())
     .then((data) => {
       console.log('data', data);
