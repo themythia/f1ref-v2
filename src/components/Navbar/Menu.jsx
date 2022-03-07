@@ -1,12 +1,14 @@
 import ToggleSwitch from './ToggleSwitch';
 import 'animate.css';
 import { CSSTransition } from 'react-transition-group';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { useLayoutEffect } from 'react';
+import { toggleMenu } from '../../slices/settingsSlice';
 
 const Menu = () => {
   const showMenu = useSelector((store) => store.settings.showMenu);
+  const dispatch = useDispatch();
 
   useLayoutEffect(() => {
     // locks scrolling when menu is open
@@ -36,16 +38,24 @@ const Menu = () => {
       <div className='bg-bg-50 dark:bg-bg-800 w-screen md:w-1/2 h-screen pt-14 px-4 fixed z-50 shadow-4px'>
         <ul className='font-poppins text-lg pt-4 pb-2 border-b border-bg-300 dark:border-bg-600'>
           <li className="mb-2 hover:after:content-['>'] hover:after:ml-1 hover:after:text-lg duration-200">
-            <NavLink to='/'>Home</NavLink>
+            <NavLink to='/' onClick={() => dispatch(toggleMenu())}>
+              Home
+            </NavLink>
           </li>
           <li className="mb-2 hover:after:content-['>'] hover:after:ml-1 hover:after:text-lg duration-200">
-            <NavLink to='calendar'>Calendar</NavLink>
+            <NavLink to='calendar' onClick={() => dispatch(toggleMenu())}>
+              Calendar
+            </NavLink>
           </li>
           <li className="mb-2 hover:after:content-['>'] hover:after:ml-1 hover:after:text-lg duration-200">
-            <NavLink to='drivers'>Drivers</NavLink>
+            <NavLink to='drivers' onClick={() => dispatch(toggleMenu())}>
+              Drivers
+            </NavLink>
           </li>
           <li className="mb-2 hover:after:content-['>'] hover:after:ml-1 hover:after:text-lg duration-200">
-            <NavLink to='teams'>Constructors</NavLink>
+            <NavLink to='teams' onClick={() => dispatch(toggleMenu())}>
+              Constructors
+            </NavLink>
           </li>
         </ul>
         <ul className='font-poppins text-lg pt-4'>
