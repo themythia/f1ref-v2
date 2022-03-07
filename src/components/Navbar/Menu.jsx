@@ -3,13 +3,29 @@ import 'animate.css';
 import { CSSTransition } from 'react-transition-group';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { useLayoutEffect } from 'react';
 
 const Menu = () => {
   const showMenu = useSelector((store) => store.settings.showMenu);
 
+  useLayoutEffect(() => {
+    // locks scrolling when menu is open
+    if (showMenu) {
+      // Get original body overflow
+      const originalStyle = window.getComputedStyle(document.body).overflow;
+      // Prevent scrolling on mount
+      document.body.style.overflow = 'hidden';
+      // Re-enable scrolling when component unmounts
+      return () => {
+        document.body.style.overflow = originalStyle;
+      };
+    }
+  }, [showMenu]);
+
   return (
     <CSSTransition
       in={showMenu}
+      mountOnEnter
       unmountOnExit
       classNames={{
         enterActive: 'animate__animated animate__slideInLeft animate__faster',
