@@ -10,8 +10,8 @@ const circuitData = {
     stats: {
       firstGp: 2004,
       laps: 57,
-      length: 308.238,
-      distance: 5.412,
+      length: 5.412,
+      distance: 308.238,
       record: '1:31.447',
       recordHolder: 'Pedro de la Rosa',
       recordYear: 2005,
@@ -86,8 +86,8 @@ const circuitData = {
     stats: {
       firstGp: 2022,
       laps: 57,
-      length: 308.37,
-      distance: 5.41,
+      length: 5.41,
+      distance: 308.37,
       record: 'null',
       recordHolder: 'null',
       recordYear: null,
