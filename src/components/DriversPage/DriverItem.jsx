@@ -15,7 +15,7 @@ const DriverItem = ({ driver }) => {
         )} rounded-l relative shadow-2px flex flex-row items-end h-full aspect-square`}
       >
         <img
-          src={driver.image}
+          src={driver.image.profile}
           alt={driver.name}
           loading='lazy'
           className='-scale-x-100 max-h-20'
