@@ -1,6 +1,5 @@
 import Flag from '../shared/Flag';
 import { useNavigate } from 'react-router-dom';
-import slug from 'slug';
 import teamColors from '../../utils/teamColors';
 import TeamLogo from '../shared/TeamLogo';
 import { Fragment } from 'react';
@@ -11,7 +10,7 @@ const TeamItem = ({ team }) => {
   return (
     <div
       className='bg-bg-50 dark:bg-bg-800 rounded shadow-2px w-full cursor-pointer hover:scale-[1.02] duration-200 group col-span-4 sm:col-span-4 md:col-span-4 flex flex-row items-center h-[84px]'
-      onClick={() => navigate(`/teams/${slug(team.id)}`)}
+      onClick={() => navigate(`/teams/${team.id.replace(/_/gi, '-')}`)}
     >
       <div
         className={`${teamColors(
