@@ -129,7 +129,10 @@ export const getDrivers = () => {
           familyName: driver.familyName,
           nationality: driver.nationality,
           countryCode: countryCodes(driver.nationality, 'nationality'),
-          image: driverPics(driver.code),
+          image: {
+            profile: driverPics(driver.code).profile,
+            big: driverPics(driver.code).big,
+          },
         };
 
         switch (driver.code) {
@@ -256,7 +259,6 @@ export const getRaceResults = (round) => {
   return fetch(`https://ergast.com/api/f1/2022/${round}/results.json`)
     .then((res) => res.json())
     .then((data) => {
-      console.log('data', data);
       if (data.MRData.RaceTable.Races.length === 0) return [];
       else {
         const resultsData = data.MRData.RaceTable.Races[0].Results;
