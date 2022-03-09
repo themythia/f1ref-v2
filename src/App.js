@@ -8,11 +8,13 @@ import CalendarPage from './components/CalendarPage/CalendarPage';
 import DriversPage from './components/DriversPage/DriversPage';
 import TeamsPage from './components/TeamsPage/TeamsPage';
 import RacePage from './components/RacePage/RacePage';
+import DriverPage from './components/DriverPage/DriverPage';
 
 function App() {
   //todo
   // - dark mode shadows
   // - next race session times
+  // - selector spacing
   const store = useSelector((store) => store);
   console.log('store', store);
   return (
@@ -24,6 +26,7 @@ function App() {
           <Route path='calendar' element={<CalendarPage />} />
           <Route path='calendar/:round' element={<RacePage />} />
           <Route path='drivers' element={<DriversPage />} />
+          <Route path='drivers/:driverId' element={<DriverPage />} />
           <Route path='teams' element={<TeamsPage />} />
         </Routes>
         <Footer />
