@@ -4,11 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getRaceResults, getScheduleAndResults } from '../../utils/api';
 import { addResults, addSchedule } from '../../slices/scheduleSlice';
 import CircuitMap from '../shared/CircuitMap';
-import Flag from '../shared/Flag';
-import Selector from '../shared/Selector/Selector';
 import RaceSchedule from './RaceSchedule';
 import CircuitInfo from './CircuitInfo';
-import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import 'animate.css';
 import RaceResults from './RaceResults';
 import RacePageToggle from './RacePageToggle';
@@ -22,11 +19,8 @@ const RacePage = () => {
   const race = useSelector((store) => store.schedule.schedule[round - 1]);
   const [loading, setLoading] = useState(true);
   const { width } = useWindowSize();
-  console.log('width: ', width);
-  console.log('loading:', loading);
 
   useEffect(() => {
-    console.log('trigger');
     if (Object.keys(schedule).length > 0 && !race.hasOwnProperty('results')) {
       getRaceResults(round)
         .then((results) => {

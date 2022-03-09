@@ -9,9 +9,7 @@ import TeamItemSkeleton from './TeamItemSkeleton';
 const TeamsPage = () => {
   const dispatch = useDispatch();
   const teams = useSelector((store) => store.teams);
-
   const [loading, setLoading] = useState();
-  console.log('teamsState', teams);
 
   const range = (min, max) =>
     Array.from({ length: max - min + 1 }, (_, i) => min + i);

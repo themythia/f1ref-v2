@@ -1,6 +1,5 @@
 import CircuitInfoItem from './CircuitInfoItem';
 import circuitData from '../../utils/circuitData';
-import useWindowSize from '../../utils/useWindowSize';
 import React from 'react';
 
 const CircuitInfo = ({ race }) => {
