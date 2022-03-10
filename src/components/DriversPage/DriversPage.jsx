@@ -11,11 +11,13 @@ const DriversPage = () => {
   const drivers = useSelector((store) => store.drivers);
 
   useEffect(() => {
-    getDrivers().then((data) => {
-      dispatch(addDrivers(data));
-      setLoading(false);
-    });
-  }, [dispatch]);
+    if (drivers.length === 0) {
+      getDrivers().then((data) => {
+        dispatch(addDrivers(data));
+        setLoading(false);
+      });
+    } else if (drivers.length > 0) setLoading(false);
+  }, [drivers, dispatch]);
 
   const range = (min, max) =>
     Array.from({ length: max - min + 1 }, (_, i) => min + i);
