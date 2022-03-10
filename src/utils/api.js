@@ -205,7 +205,7 @@ export const getDrivers = () => {
           case 'LAT':
             return {
               ...driverObj,
-              team: 'Wiliams',
+              team: 'Williams',
               teamCode: 'williams',
             };
           default:
@@ -291,4 +291,70 @@ export const getScheduleAndResults = (round) => {
       );
     }
   );
+};
+
+export const getDriverRaceStats = (driver, season) => {
+  return fetch(`http://ergast.com/api/f1/drivers/${driver}/results.json`)
+    .then((res) => res.json())
+    .then((data) => data.MRData.total)
+    .then((raceCount) =>
+      fetch(
+        `http://ergast.com/api/f1/drivers/${driver}/results.json?limit=${raceCount}`
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          // data returns an array of arrays that contain 100 race result objects each, flatRaces flattens that into an array of objects
+          const flatRaces = data.MRData.RaceTable.Races.flat();
+
+          // processes the data array and returns an object of stats
+          const handleRaceStats = (data) => {
+            return {
+              wins: data.filter(
+                (race) => parseInt(race.Results[0].position) === 1
+              ).length,
+              gpCount: data.length,
+              podiums: data.filter(
+                (race) => parseInt(race.Results[0].position) <= 3
+              ).length,
+              points: data.reduce(
+                (sum, next) => sum + parseFloat(next.Results[0].points),
+                0
+              ),
+              pointFinishes: data.filter(
+                (race) => parseFloat(race.Results[0].points) > 0
+              ).length,
+              poles: data.filter((race) => parseInt(race.Results[0].grid) === 1)
+                .length,
+              retirements: data.filter(
+                (race) => race.Results[0].positionText === 'R'
+              ).length,
+              dsq: data.filter((race) => race.Results[0].positionText === 'D')
+                .length,
+            };
+          };
+
+          // gets seasons driver raced as an array
+          const seasons = flatRaces.reduce((allSeasons, currentRace) => {
+            if (!allSeasons.includes(currentRace.season)) {
+              allSeasons.push(currentRace.season);
+            }
+            return allSeasons;
+          }, []);
+
+          // groups race objects in flatRaces array by seasons into an object
+          const groupedBySeasons = seasons.reduce(
+            (obj, season) => ({
+              ...obj,
+              [season]: handleRaceStats(
+                flatRaces.filter((race) => race.season === season)
+              ),
+            }),
+            { career: handleRaceStats(flatRaces) }
+          );
+
+          return groupedBySeasons;
+        })
+        .catch((e) => console.log('Fetching all races failed', e))
+    )
+    .catch((e) => console.warn('Fetching driver stats failed!', e));
 };
