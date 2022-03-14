@@ -9,7 +9,7 @@ import Countdown from './Countdown';
 const NextRace = () => {
   const nextRace = useSelector((store) => store.schedule.nextRace);
   const dispatch = useDispatch();
-  const [activeButton, setActiveButton] = useState(0);
+  const activeButton = useSelector((store) => store.settings.selector.nextRace);
 
   useEffect(() => {
     getNextRace().then((data) => dispatch(addNextRace(data)));
@@ -29,8 +29,7 @@ const NextRace = () => {
       </div>
       <Selector
         options={['FP1', 'FP2', 'FP3', 'Quali', 'Race']}
-        active={activeButton}
-        setActive={setActiveButton}
+        type='nextRace'
       />
       <Countdown time={nextRace.date + 'T' + nextRace.time} />
     </div>

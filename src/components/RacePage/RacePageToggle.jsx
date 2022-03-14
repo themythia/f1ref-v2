@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
 import Selector from '../shared/Selector/Selector';
 import CircuitInfo from './CircuitInfo';
@@ -6,7 +7,7 @@ import RaceResults from './RaceResults';
 import RaceSchedule from './RaceSchedule';
 
 const RacePageToggle = ({ race }) => {
-  const [activeButton, setActiveButton] = useState(0);
+  const activeButton = useSelector((store) => store.settings.selector.racePage);
 
   const selectorOptions =
     race.results.length === 0
@@ -15,11 +16,7 @@ const RacePageToggle = ({ race }) => {
 
   return (
     <div className='col-span-4 sm:col-span-8'>
-      <Selector
-        options={selectorOptions}
-        active={activeButton}
-        setActive={setActiveButton}
-      />
+      <Selector options={selectorOptions} type='racePage' />
       <SwitchTransition mode='out-in'>
         <CSSTransition
           key={activeButton}

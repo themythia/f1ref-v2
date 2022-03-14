@@ -14,7 +14,10 @@ import {
 
 const Standings = (props) => {
   const dispatch = useDispatch();
-  const [activeButton, setActiveButton] = useState(0);
+  const activeButton = useSelector(
+    (store) => store.settings.selector.standings
+  );
+  // const [activeButton, setActiveButton] = useState(0);
   const standings = useSelector((store) =>
     activeButton === 0 ? store.standings.drivers : store.standings.constructors
   );
@@ -28,11 +31,7 @@ const Standings = (props) => {
       <p className='font-poppins text-lg text-bg-800 dark:text-bg-50 md:mb-2'>
         Standings:
       </p>
-      <Selector
-        options={['Drivers', 'Constructors']}
-        active={activeButton}
-        setActive={setActiveButton}
-      />
+      <Selector options={['Drivers', 'Constructors']} type='standings' />
       <SwitchTransition mode='out-in'>
         <CSSTransition
           key={activeButton}
