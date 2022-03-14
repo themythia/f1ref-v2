@@ -7,6 +7,12 @@ export const themeSlice = createSlice({
     showMenu: false,
     unit: 'km',
     hideLastRace: true,
+    selector: {
+      nextRace: 0,
+      standings: 0,
+      racePage: 0,
+      driverPage: 0,
+    },
   },
   reducers: {
     toggleTheme: (state) => {
@@ -24,9 +30,18 @@ export const themeSlice = createSlice({
     toggleLastRace: (state) => {
       state.hideLastRace = !state.hideLastRace;
     },
+    setSelector: (state, action) => {
+      state.selector[action.payload.type] = action.payload.index;
+    },
   },
 });
 
-export const { toggleTheme, setTheme, toggleMenu, toggleUnit, toggleLastRace } =
-  themeSlice.actions;
+export const {
+  toggleTheme,
+  setTheme,
+  toggleMenu,
+  toggleUnit,
+  toggleLastRace,
+  setSelector,
+} = themeSlice.actions;
 export default themeSlice.reducer;
