@@ -7,8 +7,7 @@ const DriverInfoToggle = ({ seasons }) => {
   return (
     <div className='col-span-4 sm:col-span-8'>
       <Selector
-        type='driver'
-        driver={seasons}
+        options={['Achievements', ...seasons]}
         active={activeButton}
         setActive={setActiveButton}
       />

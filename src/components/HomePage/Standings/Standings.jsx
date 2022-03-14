@@ -29,7 +29,7 @@ const Standings = (props) => {
         Standings:
       </p>
       <Selector
-        type='standings'
+        options={['Drivers', 'Constructors']}
         active={activeButton}
         setActive={setActiveButton}
       />

@@ -4,19 +4,10 @@ import { useState } from 'react';
 const Selector = (props) => {
   const [activeButton, setActiveButton] = useState(0);
 
-  const labels = {
-    normalSession: ['FP1', 'FP2', 'FP3', 'Quali', 'Race'],
-    sprintSession: ['FP1', 'Quali', 'FP2', 'Sprint', 'Race'],
-    race: ['Schedule', 'Circuit'],
-    afterRace: ['Circuit', 'Results'],
-    driver: ['Achievements', 'Stats'],
-    standings: ['Drivers', 'Constructors'],
-  };
-
   return (
     <div className='max-w-full overflow-auto'>
       <div className='py-2 my-2 md:py-3 md:my-3 overflow-hidden flex gap-x-2 justify-center min-w-fit'>
-        {labels[props.type].map((session, index) => (
+        {props.options.map((session, index) => (
           <SelectorButton
             key={index}
             text={session}

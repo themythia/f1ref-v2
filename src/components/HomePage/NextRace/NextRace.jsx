@@ -28,7 +28,7 @@ const NextRace = () => {
         </div>
       </div>
       <Selector
-        type='normalSession'
+        options={['FP1', 'FP2', 'FP3', 'Quali', 'Race']}
         active={activeButton}
         setActive={setActiveButton}
       />

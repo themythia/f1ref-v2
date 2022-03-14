@@ -8,10 +8,15 @@ import RaceSchedule from './RaceSchedule';
 const RacePageToggle = ({ race }) => {
   const [activeButton, setActiveButton] = useState(0);
 
+  const selectorOptions =
+    race.results.length === 0
+      ? ['Schedule', 'Circuit']
+      : ['Circuit', 'Results'];
+
   return (
     <div className='col-span-4 sm:col-span-8'>
       <Selector
-        type={race.results.length === 0 ? 'race' : 'afterRace'}
+        options={selectorOptions}
         active={activeButton}
         setActive={setActiveButton}
       />
