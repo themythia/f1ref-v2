@@ -345,13 +345,15 @@ export const getDriverRaceStats = (driver, season) => {
           const groupedBySeasons = seasons.reduce(
             (obj, season) => ({
               ...obj,
-              [season]: handleRaceStats(
-                flatRaces.filter((race) => race.season === season)
-              ),
+              seasons: {
+                ...obj.seasons,
+                [season]: handleRaceStats(
+                  flatRaces.filter((race) => race.season === season)
+                ),
+              },
             }),
-            { career: handleRaceStats(flatRaces) }
+            { seasons: {}, career: handleRaceStats(flatRaces) }
           );
-
           return groupedBySeasons;
         })
         .catch((e) => console.log('Fetching all races failed', e))
