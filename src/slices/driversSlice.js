@@ -13,6 +13,7 @@ export const driversSlice = createSlice({
         (driver) => driver.id === action.payload.id
       );
 
+      // manually adds championship stat
       const champ =
         action.payload.id === 'hamilton'
           ? 7
@@ -28,7 +29,10 @@ export const driversSlice = createSlice({
 
       state[index].stats = {
         ...action.payload.stats,
-        champ,
+        career: {
+          ...action.payload.stats.career,
+          champ,
+        },
       };
     },
   },
