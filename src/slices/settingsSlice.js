@@ -13,6 +13,12 @@ export const themeSlice = createSlice({
       racePage: 0,
       driverPage: 0,
     },
+    selectorSize: {
+      nextRace: false,
+      standings: false,
+      racePage: false,
+      driverPage: false,
+    },
   },
   reducers: {
     toggleTheme: (state) => {
@@ -33,6 +39,9 @@ export const themeSlice = createSlice({
     setSelector: (state, action) => {
       state.selector[action.payload.type] = action.payload.index;
     },
+    setSelectorSize: (state, action) => {
+      state.selectorSize[action.payload.type] = action.payload.size;
+    },
   },
 });
 
@@ -43,5 +52,6 @@ export const {
   toggleUnit,
   toggleLastRace,
   setSelector,
+  setSelectorSize,
 } = themeSlice.actions;
 export default themeSlice.reducer;
