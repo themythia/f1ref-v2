@@ -2,7 +2,8 @@ import SelectorButton from './SelectorButton';
 import SelectorScrollArrow from './SelectorScrollArrow';
 import { ScrollMenu } from 'react-horizontal-scrolling-menu';
 import useDrag from '../../../utils/useDrag';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 const Selector = (props) => {
   const { dragStart, dragStop, dragMove } = useDrag();
@@ -15,50 +16,26 @@ const Selector = (props) => {
         }
       });
 
+  const selectorSize = useSelector(
+    (store) => store.settings.selectorSize[props.type]
+  );
+
+  console.log('selectorSize', selectorSize);
+
   const [style, setStyle] = useState('');
-  // const apiRef = useRef(null);
-
-  // useEffect(() => {
-  //   if (style === 'flex flex-row justify-center') return;
-  //   if (apiRef && apiRef.current) {
-  //     const interval = setInterval(() => {
-  //       console.log('interval');
-  //       if (apiRef.current.initComplete) {
-  //         if (
-  //           apiRef.current.isFirstItemVisible &&
-  //           apiRef.current.isLastItemVisible
-  //         ) {
-  //           console.log('class set');
-  //           setStyle('flex flex-row justify-center');
-  //         }
-  //       }
-  //     }, [10]);
-
-  //     const timeOut = setTimeout(() => {
-  //       console.log('clearInterval');
-  //       clearInterval(interval);
-  //     }, 1500);
-
-  //     console.log('apiRef', apiRef);
-  //     console.log('apiRef.current', apiRef.current.initComplete);
-
-  //     return () => {
-  //       console.log('clear useEffect');
-  //       clearInterval(interval);
-  //       clearTimeout(timeOut);
-  //     };
-  //   }
-  // }, [style]);
+  useEffect(() => {
+    if (!selectorSize) setStyle('flex flex-row justify-center');
+    else setStyle('');
+  }, [style, selectorSize]);
 
   return (
     <div className='relative' onMouseLeave={dragStop}>
       <ScrollMenu
-        LeftArrow={<SelectorScrollArrow type='left' />}
-        RightArrow={<SelectorScrollArrow type='right' />}
+        LeftArrow={<SelectorScrollArrow type={props.type} direction='left' />}
+        RightArrow={<SelectorScrollArrow type={props.type} direction='right' />}
         onMouseDown={() => dragStart}
         onMouseUp={() => dragStop}
         onMouseMove={handleDrag}
-        // apiRef={apiRef}
         scrollContainerClassName={style}
       >
         {props.options.map((session, index) => (
