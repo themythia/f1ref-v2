@@ -16,11 +16,10 @@ const Selector = (props) => {
         }
       });
 
+  // state for deciding if the scroll div needs to centered or not
   const selectorSize = useSelector(
     (store) => store.settings.selectorSize[props.type]
   );
-
-  console.log('selectorSize', selectorSize);
 
   const [style, setStyle] = useState('');
   useEffect(() => {

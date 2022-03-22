@@ -5,15 +5,28 @@ import { addNextRace } from '../../../slices/scheduleSlice';
 import Flag from '../../shared/Flag';
 import Selector from '../../shared/Selector/Selector';
 import Countdown from './Countdown';
+import circuitData from '../../../utils/circuitData';
 
 const NextRace = () => {
   const nextRace = useSelector((store) => store.schedule.nextRace);
   const dispatch = useDispatch();
   const activeButton = useSelector((store) => store.settings.selector.nextRace);
+  const [loading, setLoading] = useState(true);
+  const [activeSessionTime, setActiveSessionTime] = useState(null);
 
   useEffect(() => {
-    getNextRace().then((data) => dispatch(addNextRace(data)));
+    getNextRace()
+      .then((data) => dispatch(addNextRace(data)))
+      .then(() => setLoading(false));
   }, [dispatch]);
+
+  useEffect(() => {
+    if (!loading) {
+      const raceSchedule = circuitData[nextRace.circuitId]?.schedule;
+      const activeSession = Object.keys(raceSchedule)[activeButton];
+      setActiveSessionTime(raceSchedule[activeSession]);
+    }
+  }, [loading, activeButton, activeSessionTime, nextRace.circuitId]);
 
   return (
     <div className='bg-bg-50 dark:bg-bg-800 rounded shadow-2px p-4 md:p-6 w-full col-span-full sm:col-span-4 md:col-span-6 mb-4 md:mb-6'>
@@ -31,7 +44,7 @@ const NextRace = () => {
         options={['FP1', 'FP2', 'FP3', 'Quali', 'Race']}
         type='nextRace'
       />
-      <Countdown time={nextRace.date + 'T' + nextRace.time} />
+      <Countdown time={activeSessionTime} />
     </div>
   );
 };
