@@ -10,7 +10,7 @@ const CircuitInfo = ({ race }) => {
 
   return (
     <div className='flex flex-col gap-y-2 sm:flex-row sm:flex-wrap gap-x-2 md:col-start-1 md:col-end-7'>
-      <span className='hidden sm:block font-poppins text-lg text-bg-800 dark:text-bg-50 mb-1'>
+      <span className='hidden md:block font-poppins text-lg text-bg-800 dark:text-bg-50 mb-1'>
         Circuit Info:
       </span>
       <CircuitInfoItem title='Circuit' info={race.circuitName} />

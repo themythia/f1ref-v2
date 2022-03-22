@@ -15,6 +15,8 @@ function App() {
   // - dark mode shadows
   // - next race session times
   // - selector spacing
+  // - next race session animation
+  // - animation wrapper
   const store = useSelector((store) => store);
   console.log('store', store);
   return (
