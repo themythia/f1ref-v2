@@ -5,7 +5,8 @@ export const newsSlice = createSlice({
   initialState: [],
   reducers: {
     addNews: (state, action) => {
-      state.push(...action.payload);
+      state = action.payload;
+      return state;
     },
   },
 });
