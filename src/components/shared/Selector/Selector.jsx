@@ -21,10 +21,10 @@ const Selector = (props) => {
     (store) => store.settings.selectorSize[props.type]
   );
 
-  const [style, setStyle] = useState('');
+  const [style, setStyle] = useState('gap-x-1');
   useEffect(() => {
-    if (!selectorSize) setStyle('flex flex-row justify-center');
-    else setStyle('');
+    if (!selectorSize) setStyle('flex flex-row justify-center gap-x-1');
+    else setStyle('gap-x-1');
   }, [style, selectorSize]);
 
   return (
