@@ -137,7 +137,7 @@ export const getDrivers = () => {
 
         switch (driver.code) {
           case 'HAM':
-          case 'BOT':
+          case 'RUS':
             return {
               ...driverObj,
               team: 'Mercedes',
@@ -160,6 +160,7 @@ export const getDrivers = () => {
             };
           case 'STR':
           case 'VET':
+          case 'HUL':
             return {
               ...driverObj,
               team: 'Aston Martin',
@@ -189,6 +190,8 @@ export const getDrivers = () => {
           case 'RAI':
           case 'GIO':
           case 'KUB':
+          case 'BOT':
+          case 'ZHO':
             return {
               ...driverObj,
               team: 'Alfa Romeo',
@@ -196,12 +199,13 @@ export const getDrivers = () => {
             };
           case 'MSC':
           case 'MAZ':
+          case 'MAG':
             return {
               ...driverObj,
               team: 'Haas',
               teamCode: 'haas',
             };
-          case 'RUS':
+          case 'ALB':
           case 'LAT':
             return {
               ...driverObj,
