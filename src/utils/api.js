@@ -334,6 +334,7 @@ export const getDriverRaceStats = (driver, season) => {
               ).length,
               dsq: data.filter((race) => race.Results[0].positionText === 'D')
                 .length,
+              races: data.length,
             };
           };
 
