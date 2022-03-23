@@ -27,7 +27,7 @@ const TeamLogo = ({ team }) => {
     <img
       src={logo[team]}
       alt={team}
-      className=' max-h-20 w-full'
+      className='max-h-[84px] w-full'
       loading='lazy'
     />
   );

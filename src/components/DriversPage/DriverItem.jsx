@@ -6,7 +6,7 @@ const DriverItem = ({ driver }) => {
 
   return (
     <div
-      className='bg-bg-50 dark:bg-bg-800 rounded shadow-2px w-full cursor-pointer hover:scale-[1.02] duration-200 group col-span-4 sm:col-span-4 md:col-span-4 flex flex-row items-center h-[84px]'
+      className='bg-bg-50 dark:bg-bg-800 rounded shadow-2px w-full cursor-pointer hover:scale-[1.02] duration-200 group col-span-4 sm:col-span-4 md:col-span-6 xl:col-span-4 flex flex-row items-center h-[84px]'
       onClick={() => navigate(`/drivers/${driver.id.replace(/_/gi, '-')}`)}
     >
       <div
@@ -18,7 +18,7 @@ const DriverItem = ({ driver }) => {
           src={driver.image.profile}
           alt={driver.name}
           loading='lazy'
-          className='-scale-x-100 max-h-20'
+          className='-scale-x-100 max-h-[84px]'
         />
       </div>
       <div className='flex flex-row gap-x-4 w-full px-4 md:px-6 items-center'>

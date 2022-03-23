@@ -9,7 +9,7 @@ const TeamItem = ({ team }) => {
 
   return (
     <div
-      className='bg-bg-50 dark:bg-bg-800 rounded shadow-2px w-full cursor-pointer hover:scale-[1.02] duration-200 group col-span-4 sm:col-span-4 md:col-span-4 flex flex-row items-center h-[84px]'
+      className='bg-bg-50 dark:bg-bg-800 rounded shadow-2px w-full cursor-pointer hover:scale-[1.02] duration-200 group col-span-4 sm:col-span-4 md:col-span-6 xl:col-span-4 flex flex-row items-center h-[84px]'
       onClick={() => navigate(`/teams/${team.id.replace(/_/gi, '-')}`)}
     >
       <div
@@ -26,11 +26,11 @@ const TeamItem = ({ team }) => {
             {team.drivers.map((driver, index) =>
               team.drivers.length - 1 === index ? (
                 <span key={index} className='text-xs'>
-                  {driver.familyName}
+                  {driver.name}
                 </span>
               ) : (
                 <Fragment key={index}>
-                  <span className='text-xs'>{`${driver.familyName} | `}</span>
+                  <span className='text-xs'>{`${driver.name} | `}</span>
                 </Fragment>
               )
             )}
