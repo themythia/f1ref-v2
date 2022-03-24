@@ -9,6 +9,7 @@ import DriversPage from './components/DriversPage/DriversPage';
 import TeamsPage from './components/TeamsPage/TeamsPage';
 import RacePage from './components/RacePage/RacePage';
 import DriverPage from './components/DriverPage/DriverPage';
+import TeamPage from './components/TeamPage/TeamPage';
 
 function App() {
   //todo
@@ -31,6 +32,7 @@ function App() {
           <Route path='drivers' element={<DriversPage />} />
           <Route path='drivers/:driverId' element={<DriverPage />} />
           <Route path='teams' element={<TeamsPage />} />
+          <Route path='teams/:teamId' element={<TeamPage />} />
         </Routes>
         <Footer />
       </Router>
