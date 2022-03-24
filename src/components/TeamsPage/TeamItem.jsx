@@ -17,7 +17,7 @@ const TeamItem = ({ team }) => {
           team.id
         )} rounded-l relative shadow-2px flex flex-row items-end h-full aspect-square`}
       >
-        <TeamLogo team={team.id} />
+        <TeamLogo team={team.id} type='round' />
       </div>
       <div className='flex flex-row gap-x-4 w-full px-4 md:px-6 items-center'>
         <div className='flex flex-col font-openSans w-full'>
