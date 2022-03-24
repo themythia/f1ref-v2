@@ -27,7 +27,7 @@ const RacePage = () => {
           dispatch(addResults({ round, results }));
         })
         .then(() => setLoading(false))
-        .catch((e) => console.log('failed fetch in useeffect', e));
+        .catch((e) => console.warn('failed fetch in useeffect', e));
     } else if (Object.keys(schedule).length === 0) {
       getScheduleAndResults(round)
         .then((data) => dispatch(addSchedule(data)))

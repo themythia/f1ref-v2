@@ -1,4 +1,5 @@
 import countryCodes from './countryCodes';
+import driverBirthPlaces from './driverBirthPlaces';
 import driverPics from './driverPics';
 
 export const getNextRace = () => {
@@ -127,11 +128,14 @@ export const getDrivers = () => {
           id: driver.driverId,
           name: driver.givenName + ' ' + driver.familyName,
           familyName: driver.familyName,
+          givenName: driver.givenName,
+          birthPlace: driverBirthPlaces[driver.driverId],
           nationality: driver.nationality,
           countryCode: countryCodes(driver.nationality, 'nationality'),
           image: {
             profile: driverPics(driver.code).profile,
             big: driverPics(driver.code).big,
+            helmet: driverPics(driver.code).helmet,
           },
         };
 
@@ -361,7 +365,7 @@ export const getDriverRaceStats = (driver, season) => {
           );
           return groupedBySeasons;
         })
-        .catch((e) => console.log('Fetching all races failed', e))
+        .catch((e) => console.warn('Fetching all races failed', e))
     )
     .catch((e) => console.warn('Fetching driver stats failed!', e));
 };

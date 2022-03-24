@@ -17,6 +17,7 @@ function App() {
   // - selector spacing
   // - next race session animation
   // - animation wrapper
+  // - close menu when something clicked
   const store = useSelector((store) => store);
   console.log('store', store);
   return (

@@ -8,11 +8,12 @@ const DriverInfoToggle = ({ seasons, stats }) => {
   const activeButton = useSelector(
     (store) => store.settings.selector.driverPage
   );
-  console.log('seasons', seasons);
-  console.log('stats', stats);
 
   return (
     <div className='col-span-4 sm:col-span-8 md:col-span-12'>
+      <p className='font-poppins text-lg text-bg-800 dark:text-bg-50 -mb-2 md:-mb-4'>
+        Stats:
+      </p>
       <Selector options={['Career', ...seasons]} type='driverPage' />
       <SwitchTransition mode='out-in'>
         <CSSTransition

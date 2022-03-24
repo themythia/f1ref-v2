@@ -1,9 +1,6 @@
 import InfoItem from './InfoItem';
 
 const DriverStats = ({ season, showChamp }) => {
-  console.log('season', season);
-  console.log('showChamp', showChamp);
-
   return (
     <div className='grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12 gap-x-4 md:gap-x-6 gap-y-2'>
       {showChamp && <InfoItem title='Championships' info={season.champ} />}
