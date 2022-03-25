@@ -1,10 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
 import { VisibilityContext } from 'react-horizontal-scrolling-menu';
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
-import { useDispatch } from 'react-redux';
-import { setSelectorSize } from '../../../slices/settingsSlice';
 
-const SelectorScrollArrow = ({ type, direction }) => {
+const SelectorScrollArrow = ({ direction, setCentered }) => {
   // context from react-horizontal-scrolling-menu package
   const {
     isFirstItemVisible,
@@ -16,7 +14,6 @@ const SelectorScrollArrow = ({ type, direction }) => {
 
   // state for disabling arrow button
   const [disabled, setDisabled] = useState(false);
-  const dispatch = useDispatch();
 
   // tracks button visibility to decide disabling the arrow buttons
   useEffect(() => {
@@ -24,16 +21,15 @@ const SelectorScrollArrow = ({ type, direction }) => {
       if (direction === 'left') setDisabled(isFirstItemVisible);
       else if (direction === 'right') setDisabled(isLastItemVisible);
       if (isFirstItemVisible && isLastItemVisible) {
-        dispatch(setSelectorSize({ type, size: false }));
-      } else dispatch(setSelectorSize({ type, size: true }));
+        setCentered(false);
+      } else setCentered(true);
     }
   }, [
     direction,
     isFirstItemVisible,
     isLastItemVisible,
     initComplete,
-    dispatch,
-    type,
+    setCentered,
   ]);
 
   const handleClick = (direction) => {

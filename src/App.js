@@ -19,6 +19,8 @@ function App() {
   // - next race session animation
   // - animation wrapper
   // - close menu when something clicked
+  // - refactor selectorsize state into parent state and update it in child
+  // - <Arrow state={setState} />
   const store = useSelector((store) => store);
   console.log('store', store);
   return (
