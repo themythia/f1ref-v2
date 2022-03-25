@@ -313,7 +313,7 @@ export const getDriverRaceStats = (driver, season) => {
         .then((data) => {
           // data returns an array of arrays that contain 100 race result objects each, flatRaces flattens that into an array of objects
           const flatRaces = data.MRData.RaceTable.Races.flat();
-
+          console.log('flatRaces', flatRaces);
           // processes the data array and returns an object of stats
           const handleRaceStats = (data) => {
             return {
@@ -368,4 +368,137 @@ export const getDriverRaceStats = (driver, season) => {
         .catch((e) => console.warn('Fetching all races failed', e))
     )
     .catch((e) => console.warn('Fetching driver stats failed!', e));
+};
+
+export const getTeamRaceStats = (team) => {
+  // Ergast API has a limit of 1000 results
+  // handles paginated fetch
+  const fetchOffset = (page, team) => {
+    return fetch(
+      `https://ergast.com/api/f1/constructors/${team}/results.json?limit=1000&offset=${
+        1000 * page
+      }`
+    )
+      .then((res) => res.json())
+      .then((data) => data)
+      .catch((e) =>
+        console.warn(`Fetching page: ${page} of ${team} stats failed`, e)
+      );
+  };
+
+  return fetch(`https://ergast.com/api/f1/constructors/${team}/results.json`)
+    .then((res) => res.json())
+    .then((data) => data.MRData.total)
+    .then((results) => {
+      if (results > 1000) {
+        const pages = Math.ceil(results / 1000);
+        // creates an array with length of pages, with fetchOffset() as values
+        const fetchArray = [...Array(pages).keys()].map((page) =>
+          fetchOffset(page, team)
+        );
+        return Promise.all(fetchArray).then((values) =>
+          values.reduce(
+            (start, current) => start.concat(...current.MRData.RaceTable.Races),
+            []
+          )
+        );
+      } else {
+        return fetchOffset(0, team).then((data) => data.MRData.RaceTable.Races);
+      }
+    })
+    .then((races) => {
+      console.log('races:', races);
+      // returns an array of strings of years team raced
+      const seasons = races.reduce((allSeasons, currentRace) => {
+        if (!allSeasons.includes(currentRace.season)) {
+          allSeasons.push(currentRace.season);
+        }
+        return allSeasons;
+      }, []);
+
+      const handleRaceStats = (data) => {
+        // data is an array that contains full season of races
+        // [race1,race2,race3,..., raceN];
+        //  race1 = {
+        //   Circuit: {},
+        //   Results: [driver1, driver2, driver3,..., driverN],
+        //   date: '',
+        //   raceName: '',
+        //   round: '',
+        //   season: '',
+        //   url: '',
+        // }
+        // driver1 = {
+        //   Constructor: {},
+        //   Driver: {},
+        //   laps: '',
+        //   number: '',
+        //   points: '',
+        //   position: '',
+        //   positionText: '',
+        //   status: '',
+        //   grid: '', --not always there
+        // };
+        return {
+          wins: data.filter(
+            (race) =>
+              race.Results.filter((driver) => driver.position === '1')
+                .length === 1
+          ).length,
+          gpCount: data.length,
+          podiums: data.filter(
+            (race) =>
+              race.Results.filter((driver) => parseInt(driver.position) <= 3)
+                .length > 0
+          ).length,
+          points: data.reduce(
+            (sum, next) =>
+              sum +
+              next.Results.reduce(
+                (sum, next) => sum + parseFloat(next.points),
+                0
+              ),
+            0
+          ),
+          poles: data.filter(
+            (race) =>
+              race.Results.filter((driver) => driver.grid === '1').length === 1
+          ).length,
+          fastestLap: data.filter(
+            (race) =>
+              race.Results.filter((driver) => driver?.FastestLap?.rank === '1')
+                .length === 1
+          ).length,
+          pointFinishes: data.filter(
+            (race) =>
+              race.Results.filter((driver) => parseFloat(driver.points) > 0)
+                .length > 0
+          ).length,
+          retirements: data.filter(
+            (race) =>
+              race.Results.filter((driver) => driver.positionText === 'R')
+                .length > 0
+          ).length,
+          dsq: data.filter(
+            (race) =>
+              race.Results.filter((driver) => driver.positionText === 'D')
+                .length > 0
+          ).length,
+        };
+      };
+      console.log('handleRaceStats', handleRaceStats(races));
+      const groupedBySeasons = seasons.reduce(
+        (obj, season) => ({
+          ...obj,
+          seasons: {
+            ...obj.seasons,
+            [season]: handleRaceStats(
+              races.filter((race) => race.season === season)
+            ),
+          },
+        }),
+        { seasons: {}, career: handleRaceStats(races) }
+      );
+      return groupedBySeasons;
+    });
 };
