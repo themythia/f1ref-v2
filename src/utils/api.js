@@ -309,12 +309,12 @@ export const getScheduleAndResults = (round) => {
 };
 
 export const getDriverRaceStats = (driver, season) => {
-  return fetch(`http://ergast.com/api/f1/drivers/${driver}/results.json`)
+  return fetch(`https://ergast.com/api/f1/drivers/${driver}/results.json`)
     .then((res) => res.json())
     .then((data) => data.MRData.total)
     .then((raceCount) =>
       fetch(
-        `http://ergast.com/api/f1/drivers/${driver}/results.json?limit=${raceCount}`
+        `https://ergast.com/api/f1/drivers/${driver}/results.json?limit=${raceCount}`
       )
         .then((res) => res.json())
         .then((data) => {

@@ -1,5 +1,5 @@
 const Flag = (props) => {
-  const source = `http://purecatamphetamine.github.io/country-flag-icons/1x1/${props.country}.svg`;
+  const source = `https://purecatamphetamine.github.io/country-flag-icons/1x1/${props.country}.svg`;
   const size =
     props.size === '36'
       ? 'h-9'
