@@ -1,6 +1,7 @@
 import countryCodes from './countryCodes';
 import driverBirthPlaces from './driverBirthPlaces';
 import driverPics from './driverPics';
+import teamInfo from './teamInfo';
 
 export const getNextRace = () => {
   return fetch('https://ergast.com/api/f1/current/next.json')
@@ -231,8 +232,9 @@ export const getTeams = () => {
     .then((data) => {
       const constructorData = data.MRData.ConstructorTable.Constructors;
       const constructors = constructorData.map((team) => {
+        const { constructorId: id } = team;
         return {
-          id: team.constructorId,
+          id,
           name:
             team.name === 'Alpine F1 Team'
               ? 'Alpine'
@@ -240,6 +242,11 @@ export const getTeams = () => {
               ? 'Haas'
               : team.name,
           countryCode: countryCodes(team.nationality, 'nationality'),
+          fullName: teamInfo[id].fullName,
+          base: teamInfo[id].base,
+          teamChief: teamInfo[id].teamChief,
+          chassis: teamInfo[id].chassis,
+          powerUnit: teamInfo[id].powerUnit,
         };
       });
       return constructors;
