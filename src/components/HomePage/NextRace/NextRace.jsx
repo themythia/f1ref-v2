@@ -6,6 +6,7 @@ import Flag from '../../shared/Flag';
 import Selector from '../../shared/Selector/Selector';
 import Countdown from './Countdown';
 import circuitData from '../../../utils/circuitData';
+import SwitchTransitionWrapper from '../../shared/SwitchTransitionWrapper';
 
 const NextRace = () => {
   const nextRace = useSelector((store) => store.schedule.nextRace);
@@ -44,7 +45,9 @@ const NextRace = () => {
         options={['FP1', 'FP2', 'FP3', 'Quali', 'Race']}
         type='nextRace'
       />
-      <Countdown time={activeSessionTime} />
+      <SwitchTransitionWrapper state={activeButton}>
+        <Countdown time={activeSessionTime} />
+      </SwitchTransitionWrapper>
     </div>
   );
 };

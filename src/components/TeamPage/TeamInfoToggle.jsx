@@ -1,7 +1,6 @@
 import { useSelector } from 'react-redux';
-import { CSSTransition } from 'react-transition-group';
-import { SwitchTransition } from 'react-transition-group';
 import Selector from '../shared/Selector/Selector';
+import SwitchTransitionWrapper from '../shared/SwitchTransitionWrapper';
 import TeamStats from './TeamStats';
 
 const TeamInfoToggle = ({ seasons, stats }) => {
@@ -13,25 +12,16 @@ const TeamInfoToggle = ({ seasons, stats }) => {
         Stats:
       </p>
       <Selector options={['All', ...seasons]} type='teamPage' />
-      <SwitchTransition mode='out-in'>
-        <CSSTransition
-          key={activeButton}
-          classNames={{
-            enterActive: 'animate__animated animate__fadeIn animate__faster',
-            exitActive: 'animate__animated animate__fadeOut animate__faster',
-          }}
-          timeout={200}
-        >
-          <TeamStats
-            season={
-              activeButton === 0
-                ? stats.career
-                : stats.seasons[seasons[activeButton - 1]]
-            }
-            showChamp={activeButton === 0}
-          />
-        </CSSTransition>
-      </SwitchTransition>
+      <SwitchTransitionWrapper state={activeButton}>
+        <TeamStats
+          season={
+            activeButton === 0
+              ? stats.career
+              : stats.seasons[seasons[activeButton - 1]]
+          }
+          showChamp={activeButton === 0}
+        />
+      </SwitchTransitionWrapper>
     </div>
   );
 };

@@ -6,18 +6,13 @@ import { getStandings } from '../../../utils/api';
 import StandingsItem from './StandingsItem';
 import Selector from '../../shared/Selector/Selector';
 import 'animate.css';
-import {
-  CSSTransition,
-  SwitchTransition,
-  TransitionGroup,
-} from 'react-transition-group';
+import SwitchTransitionWrapper from '../../shared/SwitchTransitionWrapper';
 
 const Standings = (props) => {
   const dispatch = useDispatch();
   const activeButton = useSelector(
     (store) => store.settings.selector.standings
   );
-  // const [activeButton, setActiveButton] = useState(0);
   const standings = useSelector((store) =>
     activeButton === 0 ? store.standings.drivers : store.standings.constructors
   );
@@ -32,22 +27,13 @@ const Standings = (props) => {
         Standings:
       </p>
       <Selector options={['Drivers', 'Constructors']} type='standings' />
-      <SwitchTransition mode='out-in'>
-        <CSSTransition
-          key={activeButton}
-          classNames={{
-            enterActive: 'animate__animated animate__fadeIn animate__faster',
-            exitActive: 'animate__animated animate__fadeOut animate__faster',
-          }}
-          timeout={200}
-        >
-          <div className='flex flex-col gap-y-2'>
-            {standings.map((driver, index) => (
-              <StandingsItem key={index} data={driver} />
-            ))}
-          </div>
-        </CSSTransition>
-      </SwitchTransition>
+      <SwitchTransitionWrapper state={activeButton}>
+        <div className='flex flex-col gap-y-2'>
+          {standings.map((driver, index) => (
+            <StandingsItem key={index} data={driver} />
+          ))}
+        </div>
+      </SwitchTransitionWrapper>
     </div>
   );
 };
