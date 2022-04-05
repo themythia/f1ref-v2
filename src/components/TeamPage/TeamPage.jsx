@@ -2,10 +2,12 @@ import { useParams } from 'react-router-dom';
 import TeamLogo from '../shared/TeamLogo';
 import teamColors from '../../utils/teamColors';
 import RaceTitle from '../RacePage/RaceTitle';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTeamRaceStats, getTeamsAndDrivers } from '../../utils/api';
-import { addTeams } from '../../slices/teamsSlice';
+import { addTeams, addTeamStats } from '../../slices/teamsSlice';
+import TeamBio from './TeamBio';
+import TeamInfoToggle from './TeamInfoToggle';
 
 const TeamPage = () => {
   const { teamId } = useParams();
@@ -15,19 +17,26 @@ const TeamPage = () => {
     store.teams.find((team) => team.id === teamCode)
   );
 
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     if (!team) {
-      getTeamsAndDrivers().then((data) => {
-        dispatch(addTeams(data));
-      });
+      getTeamsAndDrivers()
+        .then((data) => dispatch(addTeams(data)))
+        .catch(() => setLoading(true));
     }
   }, [team, dispatch]);
 
   useEffect(() => {
     if (team && !team.stats) {
-      getTeamRaceStats(teamCode).then((data) => console.log('data:', data));
+      getTeamRaceStats(teamCode)
+        .then((data) => dispatch(addTeamStats({ stats: data, id: team.id })))
+        .then(() => setLoading(false))
+        .catch(() => setLoading(true));
     }
-  }, [team, teamCode]);
+  }, [team, teamCode, dispatch]);
+
+  if (loading) return <p>Loading...</p>;
 
   return (
     <main className='p-4 sm:p-8 md:p-6 lg:px-[200px] xl:px-[calc((100vw-1128px)/2)] row-start-2 row-end-3'>
@@ -39,6 +48,12 @@ const TeamPage = () => {
         >
           <TeamLogo type='big' team={teamId} />
         </div>
+        <RaceTitle countryCode={team.countryCode} name={team.name} />
+        <TeamBio team={team} />
+        <TeamInfoToggle
+          seasons={Object.keys(team.stats.seasons).sort((a, b) => b - a)}
+          stats={team.stats}
+        />
       </div>
     </main>
   );

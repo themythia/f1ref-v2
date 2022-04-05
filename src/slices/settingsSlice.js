@@ -12,12 +12,14 @@ export const themeSlice = createSlice({
       standings: 0,
       racePage: 0,
       driverPage: 0,
+      teamPage: 0,
     },
     selectorSize: {
       nextRace: false,
       standings: false,
       racePage: false,
       driverPage: false,
+      teamPage: false,
     },
   },
   reducers: {
