@@ -16,11 +16,12 @@ function App() {
   // - dark mode shadows
   // - next race session times
   // - selector spacing
-  // - next race session animation
-  // - animation wrapper
-  // - close menu when something clicked
-  // - refactor selectorsize state into parent state and update it in child
-  // - <Arrow state={setState} />
+  // - close menu when something clicked (partially done, need to make it close when location changes)
+  // - error handling
+  // - refactor api code
+  // - clean up duplicate components
+  // - add loading spinner
+
   const store = useSelector((store) => store);
   console.log('store', store);
   return (

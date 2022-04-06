@@ -14,13 +14,6 @@ export const themeSlice = createSlice({
       driverPage: 0,
       teamPage: 0,
     },
-    selectorSize: {
-      nextRace: false,
-      standings: false,
-      racePage: false,
-      driverPage: false,
-      teamPage: false,
-    },
   },
   reducers: {
     toggleTheme: (state) => {
