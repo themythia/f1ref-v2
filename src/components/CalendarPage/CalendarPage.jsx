@@ -1,26 +1,28 @@
 import { useEffect, useState } from 'react';
-import { getSchedule } from '../../utils/api';
 import { useDispatch, useSelector } from 'react-redux';
 import { addSchedule } from '../../slices/scheduleSlice';
 import CalendarItem from './CalendarItem';
 import CalendarItemSkeleton from './CalendarItemSkeleton';
 import { useNavigate } from 'react-router-dom';
+import useFetch from '../../utils/useFetch';
+import { shapeScheduleData } from '../../utils/api/shapeScheduleData';
 
 const CalendarPage = () => {
   const dispatch = useDispatch();
   const calendar = useSelector((store) => store.schedule.schedule);
-  const [loading, setLoading] = useState(true);
   const range = (min, max) =>
     Array.from({ length: max - min + 1 }, (_, i) => min + i);
 
+  const { loading, status, response, error } = useFetch(
+    'https://ergast.com/api/f1/current.json',
+    [],
+    shapeScheduleData,
+    calendar.length > 0 ? true : false
+  );
+
   useEffect(() => {
-    if (Object.keys(calendar).length === 0) {
-      getSchedule().then((data) => {
-        dispatch(addSchedule(data));
-        setLoading(false);
-      });
-    } else setLoading(false);
-  }, [dispatch]);
+    if (response) dispatch(addSchedule(response));
+  }, [dispatch, response]);
 
   const navigate = useNavigate();
 
