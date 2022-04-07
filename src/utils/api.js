@@ -56,7 +56,7 @@ export const getLastRace = () => {
         circuitId: lastRaceData.Circuit.circuitId,
         locality: lastRaceData.Circuit.Location.locality,
         country: lastRaceData.Circuit.Location.country,
-        countryCode: 'AE',
+        countryCode: countryCodes(lastRaceData.Circuit.Location.country),
         raceName: lastRaceData.raceName,
         results: lastRaceData.Results.slice(0, 3).map((driver) => ({
           name: driver.Driver.givenName + ' ' + driver.Driver.familyName,
