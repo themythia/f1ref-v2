@@ -14,11 +14,30 @@ export const shapeScheduleData = (data) => {
       time: race.time,
       raceName: race.raceName,
       round: race.round,
+      results: race.Results
+        ? race.Results.slice(0, 3).map((driver) => ({
+            name: driver.Driver.givenName + ' ' + driver.Driver.familyName,
+            position: driver.position,
+            team: driver.Constructor.constructorId,
+          }))
+        : null,
+      fp1: race.FirstPractice
+        ? race.FirstPractice.date + 'T' + race.FirstPractice.time
+        : null,
+      fp2: race.SecondPractice
+        ? race.SecondPractice.date + 'T' + race.SecondPractice.time
+        : null,
+      fp3: race.ThirdPractice
+        ? race.ThirdPractice.date + 'T' + race.ThirdPractice.time
+        : null,
+      qualy: race.Qualifying
+        ? race.Qualifying.date + 'T' + race.Qualifying.time
+        : null,
     };
   });
 
   // if shaped data is for next race
-  if (data.MRData.url === 'http://ergast.com/api/f1/current/next.json') {
+  if (data.MRData.url !== 'https://ergast.com/api/f1/current.json') {
     return schedule[0];
   }
   return schedule;
