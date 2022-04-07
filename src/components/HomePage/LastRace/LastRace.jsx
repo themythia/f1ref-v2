@@ -5,15 +5,24 @@ import { addLastRace } from '../../../slices/scheduleSlice';
 import Flag from '../../shared/Flag';
 import LastRaceResult from './LastRaceResult';
 import SpoilerOverlay from './SpoilerOverlay';
+import useFetch from '../../../utils/useFetch';
+import { shapeScheduleData } from '../../../utils/api/shapeScheduleData';
 
 const LastRace = () => {
   const lastRace = useSelector((store) => store.schedule.lastRace);
   const dispatch = useDispatch();
   const hideLastRace = useSelector((store) => store.settings.hideLastRace);
 
+  const { loading, status, response, error } = useFetch(
+    'https://ergast.com/api/f1/current/last/results.json',
+    [],
+    shapeScheduleData,
+    lastRace.length > 0 ? true : false
+  );
+
   useEffect(() => {
-    getLastRace().then((data) => dispatch(addLastRace(data)));
-  }, [dispatch]);
+    if (response) dispatch(addLastRace(response));
+  }, [dispatch, response]);
 
   return (
     <div className='bg-bg-50 dark:bg-bg-800 rounded shadow-2px p-4 md:p-6 w-full col-span-full sm:col-span-4 md:col-span-6 mb-4 md:mb-6'>
