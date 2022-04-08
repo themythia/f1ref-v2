@@ -1,8 +1,6 @@
-import Container from '../Container';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { addStandings } from '../../../slices/standingsSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { getStandings } from '../../../utils/api';
 import StandingsItem from './StandingsItem';
 import Selector from '../../shared/Selector/Selector';
 import 'animate.css';
@@ -10,7 +8,7 @@ import SwitchTransitionWrapper from '../../shared/SwitchTransitionWrapper';
 import useFetch from '../../../utils/useFetch';
 import { shapeStandings } from '../../../utils/api/shapeStandings';
 
-const Standings = (props) => {
+const Standings = () => {
   const dispatch = useDispatch();
   const activeButton = useSelector(
     (store) => store.settings.selector.standings
