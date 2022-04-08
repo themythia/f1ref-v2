@@ -7,6 +7,8 @@ import StandingsItem from './StandingsItem';
 import Selector from '../../shared/Selector/Selector';
 import 'animate.css';
 import SwitchTransitionWrapper from '../../shared/SwitchTransitionWrapper';
+import useFetch from '../../../utils/useFetch';
+import { shapeStandings } from '../../../utils/api/shapeStandings';
 
 const Standings = (props) => {
   const dispatch = useDispatch();
@@ -17,9 +19,37 @@ const Standings = (props) => {
     activeButton === 0 ? store.standings.drivers : store.standings.constructors
   );
 
+  const {
+    loading: dLoading,
+    status: dStatus,
+    response: dResponse,
+    error: dError,
+  } = useFetch(
+    'https://ergast.com/api/f1/current/driverStandings.json',
+    [],
+    shapeStandings
+  );
+
+  const {
+    loading: tLoading,
+    status: tStatus,
+    response: tResponse,
+    error: tError,
+  } = useFetch(
+    'https://ergast.com/api/f1/current/constructorStandings.json',
+    [],
+    shapeStandings
+  );
+
   useEffect(() => {
-    getStandings().then((data) => dispatch(addStandings(data)));
-  }, [dispatch]);
+    if (tResponse && dResponse)
+      dispatch(
+        addStandings({
+          drivers: dResponse,
+          constructors: tResponse,
+        })
+      );
+  }, [dispatch, tResponse, dResponse]);
 
   return (
     <div className='bg-bg-50 dark:bg-bg-800 rounded shadow-2px p-4 lg:p-6 w-full col-span-full'>
