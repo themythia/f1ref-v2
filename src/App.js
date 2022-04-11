@@ -22,6 +22,7 @@ function App() {
   // - clean up duplicate components
   // - add loading spinner
   // - driver / team selector keeping same value causing bugs
+  // - add teamitemskeleton
 
   const store = useSelector((store) => store);
   console.log('store', store);
