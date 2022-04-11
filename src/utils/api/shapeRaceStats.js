@@ -1,8 +1,11 @@
-export const shapeRaceStats = (data, type) => {
+const shapeRaceStats = (data, type) => {
   // data is an array of arrays ([[], [], []]) that contain race result objects, flatRaces flattens that into an array of objects ([{}, {}, {}])
 
-  const flatRaces =
-    type === 'driver' ? data.MRData.RaceTable.Races.flat() : data;
+  const flatRaces = Array.isArray(data)
+    ? data
+    : data.MRData.RaceTable.Races.flat();
+
+  console.log('flatRaces:', flatRaces);
 
   // processes the data array and returns an object of stats
   const handleRaceStats = (data) => {
@@ -106,4 +109,12 @@ export const shapeRaceStats = (data, type) => {
     { seasons: {}, career: handleRaceStats(flatRaces) }
   );
   return groupedBySeasons;
+};
+
+export const shapeDriverRaceStats = (data) => {
+  return shapeRaceStats(data, 'driver');
+};
+
+export const shapeTeamRaceStats = (data) => {
+  return shapeRaceStats(data, 'team');
 };
