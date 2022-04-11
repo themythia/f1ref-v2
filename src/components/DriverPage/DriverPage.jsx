@@ -7,6 +7,12 @@ import RaceTitle from '../RacePage/RaceTitle';
 import DriverInfoToggle from './DriverInfoToggle';
 import hulkenbergPic from '../../assets/driverPics/hulkenberg.webp';
 import DriverBio from './DriverBio';
+import useFetch from '../../utils/useFetch';
+import { shapeDriverData } from '../../utils/api/shapeDriverData';
+import {
+  shapeDriverRaceStats,
+  shapeRaceStats,
+} from '../../utils/api/shapeRaceStats';
 
 const DriverPage = () => {
   const { driverId } = useParams();
@@ -16,25 +22,36 @@ const DriverPage = () => {
     store.drivers.find((driver) => driver.id === driverId.replace(/-/gi, '_'))
   );
 
-  useEffect(() => {
-    if (!driver) {
-      getDrivers()
-        .then((data) => dispatch(addDrivers(data)))
-        .catch(() => setLoading(true));
-    }
-  }, [driver, dispatch]);
+  const { status, response, error } = useFetch(
+    'https://ergast.com/api/f1/current/drivers.json',
+    [],
+    shapeDriverData
+  );
+
+  const { response: driverStats } = useFetch(
+    `https://ergast.com/api/f1/drivers/${driverId.replace(
+      /-/gi,
+      '_'
+    )}/results.json`,
+    [],
+    shapeDriverRaceStats
+  );
 
   useEffect(() => {
-    if (driver && !driver.stats) {
-      getDriverRaceStats(driver.id)
-        .then((data) => {
-          dispatch(addDriverStats({ stats: data, id: driver.id }));
-        })
-        .then(() => setLoading(false));
+    if (!driver && response) {
+      dispatch(addDrivers(response));
+      setLoading(true);
+    }
+  }, [driver, dispatch, response]);
+
+  useEffect(() => {
+    if (driver && !driver.stats && driverStats) {
+      dispatch(addDriverStats({ stats: driverStats, id: driver.id }));
+      setLoading(false);
     } else if (driver?.stats) {
       setLoading(false);
     }
-  }, [driver, dispatch]);
+  }, [driver, dispatch, driverStats]);
 
   if (loading) return <p>Loading...</p>;
 

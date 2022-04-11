@@ -21,6 +21,7 @@ function App() {
   // - refactor api code
   // - clean up duplicate components
   // - add loading spinner
+  // - driver / team selector keeping same value causing bugs
 
   const store = useSelector((store) => store);
   console.log('store', store);
