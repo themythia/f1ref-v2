@@ -8,6 +8,10 @@ import { getTeamRaceStats, getTeamsAndDrivers } from '../../utils/api';
 import { addTeams, addTeamStats } from '../../slices/teamsSlice';
 import TeamBio from './TeamBio';
 import TeamInfoToggle from './TeamInfoToggle';
+import { shapeTeamRaceStats } from '../../utils/api/shapeRaceStats';
+import useFetch from '../../utils/useFetch';
+import { shapeTeamData } from '../../utils/api/shapeTeamData';
+import { shapeDriverData } from '../../utils/api/shapeDriverData';
 
 const TeamPage = () => {
   const { teamId } = useParams();
@@ -19,22 +23,54 @@ const TeamPage = () => {
 
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    if (!team) {
-      getTeamsAndDrivers()
-        .then((data) => dispatch(addTeams(data)))
-        .catch(() => setLoading(true));
-    }
-  }, [team, dispatch]);
+  const {
+    status: statsStatus,
+    response: statsResponse,
+    error: statsError,
+  } = useFetch(
+    `https://ergast.com/api/f1/constructors/${teamCode}/results.json`,
+    [],
+    shapeTeamRaceStats
+  );
+
+  const {
+    status: tStatus,
+    response: tResponse,
+    error: tError,
+  } = useFetch(
+    'https://ergast.com/api/f1/current/constructors.json',
+    [],
+    shapeTeamData
+  );
+
+  const {
+    status: dStatus,
+    response: dResponse,
+    error: dError,
+  } = useFetch(
+    'https://ergast.com/api/f1/current/drivers.json',
+    [],
+    shapeDriverData
+  );
 
   useEffect(() => {
-    if (team && !team.stats) {
-      getTeamRaceStats(teamCode)
-        .then((data) => dispatch(addTeamStats({ stats: data, id: team.id })))
-        .then(() => setLoading(false))
-        .catch(() => setLoading(true));
+    if (!team) {
+      if (dResponse && tResponse) {
+        const updatedTeam = tResponse.map((team) => ({
+          ...team,
+          drivers: dResponse.filter((driver) => driver.teamCode === team.id),
+        }));
+        dispatch(addTeams(updatedTeam));
+      }
     }
-  }, [team, teamCode, dispatch]);
+  }, [dResponse, dispatch, tResponse, team]);
+
+  useEffect(() => {
+    if (team && !team.stats && statsResponse) {
+      dispatch(addTeamStats({ stats: statsResponse, id: team.id }));
+      setLoading(false);
+    }
+  }, [team, dispatch, statsResponse]);
 
   if (loading) return <p>Loading...</p>;
 
