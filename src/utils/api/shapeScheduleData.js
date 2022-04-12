@@ -37,7 +37,7 @@ export const shapeScheduleData = (data) => {
   });
 
   // if shaped data is for next race
-  if (data.MRData.url !== 'https://ergast.com/api/f1/current.json') {
+  if (data.MRData.url !== 'http://ergast.com/api/f1/current.json') {
     return schedule[0];
   }
   return schedule;
