@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { addTeams } from '../../slices/teamsSlice';
-import { getTeamsAndDrivers } from '../../utils/api';
 import { shapeDriverData } from '../../utils/api/shapeDriverData';
 import { shapeTeamData } from '../../utils/api/shapeTeamData';
 import useFetch from '../../utils/useFetch';

@@ -4,7 +4,6 @@ import teamColors from '../../utils/teamColors';
 import RaceTitle from '../RacePage/RaceTitle';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getTeamRaceStats, getTeamsAndDrivers } from '../../utils/api';
 import { addTeams, addTeamStats } from '../../slices/teamsSlice';
 import TeamBio from './TeamBio';
 import TeamInfoToggle from './TeamInfoToggle';

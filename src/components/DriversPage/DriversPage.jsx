@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addDrivers } from '../../slices/driversSlice';
-import { getDrivers } from '../../utils/api';
 import { shapeDriverData } from '../../utils/api/shapeDriverData';
 import useFetch from '../../utils/useFetch';
 import DriverItem from './DriverItem';
@@ -17,9 +16,6 @@ const DriversPage = () => {
     [],
     shapeDriverData
   );
-
-  console.log('drivers:', drivers);
-  console.log('loading:', loading);
 
   useEffect(() => {
     if (response) dispatch(addDrivers(response));

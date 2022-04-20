@@ -5,8 +5,6 @@ const shapeRaceStats = (data, type) => {
     ? data
     : data.MRData.RaceTable.Races.flat();
 
-  console.log('flatRaces:', flatRaces);
-
   // processes the data array and returns an object of stats
   const handleRaceStats = (data) => {
     const wins =

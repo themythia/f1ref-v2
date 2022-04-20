@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { addDrivers, addDriverStats } from '../../slices/driversSlice';
-import { getDriverRaceStats, getDrivers } from '../../utils/api';
 import RaceTitle from '../RacePage/RaceTitle';
 import DriverInfoToggle from './DriverInfoToggle';
 import hulkenbergPic from '../../assets/driverPics/hulkenberg.webp';

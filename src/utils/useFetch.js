@@ -48,7 +48,6 @@ const useFetch = (url, dependency, shapeFunc, isFetched) => {
           } else if (total > 30) {
             res = await fetch(url + `?limit=${total}`);
             data = await res.json();
-            console.log('data:', data);
           }
 
           // sets response state

@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import { getLastRace } from '../../../utils/api';
 import { useSelector, useDispatch } from 'react-redux';
 import { addLastRace } from '../../../slices/scheduleSlice';
 import Flag from '../../shared/Flag';
