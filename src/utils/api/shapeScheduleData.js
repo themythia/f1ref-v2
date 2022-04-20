@@ -14,13 +14,6 @@ export const shapeScheduleData = (data) => {
       time: race.time,
       raceName: race.raceName,
       round: race.round,
-      results: race.Results
-        ? race.Results.slice(0, 3).map((driver) => ({
-            name: driver.Driver.givenName + ' ' + driver.Driver.familyName,
-            position: driver.position,
-            team: driver.Constructor.constructorId,
-          }))
-        : null,
       fp1: race.FirstPractice
         ? race.FirstPractice.date + 'T' + race.FirstPractice.time
         : null,
@@ -36,8 +29,19 @@ export const shapeScheduleData = (data) => {
     };
   });
 
-  // if shaped data is for next race
+  // if shaped data is for next or last race
   if (data.MRData.url !== 'http://ergast.com/api/f1/current.json') {
+    if (
+      data.MRData.url === 'http://ergast.com/api/f1/current/last/results.json'
+    ) {
+      schedule[0].results = scheduleData.map((race) =>
+        race.Results.slice(0, 3).map((driver) => ({
+          name: driver.Driver.givenName + ' ' + driver.Driver.familyName,
+          position: driver.position,
+          team: driver.Constructor.constructorId,
+        }))
+      )[0];
+    }
     return schedule[0];
   }
   return schedule;
