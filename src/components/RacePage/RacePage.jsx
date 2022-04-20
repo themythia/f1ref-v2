@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getRaceResults, getScheduleAndResults } from '../../utils/api';
 import { addResults, addSchedule } from '../../slices/scheduleSlice';
 import CircuitMap from '../shared/CircuitMap';
 import RaceSchedule from './RaceSchedule';
@@ -11,6 +10,9 @@ import RaceResults from './RaceResults';
 import RacePageToggle from './RacePageToggle';
 import useWindowSize from '../../utils/useWindowSize';
 import RaceTitle from './RaceTitle';
+import useFetch from '../../utils/useFetch';
+import { shapeRaceResults } from '../../utils/api/shapeRaceResults';
+import { shapeScheduleData } from '../../utils/api/shapeScheduleData';
 
 const RacePage = () => {
   const { round } = useParams();
@@ -20,22 +22,37 @@ const RacePage = () => {
   const [loading, setLoading] = useState(true);
   const { width } = useWindowSize();
 
+  const { response: resultsRes } = useFetch(
+    `https://ergast.com/api/f1/2022/${round}/results.json`,
+    [],
+    shapeRaceResults,
+    race?.hasOwnProperty('results')
+  );
+
+  const { response: scheduleRes } = useFetch(
+    'https://ergast.com/api/f1/current.json',
+    [],
+    shapeScheduleData
+  );
+
   useEffect(() => {
     if (Object.keys(schedule).length > 0 && !race.hasOwnProperty('results')) {
-      getRaceResults(round)
-        .then((results) => {
-          dispatch(addResults({ round, results }));
-        })
-        .then(() => setLoading(false))
-        .catch((e) => console.warn('failed fetch in useeffect', e));
+      if (resultsRes) {
+        dispatch(addResults({ round, results: resultsRes }));
+      }
     } else if (Object.keys(schedule).length === 0) {
-      getScheduleAndResults(round)
-        .then((data) => dispatch(addSchedule(data)))
-        .then(() => setLoading(false));
+      if (scheduleRes)
+        dispatch(
+          addSchedule(
+            scheduleRes.map((race, index) =>
+              index === round - 1 ? { ...race, results: resultsRes } : race
+            )
+          )
+        );
     } else if (race.hasOwnProperty('results')) {
       setLoading(false);
     }
-  }, [round, dispatch, race, schedule]);
+  }, [round, dispatch, race, schedule, resultsRes, scheduleRes]);
 
   if (loading) return <p>Loading...</p>;
 
