@@ -4,7 +4,6 @@ import { addNextRace } from '../../../slices/scheduleSlice';
 import Flag from '../../shared/Flag';
 import Selector from '../../shared/Selector/Selector';
 import Countdown from './Countdown';
-import circuitData from '../../../utils/circuitData';
 import SwitchTransitionWrapper from '../../shared/SwitchTransitionWrapper';
 import useFetch from '../../../utils/useFetch';
 import { shapeScheduleData } from '../../../utils/api/shapeScheduleData';
@@ -14,8 +13,15 @@ const NextRace = () => {
   const dispatch = useDispatch();
   const activeButton = useSelector((store) => store.settings.selector.nextRace);
   const [activeSessionTime, setActiveSessionTime] = useState(null);
+  const [selectorOptions, setSelectorOptions] = useState([
+    'FP1',
+    'FP2',
+    'FP3',
+    'Quali',
+    'Race',
+  ]);
 
-  const { loading, status, response, error } = useFetch(
+  const { response } = useFetch(
     'https://ergast.com/api/f1/current/next.json',
     [],
     shapeScheduleData,
@@ -28,10 +34,19 @@ const NextRace = () => {
 
   useEffect(() => {
     if (Object.keys(nextRace).length > 0) {
-      const raceSchedule = circuitData[nextRace.circuitId]?.schedule;
-      const activeSession = Object.keys(raceSchedule)[activeButton];
-      setActiveSessionTime(raceSchedule[activeSession]);
+      const { fp1, fp2, fp3, quali, race, sprint } = nextRace.schedule;
+      let sessions = { fp1, fp2, fp3, quali, race };
+
+      if (nextRace.schedule.sprint) {
+        sessions = { fp1, quali, fp2, sprint, race };
+        setSelectorOptions(['FP1', 'Quali', 'FP2', 'Sprint', 'Race']);
+      }
+
+      const activeSession = selectorOptions[activeButton].toLowerCase();
+
+      setActiveSessionTime(sessions[activeSession]);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeButton, activeSessionTime, nextRace.circuitId, nextRace]);
 
   return (
@@ -46,10 +61,7 @@ const NextRace = () => {
           <span className='text-xs'>{nextRace.circuitName}</span>
         </div>
       </div>
-      <Selector
-        options={['FP1', 'FP2', 'FP3', 'Quali', 'Race']}
-        type='nextRace'
-      />
+      <Selector options={selectorOptions} type='nextRace' />
       <SwitchTransitionWrapper state={activeButton}>
         <Countdown time={activeSessionTime} />
       </SwitchTransitionWrapper>
