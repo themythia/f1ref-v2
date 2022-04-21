@@ -24,7 +24,8 @@ const DriverPage = () => {
   const { status, response, error } = useFetch(
     'https://ergast.com/api/f1/current/drivers.json',
     [],
-    shapeDriverData
+    shapeDriverData,
+    driver
   );
 
   const { response: driverStats } = useFetch(
@@ -33,7 +34,8 @@ const DriverPage = () => {
       '_'
     )}/results.json`,
     [],
-    shapeDriverRaceStats
+    shapeDriverRaceStats,
+    driver?.stats
   );
 
   useEffect(() => {

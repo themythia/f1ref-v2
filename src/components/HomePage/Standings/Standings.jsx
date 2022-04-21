@@ -16,6 +16,8 @@ const Standings = () => {
   const standings = useSelector((store) =>
     activeButton === 0 ? store.standings.drivers : store.standings.constructors
   );
+  const driverStandings = useSelector((store) => store.standings.drivers);
+  const teamStandings = useSelector((store) => store.standings.constructors);
 
   const {
     loading: dLoading,
@@ -25,7 +27,8 @@ const Standings = () => {
   } = useFetch(
     'https://ergast.com/api/f1/current/driverStandings.json',
     [],
-    shapeStandings
+    shapeStandings,
+    driverStandings.length > 0
   );
 
   const {
@@ -36,7 +39,8 @@ const Standings = () => {
   } = useFetch(
     'https://ergast.com/api/f1/current/constructorStandings.json',
     [],
-    shapeStandings
+    shapeStandings,
+    teamStandings.length > 0
   );
 
   useEffect(() => {

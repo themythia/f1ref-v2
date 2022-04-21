@@ -14,7 +14,8 @@ const DriversPage = () => {
   const { loading, status, response, error } = useFetch(
     'https://ergast.com/api/f1/current/drivers.json',
     [],
-    shapeDriverData
+    shapeDriverData,
+    drivers.length > 0
   );
 
   useEffect(() => {

@@ -19,7 +19,7 @@ const NextRace = () => {
     'https://ergast.com/api/f1/current/next.json',
     [],
     shapeScheduleData,
-    nextRace.length > 0 ? true : false
+    Object.keys(nextRace).length > 0
   );
 
   useEffect(() => {

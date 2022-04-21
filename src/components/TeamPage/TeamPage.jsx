@@ -11,6 +11,7 @@ import { shapeTeamRaceStats } from '../../utils/api/shapeRaceStats';
 import useFetch from '../../utils/useFetch';
 import { shapeTeamData } from '../../utils/api/shapeTeamData';
 import { shapeDriverData } from '../../utils/api/shapeDriverData';
+import { addDrivers } from '../../slices/driversSlice';
 
 const TeamPage = () => {
   const { teamId } = useParams();
@@ -19,6 +20,8 @@ const TeamPage = () => {
   const team = useSelector((store) =>
     store.teams.find((team) => team.id === teamCode)
   );
+  const drivers = useSelector((store) => store.drivers);
+  console.log('drivers', drivers);
 
   const [loading, setLoading] = useState(true);
 
@@ -49,10 +52,12 @@ const TeamPage = () => {
   } = useFetch(
     'https://ergast.com/api/f1/current/drivers.json',
     [],
-    shapeDriverData
+    shapeDriverData,
+    drivers.length > 0
   );
 
   useEffect(() => {
+    if (drivers.length === 0 && dResponse) dispatch(addDrivers(dResponse));
     if (!team) {
       if (dResponse && tResponse) {
         const updatedTeam = tResponse.map((team) => ({
@@ -69,6 +74,7 @@ const TeamPage = () => {
       dispatch(addTeamStats({ stats: statsResponse, id: team.id }));
       setLoading(false);
     }
+    if (team && team.stats && statsResponse) setLoading(false);
   }, [team, dispatch, statsResponse]);
 
   if (loading) return <p>Loading...</p>;

@@ -16,7 +16,7 @@ const LastRace = () => {
     'https://ergast.com/api/f1/current/last/results.json',
     [],
     shapeScheduleData,
-    lastRace.length > 0 ? true : false
+    Object.keys(lastRace).length > 0
   );
 
   useEffect(() => {

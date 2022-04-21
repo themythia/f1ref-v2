@@ -32,7 +32,8 @@ const RacePage = () => {
   const { response: scheduleRes } = useFetch(
     'https://ergast.com/api/f1/current.json',
     [],
-    shapeScheduleData
+    shapeScheduleData,
+    schedule.length > 0
   );
 
   useEffect(() => {

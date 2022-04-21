@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
+import { addDrivers } from '../../slices/driversSlice';
 import { addTeams } from '../../slices/teamsSlice';
 import { shapeDriverData } from '../../utils/api/shapeDriverData';
 import { shapeTeamData } from '../../utils/api/shapeTeamData';
@@ -11,6 +12,7 @@ import TeamItemSkeleton from './TeamItemSkeleton';
 const TeamsPage = () => {
   const dispatch = useDispatch();
   const teams = useSelector((store) => store.teams);
+  const drivers = useSelector((store) => store.drivers);
   const [loading, setLoading] = useState(true);
 
   const {
@@ -21,7 +23,8 @@ const TeamsPage = () => {
   } = useFetch(
     'https://ergast.com/api/f1/current/constructors.json',
     [],
-    shapeTeamData
+    shapeTeamData,
+    teams.length > 0
   );
 
   const {
@@ -39,6 +42,7 @@ const TeamsPage = () => {
     Array.from({ length: max - min + 1 }, (_, i) => min + i);
 
   useEffect(() => {
+    if (drivers.length === 0 && dResponse) dispatch(addDrivers(dResponse));
     if (dResponse && tResponse) {
       const updatedTeam = tResponse.map((team) => ({
         ...team,
@@ -46,7 +50,7 @@ const TeamsPage = () => {
       }));
       dispatch(addTeams(updatedTeam));
     }
-  }, [dResponse, dispatch, tResponse]);
+  }, [dResponse, dispatch, drivers.length, tResponse]);
 
   useEffect(() => {
     if (dLoading && tLoading) setLoading(false);
