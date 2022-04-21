@@ -2,6 +2,8 @@ import countryCodes from '../countryCodes';
 
 export const shapeScheduleData = (data) => {
   const scheduleData = data.MRData.RaceTable.Races;
+  console.log('scheduleData', scheduleData);
+
   const schedule = scheduleData.map((race) => {
     const { circuitName, circuitId, Location: location } = race.Circuit;
     return {
@@ -26,6 +28,7 @@ export const shapeScheduleData = (data) => {
       qualy: race.Qualifying
         ? race.Qualifying.date + 'T' + race.Qualifying.time
         : null,
+      sprint: race.Sprint ? race.Sprint.date + 'T' + race.Sprint.time : null,
     };
   });
 
