@@ -12,6 +12,7 @@ import useFetch from '../../utils/useFetch';
 import { shapeTeamData } from '../../utils/api/shapeTeamData';
 import { shapeDriverData } from '../../utils/api/shapeDriverData';
 import { addDrivers } from '../../slices/driversSlice';
+import { setSelector } from '../../slices/settingsSlice';
 
 const TeamPage = () => {
   const { teamId } = useParams();
@@ -55,6 +56,10 @@ const TeamPage = () => {
     shapeDriverData,
     drivers.length > 0
   );
+
+  useEffect(() => {
+    dispatch(setSelector({ type: 'teamPage', index: 0 }));
+  }, [dispatch]);
 
   useEffect(() => {
     if (drivers.length === 0 && dResponse) dispatch(addDrivers(dResponse));

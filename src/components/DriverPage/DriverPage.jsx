@@ -12,6 +12,7 @@ import {
   shapeDriverRaceStats,
   shapeRaceStats,
 } from '../../utils/api/shapeRaceStats';
+import { setSelector } from '../../slices/settingsSlice';
 
 const DriverPage = () => {
   const { driverId } = useParams();
@@ -37,6 +38,10 @@ const DriverPage = () => {
     shapeDriverRaceStats,
     driver?.stats
   );
+
+  useEffect(() => {
+    dispatch(setSelector({ type: 'driverPage', index: 0 }));
+  }, [dispatch]);
 
   useEffect(() => {
     if (!driver && response) {
