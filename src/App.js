@@ -15,7 +15,6 @@ function App() {
   //todo
   // - dark mode shadows
   // - selector spacing
-  // - close menu when something clicked (partially done, need to make it close when location changes)
   // - error handling
   // - clean up duplicate components
   // - add loading spinner

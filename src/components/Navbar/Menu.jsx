@@ -2,13 +2,19 @@ import ToggleSwitch from './ToggleSwitch';
 import 'animate.css';
 import { CSSTransition } from 'react-transition-group';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
-import { useLayoutEffect } from 'react';
-import { toggleMenu } from '../../slices/settingsSlice';
+import { NavLink, useLocation } from 'react-router-dom';
+import { useEffect, useLayoutEffect } from 'react';
+import { closeMenu, toggleMenu } from '../../slices/settingsSlice';
 
 const Menu = () => {
   const showMenu = useSelector((store) => store.settings.showMenu);
   const dispatch = useDispatch();
+  const location = useLocation();
+
+  // closes menu on location change
+  useEffect(() => {
+    dispatch(closeMenu());
+  }, [location.pathname, dispatch]);
 
   useLayoutEffect(() => {
     // locks scrolling when menu is open
