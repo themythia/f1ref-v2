@@ -14,15 +14,17 @@ import TeamPage from './components/TeamPage/TeamPage';
 function App() {
   //todo
   // - dark mode shadows
-  // - next race session times
   // - selector spacing
   // - close menu when something clicked (partially done, need to make it close when location changes)
   // - error handling
-  // - refactor api code
   // - clean up duplicate components
   // - add loading spinner
   // - driver / team selector keeping same value causing bugs
   // - add teamitemskeleton
+
+  // waiting testing/confirmation
+  // - next race session times (added sprint times, changed from static file to api)
+  // - refactor api code
 
   const store = useSelector((store) => store);
   console.log('store', store);
