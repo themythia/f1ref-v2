@@ -14,6 +14,7 @@ const Menu = () => {
   // closes menu on location change
   useEffect(() => {
     dispatch(closeMenu());
+    window.scrollTo(0, 0);
   }, [location.pathname, dispatch]);
 
   useLayoutEffect(() => {
