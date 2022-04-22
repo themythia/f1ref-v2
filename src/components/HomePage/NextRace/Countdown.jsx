@@ -1,8 +1,15 @@
 import { useState, useEffect, useRef, Fragment } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  addDisabledSelector,
+  setSelector,
+} from '../../../slices/settingsSlice';
 
 const Countdown = ({ time }) => {
   const [timeLeft, setTimeLeft] = useState(null);
   const count = useRef(null);
+  const activeButton = useSelector((store) => store.settings.selector.nextRace);
+  const dispatch = useDispatch();
 
   //invokes handleTime after render
   useEffect(() => {
@@ -20,10 +27,17 @@ const Countdown = ({ time }) => {
   //if timeLeft gets to zero clears setInterval
   useEffect(() => {
     if (timeLeft < 0) {
+      // if countdown ends, disables the current button
+      // if there's still another session next,
+      // changes activebutton to next session
+      dispatch(addDisabledSelector({ type: 'nextRace', index: activeButton }));
+      if (activeButton < 4) {
+        dispatch(setSelector('nextRace', activeButton + 1));
+      }
       clear();
       setTimeLeft(0);
     }
-  }, [timeLeft]);
+  }, [activeButton, dispatch, timeLeft]);
 
   //clear func for interval
   const clear = () => window.clearInterval(count.current);
@@ -40,11 +54,14 @@ const Countdown = ({ time }) => {
 
   //gets time left to target
   const handleTime = () => {
-    const targetDateObj = new Date(time);
-    const currentDate = Date.now();
-    const targetDate = targetDateObj.getTime();
-    const timeBetween = targetDate - currentDate; //returns time between in miliseconds;
-    setTimeLeft(timeBetween / 1000);
+    // time starts as null while data being fetched
+    if (time) {
+      const targetDateObj = new Date(time);
+      const currentDate = Date.now();
+      const targetDate = targetDateObj.getTime();
+      const timeBetween = targetDate - currentDate; //returns time between in miliseconds;
+      setTimeLeft(timeBetween / 1000);
+    }
   };
 
   return (
