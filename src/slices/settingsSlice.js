@@ -40,6 +40,9 @@ export const themeSlice = createSlice({
     addDisabledSelector: (state, action) => {
       state.disabledSelector[action.payload.type].push(action.payload.index);
     },
+    closeMenu: (state) => {
+      state.showMenu = false;
+    },
   },
 });
 
@@ -51,5 +54,6 @@ export const {
   toggleLastRace,
   setSelector,
   addDisabledSelector,
+  closeMenu,
 } = themeSlice.actions;
 export default themeSlice.reducer;
