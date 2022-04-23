@@ -18,7 +18,6 @@ function App() {
   // - error handling
   // - clean up duplicate components
   // - add loading spinner
-  // - on location change, page scroll keeps old position, need to reposition to top
 
   // waiting testing/confirmation
   // - next race session times (added sprint times, changed from static file to api)

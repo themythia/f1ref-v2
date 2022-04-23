@@ -32,7 +32,7 @@ const Countdown = ({ time }) => {
       // changes activebutton to next session
       dispatch(addDisabledSelector({ type: 'nextRace', index: activeButton }));
       if (activeButton < 4) {
-        dispatch(setSelector('nextRace', activeButton + 1));
+        dispatch(setSelector({ type: 'nextRace', index: activeButton + 1 }));
       }
       clear();
       setTimeLeft(0);
