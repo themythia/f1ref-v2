@@ -21,9 +21,8 @@ const RacePage = () => {
   const race = useSelector((store) => store.schedule.schedule[round - 1]);
   const [loading, setLoading] = useState(true);
   const { width } = useWindowSize();
-  console.log('race:', race);
 
-  const { response: resultsRes } = useFetch(
+  const { response: resultsRes, error } = useFetch(
     `https://ergast.com/api/f1/2022/${round}/results.json`,
     [],
     shapeRaceResults,
@@ -43,7 +42,7 @@ const RacePage = () => {
         dispatch(addResults({ round, results: resultsRes }));
       }
     } else if (Object.keys(schedule).length === 0) {
-      if (scheduleRes)
+      if (scheduleRes && resultsRes)
         dispatch(
           addSchedule(
             scheduleRes.map((race, index) =>
@@ -51,7 +50,7 @@ const RacePage = () => {
             )
           )
         );
-    } else if (race.hasOwnProperty('results')) {
+    } else if (race?.results) {
       setLoading(false);
     }
   }, [round, dispatch, race, schedule, resultsRes, scheduleRes]);
