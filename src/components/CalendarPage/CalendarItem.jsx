@@ -1,8 +1,7 @@
 import Flag from '../shared/Flag';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const CalendarItem = ({ race }) => {
-  const navigate = useNavigate();
   const event = new Date(race?.date + 'T' + race.time);
   const options = {
     month: 'short',
@@ -12,9 +11,9 @@ const CalendarItem = ({ race }) => {
   };
 
   return (
-    <div
+    <Link
       className='bg-bg-50 dark:bg-bg-800 rounded shadow-2px p-4 md:p-6 w-full cursor-pointer hover:scale-[1.02] hover:shadow-8px duration-200 group col-span-4 sm:col-span-4 md:col-span-6 xl:col-span-4'
-      onClick={() => navigate(`/calendar/${race.round}`)}
+      to={`/calendar/${race.round}`}
     >
       <div className='flex flex-row font-poppins text-sm justify-between'>
         <span className='text-left'>{`Round ${race.round}`}</span>
@@ -29,7 +28,7 @@ const CalendarItem = ({ race }) => {
           <span className='text-xs'>{race.circuitName}</span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 export default CalendarItem;

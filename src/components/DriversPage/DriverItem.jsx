@@ -1,13 +1,11 @@
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import teamColors from '../../utils/teamColors';
 
 const DriverItem = ({ driver }) => {
-  const navigate = useNavigate();
-
   return (
-    <div
+    <Link
       className='bg-bg-50 dark:bg-bg-800 rounded shadow-2px w-full cursor-pointer hover:scale-[1.02] duration-200 group col-span-4 sm:col-span-4 md:col-span-6 xl:col-span-4 flex flex-row items-center h-[84px]'
-      onClick={() => navigate(`/drivers/${driver.id.replace(/_/gi, '-')}`)}
+      to={`/drivers/${driver.id.replace(/_/gi, '-')}`}
     >
       <div
         className={`${teamColors(
@@ -28,7 +26,7 @@ const DriverItem = ({ driver }) => {
         </div>
         <span className='text-lg font-poppins'>{driver.no}</span>
       </div>
-    </div>
+    </Link>
   );
 };
 export default DriverItem;
