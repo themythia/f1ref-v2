@@ -1,6 +1,6 @@
 const scrapeNews = () => {
   const corsProxy = 'https://pacific-caverns-96128.herokuapp.com/';
-  const rssFeedUrl = 'https://www.motorsport.com/rss/f1/newsdfgfdd/';
+  const rssFeedUrl = 'https://www.motorsport.com/rss/f1/news/';
 
   return fetch(corsProxy + rssFeedUrl)
     .then((res) => res.text())
