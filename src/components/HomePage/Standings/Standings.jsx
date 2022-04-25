@@ -7,6 +7,7 @@ import 'animate.css';
 import SwitchTransitionWrapper from '../../shared/SwitchTransitionWrapper';
 import useFetch from '../../../utils/useFetch';
 import { shapeStandings } from '../../../utils/api/shapeStandings';
+import Error from '../../shared/Error';
 
 const Standings = () => {
   const dispatch = useDispatch();
@@ -55,6 +56,7 @@ const Standings = () => {
 
   return (
     <div className='bg-bg-50 dark:bg-bg-800 rounded shadow-2px p-4 lg:p-6 w-full col-span-full'>
+      {(dError || tError) && <Error />}
       <p className='font-poppins text-lg text-bg-800 dark:text-bg-50 md:mb-2'>
         Standings:
       </p>

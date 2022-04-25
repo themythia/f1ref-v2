@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addNextRace } from '../../../slices/scheduleSlice';
 import Flag from '../../shared/Flag';
@@ -7,6 +7,7 @@ import Countdown from './Countdown';
 import SwitchTransitionWrapper from '../../shared/SwitchTransitionWrapper';
 import useFetch from '../../../utils/useFetch';
 import { shapeScheduleData } from '../../../utils/api/shapeScheduleData';
+import Error from '../../shared/Error';
 
 const NextRace = () => {
   const nextRace = useSelector((store) => store.schedule.nextRace);
@@ -21,7 +22,7 @@ const NextRace = () => {
     'Race',
   ]);
 
-  const { response } = useFetch(
+  const { response, error } = useFetch(
     'https://ergast.com/api/f1/current/next.json',
     [],
     shapeScheduleData,
@@ -54,17 +55,23 @@ const NextRace = () => {
       <p className='font-poppins text-lg text-bg-800 dark:text-bg-50 mb-4 md:mb-6'>
         Next Race:
       </p>
-      <div className='flex'>
-        <Flag country={nextRace.countryCode} size='36' />
-        <div className='flex flex-col font-openSans text-bg-800 dark:text-bg-50 ml-4'>
-          <span className='font-semibold text-sm'>{nextRace.raceName}</span>
-          <span className='text-xs'>{nextRace.circuitName}</span>
-        </div>
-      </div>
-      <Selector options={selectorOptions} type='nextRace' />
-      <SwitchTransitionWrapper state={activeButton}>
-        <Countdown time={activeSessionTime} />
-      </SwitchTransitionWrapper>
+      {error ? (
+        <Error />
+      ) : (
+        <React.Fragment>
+          <div className='flex'>
+            <Flag country={nextRace.countryCode} size='36' />
+            <div className='flex flex-col font-openSans text-bg-800 dark:text-bg-50 ml-4'>
+              <span className='font-semibold text-sm'>{nextRace.raceName}</span>
+              <span className='text-xs'>{nextRace.circuitName}</span>
+            </div>
+          </div>
+          <Selector options={selectorOptions} type='nextRace' />
+          <SwitchTransitionWrapper state={activeButton}>
+            <Countdown time={activeSessionTime} />
+          </SwitchTransitionWrapper>
+        </React.Fragment>
+      )}
     </div>
   );
 };

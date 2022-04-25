@@ -55,6 +55,7 @@ const useFetch = (url, dependency, shapeFunc, isFetched) => {
           setResponse(shapeFunc(data));
           setStatus(true);
           setLoading(false);
+          setError(null);
         }
       } catch (error) {
         setError(error);

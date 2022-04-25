@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addDrivers } from '../../slices/driversSlice';
 import { shapeDriverData } from '../../utils/api/shapeDriverData';
 import useFetch from '../../utils/useFetch';
+import Error from '../shared/Error';
 import DriverItem from './DriverItem';
 import DriverItemSkeleton from './DriverItemSkeleton';
 
@@ -27,6 +28,7 @@ const DriversPage = () => {
 
   return (
     <main className='p-4 sm:p-8 md:p-6 lg:px-[200px] xl:px-[calc((100vw-1128px)/2)] grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12 gap-x-4 md:gap-x-6 gap-y-4 md:gap-y-6 row-start-2 row-end-3 auto-rows-min'>
+      {error && <Error />}
       {!loading &&
         drivers.map((driver, index) => (
           <DriverItem key={index} driver={driver} />
