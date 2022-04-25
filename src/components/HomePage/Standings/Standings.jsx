@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { addStandings } from '../../../slices/standingsSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import StandingsItem from './StandingsItem';
@@ -8,6 +8,7 @@ import SwitchTransitionWrapper from '../../shared/SwitchTransitionWrapper';
 import useFetch from '../../../utils/useFetch';
 import { shapeStandings } from '../../../utils/api/shapeStandings';
 import Error from '../../shared/Error';
+import LoadingSpinner from '../../shared/LoadingSpinner';
 
 const Standings = () => {
   const dispatch = useDispatch();
@@ -60,14 +61,22 @@ const Standings = () => {
       <p className='font-poppins text-lg text-bg-800 dark:text-bg-50 md:mb-2'>
         Standings:
       </p>
-      <Selector options={['Drivers', 'Constructors']} type='standings' />
-      <SwitchTransitionWrapper state={activeButton}>
-        <div className='flex flex-col gap-y-2'>
-          {standings.map((driver, index) => (
-            <StandingsItem key={index} data={driver} />
-          ))}
+      {dLoading || tLoading ? (
+        <div className='relative top-[calc(50% - 44px)] md:top-[calc(50%-52px)]'>
+          <LoadingSpinner />
         </div>
-      </SwitchTransitionWrapper>
+      ) : (
+        <React.Fragment>
+          <Selector options={['Drivers', 'Constructors']} type='standings' />
+          <SwitchTransitionWrapper state={activeButton}>
+            <div className='flex flex-col gap-y-2'>
+              {standings.map((driver, index) => (
+                <StandingsItem key={index} data={driver} />
+              ))}
+            </div>
+          </SwitchTransitionWrapper>
+        </React.Fragment>
+      )}
     </div>
   );
 };

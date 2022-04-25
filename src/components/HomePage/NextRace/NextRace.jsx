@@ -8,6 +8,7 @@ import SwitchTransitionWrapper from '../../shared/SwitchTransitionWrapper';
 import useFetch from '../../../utils/useFetch';
 import { shapeScheduleData } from '../../../utils/api/shapeScheduleData';
 import Error from '../../shared/Error';
+import LoadingSpinner from '../../shared/LoadingSpinner';
 
 const NextRace = () => {
   const nextRace = useSelector((store) => store.schedule.nextRace);
@@ -22,7 +23,7 @@ const NextRace = () => {
     'Race',
   ]);
 
-  const { response, error } = useFetch(
+  const { response, error, loading } = useFetch(
     'https://ergast.com/api/f1/current/next.json',
     [],
     shapeScheduleData,
@@ -55,8 +56,11 @@ const NextRace = () => {
       <p className='font-poppins text-lg text-bg-800 dark:text-bg-50 mb-4 md:mb-6'>
         Next Race:
       </p>
-      {error ? (
-        <Error />
+      {error && <Error />}
+      {loading ? (
+        <div className='relative top-[calc(50% - 44px)] md:top-[calc(50%-52px)]'>
+          <LoadingSpinner />
+        </div>
       ) : (
         <React.Fragment>
           <div className='flex'>

@@ -15,9 +15,8 @@ function App() {
   //todo
   // - dark mode shadows
   // - selector spacing
-  // - error handling
   // - clean up duplicate components
-  // - add loading spinner
+  // - add loading spinner (partially done, need to implement for race/driver/team page)
 
   const store = useSelector((store) => store);
   console.log('store', store);

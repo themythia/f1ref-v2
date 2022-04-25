@@ -7,6 +7,7 @@ import SpoilerOverlay from './SpoilerOverlay';
 import useFetch from '../../../utils/useFetch';
 import { shapeScheduleData } from '../../../utils/api/shapeScheduleData';
 import Error from '../../shared/Error';
+import LoadingSpinner from '../../shared/LoadingSpinner';
 
 const LastRace = () => {
   const lastRace = useSelector((store) => store.schedule.lastRace);
@@ -29,8 +30,11 @@ const LastRace = () => {
       <p className='font-poppins text-lg text-bg-800 dark:text-bg-50 mb-4 md:mb-6'>
         Last Race:
       </p>
-      {error ? (
-        <Error />
+      {error && <Error />}
+      {loading ? (
+        <div className='relative top-[calc(50% - 44px)] md:top-[calc(50%-52px)]'>
+          <LoadingSpinner />
+        </div>
       ) : (
         <React.Fragment>
           <div className='flex'>
