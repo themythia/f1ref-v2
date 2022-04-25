@@ -21,6 +21,7 @@ const RacePage = () => {
   const race = useSelector((store) => store.schedule.schedule[round - 1]);
   const [loading, setLoading] = useState(true);
   const { width } = useWindowSize();
+  console.log('race:', race);
 
   const { response: resultsRes } = useFetch(
     `https://ergast.com/api/f1/2022/${round}/results.json`,
@@ -66,7 +67,7 @@ const RacePage = () => {
         {width >= 905 && (
           <React.Fragment>
             <CircuitInfo race={race} />
-            <RaceSchedule circuitId={race.circuitId} />
+            <RaceSchedule schedule={race.schedule} />
             {race.results.length > 0 && <RaceResults results={race.results} />}
           </React.Fragment>
         )}
