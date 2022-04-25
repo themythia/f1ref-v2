@@ -13,6 +13,7 @@ import { shapeTeamData } from '../../utils/api/shapeTeamData';
 import { shapeDriverData } from '../../utils/api/shapeDriverData';
 import { addDrivers } from '../../slices/driversSlice';
 import { setSelector } from '../../slices/settingsSlice';
+import Error from '../shared/Error';
 
 const TeamPage = () => {
   const { teamId } = useParams();
@@ -22,8 +23,6 @@ const TeamPage = () => {
     store.teams.find((team) => team.id === teamCode)
   );
   const drivers = useSelector((store) => store.drivers);
-  console.log('drivers', drivers);
-
   const [loading, setLoading] = useState(true);
 
   const {
@@ -82,6 +81,7 @@ const TeamPage = () => {
     if (team && team.stats && statsResponse) setLoading(false);
   }, [team, dispatch, statsResponse]);
 
+  if (statsError || dError || tError) return <Error />;
   if (loading) return <p>Loading...</p>;
 
   return (

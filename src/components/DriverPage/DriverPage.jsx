@@ -13,6 +13,7 @@ import {
   shapeRaceStats,
 } from '../../utils/api/shapeRaceStats';
 import { setSelector } from '../../slices/settingsSlice';
+import Error from '../shared/Error';
 
 const DriverPage = () => {
   const { driverId } = useParams();
@@ -29,7 +30,7 @@ const DriverPage = () => {
     driver
   );
 
-  const { response: driverStats } = useFetch(
+  const { response: driverStats, error: driverError } = useFetch(
     `https://ergast.com/api/f1/drivers/${driverId.replace(
       /-/gi,
       '_'
@@ -59,6 +60,7 @@ const DriverPage = () => {
     }
   }, [driver, dispatch, driverStats]);
 
+  if (error || driverError) return <Error />;
   if (loading) return <p>Loading...</p>;
 
   return (

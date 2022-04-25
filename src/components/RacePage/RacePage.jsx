@@ -13,6 +13,7 @@ import RaceTitle from './RaceTitle';
 import useFetch from '../../utils/useFetch';
 import { shapeRaceResults } from '../../utils/api/shapeRaceResults';
 import { shapeScheduleData } from '../../utils/api/shapeScheduleData';
+import Error from '../shared/Error';
 
 const RacePage = () => {
   const { round } = useParams();
@@ -22,14 +23,14 @@ const RacePage = () => {
   const [loading, setLoading] = useState(true);
   const { width } = useWindowSize();
 
-  const { response: resultsRes, error } = useFetch(
+  const { response: resultsRes, error: resultsError } = useFetch(
     `https://ergast.com/api/f1/2022/${round}/results.json`,
     [],
     shapeRaceResults,
     race?.hasOwnProperty('results')
   );
 
-  const { response: scheduleRes } = useFetch(
+  const { response: scheduleRes, error: scheduleError } = useFetch(
     'https://ergast.com/api/f1/current.json',
     [],
     shapeScheduleData,
@@ -55,6 +56,7 @@ const RacePage = () => {
     }
   }, [round, dispatch, race, schedule, resultsRes, scheduleRes]);
 
+  if (resultsError || scheduleError) return <Error />;
   if (loading) return <p>Loading...</p>;
 
   return (

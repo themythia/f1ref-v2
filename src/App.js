@@ -18,11 +18,6 @@ function App() {
   // - error handling
   // - clean up duplicate components
   // - add loading spinner
-  // - pages not opening in tabs
-
-  // waiting testing/confirmation
-  // - next race session times (added sprint times, changed from static file to api)
-  // - refactor api code
 
   const store = useSelector((store) => store);
   console.log('store', store);
