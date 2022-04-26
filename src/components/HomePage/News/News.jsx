@@ -22,7 +22,7 @@ const News = () => {
   }, [dispatch]);
 
   return (
-    <div className='bg-bg-50 dark:bg-bg-800 rounded shadow-2px p-4 md:p-6 w-full col-span-full mb-4 md:mb-6'>
+    <div className='bg-bg-50 dark:bg-bg-800 rounded shadow-2px dark:shadow-2px-dark p-4 md:p-6 w-full col-span-full mb-4 md:mb-6'>
       <p className='font-poppins text-lg text-bg-800 dark:text-bg-50 mb-4 md:mb-6'>
         News:
       </p>

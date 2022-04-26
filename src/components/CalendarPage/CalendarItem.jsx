@@ -12,7 +12,7 @@ const CalendarItem = ({ race }) => {
 
   return (
     <Link
-      className='bg-bg-50 dark:bg-bg-800 rounded shadow-2px p-4 md:p-6 w-full cursor-pointer hover:scale-[1.02] hover:shadow-8px duration-200 group col-span-4 sm:col-span-4 md:col-span-6 xl:col-span-4'
+      className='bg-bg-50 dark:bg-bg-800 rounded shadow-2px dark:shadow-px-dark p-4 md:p-6 w-full cursor-pointer hover:scale-[1.02] hover:shadow-8px dark:hover:shadow-8px-dark duration-200 group col-span-4 sm:col-span-4 md:col-span-6 xl:col-span-4'
       to={`/calendar/${race.round}`}
     >
       <div className='flex flex-row font-poppins text-sm justify-between'>

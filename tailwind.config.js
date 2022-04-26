@@ -47,6 +47,9 @@ module.exports = {
         '2px': '0px 0px 2px 1px rgba(0, 14, 51, 0.2)',
         '4px': '0px 0px 4px 1px rgba(0, 14, 51, 0.2)',
         '8px': '0px 0px 8px 2px rgba(0, 14, 51, 0.2)',
+        '2px-dark': '0px 0px 2px 1px rgba(0, 14, 51, 0.5)',
+        '4px-dark': '0px 0px 4px 1px rgba(0, 14, 51, 0.5)',
+        '8px-dark': '0px 0px 8px 2px rgba(0, 14, 51, 0.5)',
       },
       animation: {
         'pulse-tw': 'pulse-tw 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',

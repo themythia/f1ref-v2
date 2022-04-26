@@ -11,7 +11,7 @@ const Flag = (props) => {
     <img
       alt='United States'
       src={source}
-      className={`rounded-full shadow-4px ${size}`}
+      className={`rounded-full shadow-4px dark:shadow-4px-dark ${size}`}
     />
   );
 };

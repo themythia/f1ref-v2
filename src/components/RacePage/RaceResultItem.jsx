@@ -9,7 +9,7 @@ const RaceResultItem = ({ driver }) => {
       ? 'NC'
       : driver.positionText;
   return (
-    <div className='flex flex-row rounded shadow-2px bg-bg-200 dark:bg-bg-900 p-2 text-sm items-center'>
+    <div className='flex flex-row rounded shadow-2px dark:shadow-2px-dark bg-bg-200 dark:bg-bg-900 p-2 text-sm items-center'>
       <span className='font-poppins text-lg w-6 text-center'>{position}</span>
       <div className='flex flex-row justify-between w-full'>
         <div className='flex flex-row'>

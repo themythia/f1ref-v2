@@ -6,7 +6,7 @@ const NewsThumbItem = ({ news, size }) => {
       href={link}
       target='_blank'
       rel='noreferrer'
-      className={`sm:flex rounded bg-bg-200 dark:bg-bg-900 shadow-2px relative hidden ${
+      className={`sm:flex rounded bg-bg-200 dark:bg-bg-900 shadow-2px dark:shadow-2px-dark relative hidden ${
         size === 'big'
           ? 'w-[calc((100%-8px)/2)] md:w-[calc((100%-12px)/2)]'
           : 'w-[calc((100%-16px)/3)] md:w-[calc((100%-24px)/3)]'
@@ -19,7 +19,7 @@ const NewsThumbItem = ({ news, size }) => {
           className='rounded group-hover:scale-105 duration-200'
           loading='lazy'
         />
-        <div className='w-full rounded absolute bottom-0 bg-gradient-to-t from-bg-800'>
+        <div className='w-full rounded absolute bottom-0 bg-gradient-to-t from-bg-900'>
           <p className='p-2 font-openSans font-semibold text-sm text-bg-50 drop-shadow group-hover:underline'>
             {title}
           </p>

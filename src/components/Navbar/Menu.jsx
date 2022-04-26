@@ -42,7 +42,7 @@ const Menu = () => {
       }}
       timeout={500}
     >
-      <div className='bg-bg-50 dark:bg-bg-800 w-screen md:w-1/3 h-screen pt-14 px-4 fixed z-50 shadow-4px'>
+      <div className='bg-bg-50 dark:bg-bg-800 w-screen md:w-1/3 h-screen pt-14 px-4 fixed z-50 shadow-4px dark:shadow-4px-dark'>
         <ul className='font-poppins text-lg pt-4 pb-2 border-b border-bg-300 dark:border-bg-600'>
           <li className="mb-2 hover:after:content-['>'] hover:after:ml-1 hover:after:text-lg duration-200">
             <NavLink to='/' onClick={() => dispatch(toggleMenu())}>

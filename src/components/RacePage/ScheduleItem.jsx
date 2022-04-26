@@ -15,7 +15,7 @@ const ScheduleItem = ({ session, time }) => {
   };
 
   return (
-    <div className='flex flex-row justify-between rounded shadow-2px bg-bg-200 dark:bg-bg-900 p-2 font-openSans text-sm'>
+    <div className='flex flex-row justify-between rounded shadow-2px dark:shadow-2px-dark bg-bg-200 dark:bg-bg-900 p-2 font-openSans text-sm'>
       <span className='font-semibold text-left'>{session}</span>
       <span className=''>{handleSesssionTime()}</span>
     </div>
