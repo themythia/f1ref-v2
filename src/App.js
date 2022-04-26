@@ -13,7 +13,6 @@ import TeamPage from './components/TeamPage/TeamPage';
 
 function App() {
   //todo
-  // - dark mode shadows
   // - selector spacing
   // - clean up duplicate components
   // - add loading spinner (partially done, need to implement for race/driver/team page)
