@@ -71,7 +71,11 @@ const Standings = () => {
           <SwitchTransitionWrapper state={activeButton}>
             <div className='flex flex-col gap-y-2'>
               {standings.map((driver, index) => (
-                <StandingsItem key={index} data={driver} />
+                <StandingsItem
+                  key={index}
+                  data={driver}
+                  type={activeButton === 0 ? 'drivers' : 'constructors'}
+                />
               ))}
             </div>
           </SwitchTransitionWrapper>

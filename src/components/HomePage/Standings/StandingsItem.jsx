@@ -1,16 +1,51 @@
 import TeamBar from './TeamBar';
 
-const StandingsItem = ({ data }) => {
+const StandingsItem = ({ data, type }) => {
+  let team;
+  if (type === 'drivers') {
+    data.team === 'ferrari'
+      ? (team = 'Ferrari')
+      : data.team === 'red_bull'
+      ? (team = 'Red Bull')
+      : data.team === 'mercedes'
+      ? (team = 'Mercedes')
+      : data.team === 'mclaren'
+      ? (team = 'McLaren')
+      : data.team === 'haas'
+      ? (team = 'Haas')
+      : data.team === 'williams'
+      ? (team = 'Williams')
+      : data.team === 'aston_martin'
+      ? (team = 'Aston Martin')
+      : data.team === 'alfa'
+      ? (team = 'Alfa Romeo')
+      : data.team === 'alphatauri'
+      ? (team = 'AlphaTauri')
+      : data.team === 'alpine'
+      ? (team = 'Alpine')
+      : (team = '');
+  }
+
   return (
-    <div className='flex items-center p-2 bg-bg-200 dark:bg-bg-900 rounded shadow-2px snap-start'>
+    <div className='flex items-center p-2 bg-bg-200 dark:bg-bg-900 rounded shadow-2px'>
       <span className='font-poppins text-lg w-6 text-center leading-5'>
         {data.position}
       </span>
-      <TeamBar team={data.team} />
-      <span className='font-openSans font-semibold text-sm'>{data.name}</span>
-      <span className='ml-auto font-openSans text-right text-sm'>
-        {data.points}
-      </span>
+      <div className='flex flex-row w-full justify-between items-center'>
+        <div className='flex flex-row'>
+          <TeamBar team={data.team} />
+          <span className='font-openSans font-semibold text-sm sm:w-32'>
+            {data.name}
+          </span>
+        </div>
+        {type === 'drivers' && (
+          <span className='hidden sm:block text-left w-32 text-sm'>{team}</span>
+        )}
+        <div className='font-openSans text-right'>
+          <span className='font-semibold text-sm'>{data.points}</span>
+          <span className='text-xs'> PTS</span>
+        </div>
+      </div>
     </div>
   );
 };
