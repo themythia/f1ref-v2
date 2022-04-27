@@ -20,7 +20,7 @@ const RacePageToggle = ({ race }) => {
         <div>
           {/* if pre-race and selector button is schedule */}
           {race.results.length === 0 && activeButton === 0 ? (
-            <RaceSchedule circuitId={race.circuitId} />
+            <RaceSchedule schedule={race.schedule} />
           ) : null}
           {/* if pre-race and selector button is circuit info OR if post-race and selector button is circuit info */}
           {(race.results.length === 0 && activeButton === 1) ||
