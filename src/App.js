@@ -10,6 +10,7 @@ import TeamsPage from './components/TeamsPage/TeamsPage';
 import RacePage from './components/RacePage/RacePage';
 import DriverPage from './components/DriverPage/DriverPage';
 import TeamPage from './components/TeamPage/TeamPage';
+import FourOhFour from './components/shared/FourOhFour';
 
 function App() {
   //todo
@@ -30,6 +31,7 @@ function App() {
           <Route path='drivers/:driverId' element={<DriverPage />} />
           <Route path='teams' element={<TeamsPage />} />
           <Route path='teams/:teamId' element={<TeamPage />} />
+          <Route path='*' element={<FourOhFour />} />
         </Routes>
         <Footer />
       </Router>
