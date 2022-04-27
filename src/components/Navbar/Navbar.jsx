@@ -3,10 +3,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { MdClose, MdMenu } from 'react-icons/md';
 import { toggleMenu } from '../../slices/settingsSlice';
 import Menu from './Menu';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const showMenu = useSelector((store) => store.settings.showMenu);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   return (
     <Fragment>
@@ -17,7 +19,10 @@ const Navbar = () => {
         >
           {showMenu ? <MdClose size={32} /> : <MdMenu size={32} />}
         </button>
-        <p className='font-kronaOne text-2xl text-center'>
+        <p
+          className='font-kronaOne text-2xl text-center select-none cursor-pointer'
+          onClick={() => navigate('/')}
+        >
           F1<span className='text-mercedes'>/</span>REF
         </p>
       </nav>

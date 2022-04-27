@@ -15,7 +15,6 @@ import FourOhFour from './components/shared/FourOhFour';
 function App() {
   //todo
   // - clean up duplicate components
-  // - add a 404 page
 
   const store = useSelector((store) => store);
   console.log('store', store);
