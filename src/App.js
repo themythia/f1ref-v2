@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { useSelector } from 'react-redux';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import LoadingSpinner from './components/shared/LoadingSpinner';
 
 const Navbar = React.lazy(() => import('./components/Navbar/Navbar'));
 const ThemeWrapper = React.lazy(() =>
@@ -29,22 +30,24 @@ function App() {
   const store = useSelector((store) => store);
   console.log('store', store);
   return (
-    <ThemeWrapper>
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path='/' element={<HomePage />} />
-          <Route path='calendar' element={<CalendarPage />} />
-          <Route path='calendar/:round' element={<RacePage />} />
-          <Route path='drivers' element={<DriversPage />} />
-          <Route path='drivers/:driverId' element={<DriverPage />} />
-          <Route path='teams' element={<TeamsPage />} />
-          <Route path='teams/:teamId' element={<TeamPage />} />
-          <Route path='*' element={<FourOhFour />} />
-        </Routes>
-        <Footer />
-      </Router>
-    </ThemeWrapper>
+    <Suspense fallback={<LoadingSpinner />}>
+      <ThemeWrapper>
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route path='/' element={<HomePage />} />
+            <Route path='calendar' element={<CalendarPage />} />
+            <Route path='calendar/:round' element={<RacePage />} />
+            <Route path='drivers' element={<DriversPage />} />
+            <Route path='drivers/:driverId' element={<DriverPage />} />
+            <Route path='teams' element={<TeamsPage />} />
+            <Route path='teams/:teamId' element={<TeamPage />} />
+            <Route path='*' element={<FourOhFour />} />
+          </Routes>
+          <Footer />
+        </Router>
+      </ThemeWrapper>
+    </Suspense>
   );
 }
 
