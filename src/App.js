@@ -13,10 +13,8 @@ import TeamPage from './components/TeamPage/TeamPage';
 
 function App() {
   //todo
-  // - selector spacing
   // - clean up duplicate components
   // - add loading spinner (partially done, need to implement for race/driver/team page)
-  // - add logic to update fastest lap of circuit
 
   const store = useSelector((store) => store);
   console.log('store', store);
