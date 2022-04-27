@@ -31,17 +31,15 @@ const StandingsItem = ({ data, type }) => {
       <span className='font-poppins text-lg w-6 text-center leading-5'>
         {data.position}
       </span>
-      <div className='flex flex-row w-full justify-between items-center'>
+      <div className='flex flex-row w-full justify-between items-center font-openSans'>
         <div className='flex flex-row'>
           <TeamBar team={data.team} />
-          <span className='font-openSans font-semibold text-sm sm:w-32'>
-            {data.name}
-          </span>
+          <span className='font-semibold text-sm sm:w-32'>{data.name}</span>
         </div>
         {type === 'drivers' && (
           <span className='hidden sm:block text-left w-32 text-sm'>{team}</span>
         )}
-        <div className='font-openSans text-right'>
+        <div className='text-right sm:w-20'>
           <span className='font-semibold text-sm'>{data.points}</span>
           <span className='text-xs'> PTS</span>
         </div>
