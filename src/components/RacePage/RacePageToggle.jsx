@@ -14,7 +14,7 @@ const RacePageToggle = ({ race }) => {
       : ['Circuit', 'Results'];
 
   return (
-    <div className='col-span-4 sm:col-span-8'>
+    <div className='col-span-4 sm:col-span-8 -mt-4'>
       <Selector options={selectorOptions} type='racePage' />
       <SwitchTransitionWrapper state={activeButton}>
         <div>

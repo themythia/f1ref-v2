@@ -8,7 +8,7 @@ const TeamInfoToggle = ({ seasons, stats }) => {
 
   return (
     <div className='col-span-4 sm:col-span-8 md:col-span-12'>
-      <p className='font-poppins text-lg text-bg-800 dark:text-bg-50 -mb-2 md:-mb-4'>
+      <p className='font-poppins text-lg text-bg-800 dark:text-bg-50 -mb-2 md:-mb-3'>
         Stats:
       </p>
       <Selector options={['All', ...seasons]} type='teamPage' />

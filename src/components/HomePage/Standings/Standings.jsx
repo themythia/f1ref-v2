@@ -58,7 +58,7 @@ const Standings = () => {
   return (
     <div className='bg-bg-50 dark:bg-bg-800 rounded shadow-2px dark:shadow-2px-dark p-4 lg:p-6 w-full col-span-full'>
       {(dError || tError) && <Error />}
-      <p className='font-poppins text-lg text-bg-800 dark:text-bg-50 md:mb-2'>
+      <p className='font-poppins text-lg text-bg-800 dark:text-bg-50'>
         Standings:
       </p>
       {dLoading || tLoading ? (
