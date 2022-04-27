@@ -13,7 +13,7 @@ const NewsListItem = ({ news }) => {
           <img
             src={image}
             alt={description}
-            className='rounded shadow-2px dark:shadow-2px-dark'
+            className='rounded-l shadow-2px dark:shadow-2px-dark'
             loading='lazy'
           />
         </div>
