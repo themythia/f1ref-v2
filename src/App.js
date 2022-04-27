@@ -1,16 +1,26 @@
+import React from 'react';
 import { useSelector } from 'react-redux';
-import Navbar from './components/Navbar/Navbar';
-import ThemeWrapper from './components/shared/ThemeWrapper';
-import HomePage from './components/HomePage/HomePage';
-import Footer from './components/Footer/Footer';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import CalendarPage from './components/CalendarPage/CalendarPage';
-import DriversPage from './components/DriversPage/DriversPage';
-import TeamsPage from './components/TeamsPage/TeamsPage';
-import RacePage from './components/RacePage/RacePage';
-import DriverPage from './components/DriverPage/DriverPage';
-import TeamPage from './components/TeamPage/TeamPage';
-import FourOhFour from './components/shared/FourOhFour';
+
+const Navbar = React.lazy(() => import('./components/Navbar/Navbar'));
+const ThemeWrapper = React.lazy(() =>
+  import('./components/shared/ThemeWrapper')
+);
+const HomePage = React.lazy(() => import('./components/HomePage/HomePage'));
+const Footer = React.lazy(() => import('./components/Footer/Footer'));
+const CalendarPage = React.lazy(() =>
+  import('./components/CalendarPage/CalendarPage')
+);
+const DriversPage = React.lazy(() =>
+  import('./components/DriversPage/DriversPage')
+);
+const TeamsPage = React.lazy(() => import('./components/TeamsPage/TeamsPage'));
+const RacePage = React.lazy(() => import('./components/RacePage/RacePage'));
+const DriverPage = React.lazy(() =>
+  import('./components/DriverPage/DriverPage')
+);
+const TeamPage = React.lazy(() => import('./components/TeamPage/TeamPage'));
+const FourOhFour = React.lazy(() => import('./components/shared/FourOhFour'));
 
 function App() {
   //todo
