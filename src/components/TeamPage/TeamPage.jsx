@@ -14,6 +14,7 @@ import { shapeDriverData } from '../../utils/api/shapeDriverData';
 import { addDrivers } from '../../slices/driversSlice';
 import { setSelector } from '../../slices/settingsSlice';
 import Error from '../shared/Error';
+import LoadingSpinner from '../shared/LoadingSpinner';
 
 const TeamPage = () => {
   const { teamId } = useParams();
@@ -81,26 +82,30 @@ const TeamPage = () => {
     if (team && team.stats && statsResponse) setLoading(false);
   }, [team, dispatch, statsResponse]);
 
-  if (statsError || dError || tError) return <Error />;
-  if (loading) return <p>Loading...</p>;
-
   return (
     <main className='p-4 sm:p-8 md:p-6 lg:px-[200px] xl:px-[calc((100vw-1128px)/2)] row-start-2 row-end-3'>
-      <div className='bg-bg-50 dark:bg-bg-800 rounded shadow-2px dark:shadow-2px-dark p-4 md:p-6 w-full h-min grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12 gap-x-4 gap-y-4 md:gap-x-6 md:gap-y-6'>
-        <div
-          className={`w-full col-span-4 sm:col-span-8 md:col-span-12 aspect-16/9 overflow-hidden rounded shadow-2px dark:shadow-2px-dark ${teamColors(
-            teamCode
-          )}`}
-        >
-          <TeamLogo type='big' team={teamId} />
+      {(statsError || dError || tError) && <Error />}
+      {loading ? (
+        <div className='h-full w-full flex flex-row justify-center items-center'>
+          <LoadingSpinner />
         </div>
-        <RaceTitle countryCode={team.countryCode} name={team.name} />
-        <TeamBio team={team} />
-        <TeamInfoToggle
-          seasons={Object.keys(team.stats.seasons).sort((a, b) => b - a)}
-          stats={team.stats}
-        />
-      </div>
+      ) : (
+        <div className='bg-bg-50 dark:bg-bg-800 rounded shadow-2px dark:shadow-2px-dark p-4 md:p-6 w-full h-min grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12 gap-x-4 gap-y-4 md:gap-x-6 md:gap-y-6'>
+          <div
+            className={`w-full col-span-4 sm:col-span-8 md:col-span-12 aspect-16/9 overflow-hidden rounded shadow-2px dark:shadow-2px-dark ${teamColors(
+              teamCode
+            )}`}
+          >
+            <TeamLogo type='big' team={teamId} />
+          </div>
+          <RaceTitle countryCode={team.countryCode} name={team.name} />
+          <TeamBio team={team} />
+          <TeamInfoToggle
+            seasons={Object.keys(team.stats.seasons).sort((a, b) => b - a)}
+            stats={team.stats}
+          />
+        </div>
+      )}
     </main>
   );
 };

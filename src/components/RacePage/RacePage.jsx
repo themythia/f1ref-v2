@@ -14,6 +14,7 @@ import useFetch from '../../utils/useFetch';
 import { shapeRaceResults } from '../../utils/api/shapeRaceResults';
 import { shapeScheduleData } from '../../utils/api/shapeScheduleData';
 import Error from '../shared/Error';
+import LoadingSpinner from '../shared/LoadingSpinner';
 
 const RacePage = () => {
   const { round } = useParams();
@@ -56,23 +57,29 @@ const RacePage = () => {
     }
   }, [round, dispatch, race, schedule, resultsRes, scheduleRes]);
 
-  if (resultsError || scheduleError) return <Error />;
-  if (loading) return <p>Loading...</p>;
-
   return (
     <main className='p-4 sm:p-8 md:p-6 lg:px-[200px] xl:px-[calc((100vw-1128px)/2)] row-start-2 row-end-3'>
-      <div className='bg-bg-50 dark:bg-bg-800 rounded shadow-2px dark:shadow-2px-dark p-4 md:p-6 w-full h-min grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12 gap-x-4 gap-y-4 md:gap-x-6 md:gap-y-6'>
-        <CircuitMap circuit={race.circuitId} />
-        <RaceTitle countryCode={race.countryCode} name={race.raceName} />
-        {width < 905 && <RacePageToggle race={race} />}
-        {width >= 905 && (
-          <React.Fragment>
-            <CircuitInfo race={race} />
-            <RaceSchedule schedule={race.schedule} />
-            {race.results.length > 0 && <RaceResults results={race.results} />}
-          </React.Fragment>
-        )}
-      </div>
+      {(resultsError || scheduleError) && <Error />}
+      {loading ? (
+        <div className='h-full w-full flex flex-row justify-center items-center'>
+          <LoadingSpinner />
+        </div>
+      ) : (
+        <div className='bg-bg-50 dark:bg-bg-800 rounded shadow-2px dark:shadow-2px-dark p-4 md:p-6 w-full h-min grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12 gap-x-4 gap-y-4 md:gap-x-6 md:gap-y-6'>
+          <CircuitMap circuit={race.circuitId} />
+          <RaceTitle countryCode={race.countryCode} name={race.raceName} />
+          {width < 905 && <RacePageToggle race={race} />}
+          {width >= 905 && (
+            <React.Fragment>
+              <CircuitInfo race={race} />
+              <RaceSchedule schedule={race.schedule} />
+              {race.results.length > 0 && (
+                <RaceResults results={race.results} />
+              )}
+            </React.Fragment>
+          )}
+        </div>
+      )}
     </main>
   );
 };

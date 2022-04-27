@@ -14,7 +14,7 @@ import TeamPage from './components/TeamPage/TeamPage';
 function App() {
   //todo
   // - clean up duplicate components
-  // - add loading spinner (partially done, need to implement for race/driver/team page)
+  // - add a 404 page
 
   const store = useSelector((store) => store);
   console.log('store', store);
