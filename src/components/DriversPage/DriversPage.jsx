@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addDrivers } from '../../slices/driversSlice';
 import { shapeDriverData } from '../../utils/api/shapeDriverData';
@@ -12,7 +12,7 @@ const DriversPage = () => {
   const dispatch = useDispatch();
   const drivers = useSelector((store) => store.drivers);
 
-  const { loading, status, response, error } = useFetch(
+  const { loading, response, error } = useFetch(
     'https://ergast.com/api/f1/current/drivers.json',
     [],
     shapeDriverData,

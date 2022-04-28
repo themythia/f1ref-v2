@@ -14,7 +14,7 @@ const LastRace = () => {
   const dispatch = useDispatch();
   const hideLastRace = useSelector((store) => store.settings.hideLastRace);
 
-  const { loading, status, response, error } = useFetch(
+  const { loading, response, error } = useFetch(
     'https://ergast.com/api/f1/current/last/results.json',
     [],
     shapeScheduleData,

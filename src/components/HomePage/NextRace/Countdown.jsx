@@ -14,6 +14,7 @@ const Countdown = ({ time }) => {
   //invokes handleTime after render
   useEffect(() => {
     handleTime();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [time]);
 
   //runs countdown every second

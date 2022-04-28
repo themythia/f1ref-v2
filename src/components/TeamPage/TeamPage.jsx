@@ -26,31 +26,20 @@ const TeamPage = () => {
   const drivers = useSelector((store) => store.drivers);
   const [loading, setLoading] = useState(true);
 
-  const {
-    status: statsStatus,
-    response: statsResponse,
-    error: statsError,
-  } = useFetch(
+  console.log('render');
+  const { response: statsResponse, error: statsError } = useFetch(
     `https://ergast.com/api/f1/constructors/${teamCode}/results.json`,
     [],
     shapeTeamRaceStats
   );
 
-  const {
-    status: tStatus,
-    response: tResponse,
-    error: tError,
-  } = useFetch(
+  const { response: tResponse, error: tError } = useFetch(
     'https://ergast.com/api/f1/current/constructors.json',
     [],
     shapeTeamData
   );
 
-  const {
-    status: dStatus,
-    response: dResponse,
-    error: dError,
-  } = useFetch(
+  const { response: dResponse, error: dError } = useFetch(
     'https://ergast.com/api/f1/current/drivers.json',
     [],
     shapeDriverData,
@@ -72,7 +61,7 @@ const TeamPage = () => {
         dispatch(addTeams(updatedTeam));
       }
     }
-  }, [dResponse, dispatch, tResponse, team]);
+  }, [dResponse, dispatch, drivers.length, tResponse, team]);
 
   useEffect(() => {
     if (team && !team.stats && statsResponse) {

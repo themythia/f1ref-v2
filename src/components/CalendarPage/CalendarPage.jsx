@@ -13,7 +13,7 @@ const CalendarPage = () => {
   const range = (min, max) =>
     Array.from({ length: max - min + 1 }, (_, i) => min + i);
 
-  const { loading, status, response, error } = useFetch(
+  const { loading, response, error } = useFetch(
     'https://ergast.com/api/f1/current.json',
     [],
     shapeScheduleData,

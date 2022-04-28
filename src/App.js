@@ -1,5 +1,4 @@
 import React, { Suspense } from 'react';
-import { useSelector } from 'react-redux';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LoadingSpinner from './components/shared/LoadingSpinner';
 

@@ -8,10 +8,7 @@ import hulkenbergPic from '../../assets/driverPics/hulkenberg.webp';
 import DriverBio from './DriverBio';
 import useFetch from '../../utils/useFetch';
 import { shapeDriverData } from '../../utils/api/shapeDriverData';
-import {
-  shapeDriverRaceStats,
-  shapeRaceStats,
-} from '../../utils/api/shapeRaceStats';
+import { shapeDriverRaceStats } from '../../utils/api/shapeRaceStats';
 import { setSelector } from '../../slices/settingsSlice';
 import Error from '../shared/Error';
 import LoadingSpinner from '../shared/LoadingSpinner';
@@ -24,7 +21,7 @@ const DriverPage = () => {
     store.drivers.find((driver) => driver.id === driverId.replace(/-/gi, '_'))
   );
 
-  const { status, response, error } = useFetch(
+  const { response, error } = useFetch(
     'https://ergast.com/api/f1/current/drivers.json',
     [],
     shapeDriverData,

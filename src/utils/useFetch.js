@@ -70,6 +70,7 @@ const useFetch = (url, dependency, shapeFunc, isFetched) => {
     };
 
     fetchApi();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, dependency);
 
   return { loading, status, response, error };
