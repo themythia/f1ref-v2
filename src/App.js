@@ -26,9 +26,8 @@ const FourOhFour = React.lazy(() => import('./components/shared/FourOhFour'));
 function App() {
   //todo
   // - clean up duplicate components
+  // - readme
 
-  const store = useSelector((store) => store);
-  console.log('store', store);
   return (
     <Suspense
       fallback={
