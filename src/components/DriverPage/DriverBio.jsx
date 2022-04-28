@@ -6,7 +6,7 @@ const DriverBio = ({ driver }) => {
       <span className='font-poppins text-lg text-bg-800 dark:text-bg-50 md:mb-1'>
         Driver Info:
       </span>
-      <div className='grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12 gap-x-4 md:gap-x-6 gap-y-2'>
+      <div className='grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12 gap-x-2 md:gap-x-3 gap-y-2 md:gap-y-3'>
         <InfoItem title='Team' info={driver.team} />
         <InfoItem title='No' info={driver.no} />
         <InfoItem title='Date of Birth' info={driver.dateOfBirth} />

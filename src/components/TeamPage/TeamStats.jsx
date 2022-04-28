@@ -2,7 +2,7 @@ import InfoItem from '../DriverPage/InfoItem';
 
 const TeamStats = ({ season, showChamp }) => {
   return (
-    <div className='grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12 gap-x-4 md:gap-x-6 gap-y-2'>
+    <div className='grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12 gap-x-2 md:gap-x-3 gap-y-2 md:gap-y-3'>
       {showChamp && <InfoItem title='Championships' info={season.champ} />}
       <InfoItem title='Wins' info={season.wins} />
       <InfoItem title='Podiums' info={season.podiums} />

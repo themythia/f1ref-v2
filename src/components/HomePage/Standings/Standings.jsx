@@ -69,7 +69,7 @@ const Standings = () => {
         <React.Fragment>
           <Selector options={['Drivers', 'Constructors']} type='standings' />
           <SwitchTransitionWrapper state={activeButton}>
-            <div className='flex flex-col gap-y-2'>
+            <div className='flex flex-col gap-y-2 md:gap-y-3'>
               {standings.map((driver, index) => (
                 <StandingsItem
                   key={index}

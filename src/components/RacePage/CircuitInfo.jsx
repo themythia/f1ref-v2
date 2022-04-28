@@ -9,7 +9,7 @@ const CircuitInfo = ({ race }) => {
     stats.record + ' - ' + stats.recordHolder + ' (' + stats.recordYear + ')';
 
   return (
-    <div className='flex flex-col gap-y-2 sm:flex-row sm:flex-wrap gap-x-2 md:col-start-1 md:col-end-7'>
+    <div className='flex flex-col gap-y-2 md:gap-y-3 sm:flex-row sm:flex-wrap gap-x-2 md:col-start-1 md:col-end-7'>
       <span className='hidden md:block font-poppins text-lg text-bg-800 dark:text-bg-50 mb-1'>
         Circuit Info:
       </span>
