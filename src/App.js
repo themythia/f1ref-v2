@@ -30,7 +30,13 @@ function App() {
   const store = useSelector((store) => store);
   console.log('store', store);
   return (
-    <Suspense fallback={<LoadingSpinner />}>
+    <Suspense
+      fallback={
+        <div className='h-screen w-screen flex flex-row justify-center items-center'>
+          <LoadingSpinner />
+        </div>
+      }
+    >
       <ThemeWrapper>
         <Router>
           <Navbar />
