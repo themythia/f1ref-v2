@@ -11,6 +11,8 @@ const RacePageToggle = ({ race }) => {
   const selectorOptions =
     race.results.length === 0
       ? ['Schedule', 'Circuit']
+      : race.results.length > 0 && race?.sprintResults?.length > 0
+      ? ['Circuit', 'Sprint', 'Results']
       : ['Circuit', 'Results'];
 
   return (
@@ -18,19 +20,26 @@ const RacePageToggle = ({ race }) => {
       <Selector options={selectorOptions} type='racePage' />
       <SwitchTransitionWrapper state={activeButton}>
         <div>
-          {/* if pre-race and selector button is schedule */}
-          {race.results.length === 0 && activeButton === 0 ? (
-            <RaceSchedule schedule={race.schedule} />
-          ) : null}
-          {/* if pre-race and selector button is circuit info OR if post-race and selector button is circuit info */}
-          {(race.results.length === 0 && activeButton === 1) ||
-          (race.results.length > 0 && activeButton === 0) ? (
-            <CircuitInfo race={race} />
-          ) : null}
-          {/* if post-race and selector button is race results */}
-          {race.results.length > 0 && activeButton === 1 ? (
-            <RaceResults results={race.results} />
-          ) : null}
+          {race.results.length === 0 &&
+            (activeButton === 0 ? (
+              <RaceSchedule schedule={race.schedule} />
+            ) : (
+              <CircuitInfo race={race} />
+            ))}
+          {race.results.length > 0 &&
+            (race?.sprintResults?.length > 0 ? (
+              activeButton === 0 ? (
+                <CircuitInfo race={race} />
+              ) : activeButton === 1 ? (
+                <RaceResults results={race.sprintResults} />
+              ) : activeButton === 2 ? (
+                <RaceResults results={race.results} />
+              ) : null
+            ) : activeButton === 0 ? (
+              <CircuitInfo race={race} />
+            ) : activeButton === 1 ? (
+              <RaceResults results={race.results} />
+            ) : null)}
         </div>
       </SwitchTransitionWrapper>
     </div>

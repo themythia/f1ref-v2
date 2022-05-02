@@ -1,7 +1,10 @@
 export const shapeRaceResults = (data) => {
+  console.log('data', data);
   if (data.MRData.RaceTable.Races.length === 0) return [];
   else {
-    const resultsData = data.MRData.RaceTable.Races[0].Results;
+    const resultsData =
+      data.MRData.RaceTable.Races[0].Results ||
+      data.MRData.RaceTable.Races[0].SprintResults;
     const results = resultsData.map((driver) => ({
       name: driver.Driver.givenName + ' ' + driver.Driver.familyName,
       teamCode: driver.Constructor.constructorId,

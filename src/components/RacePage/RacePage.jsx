@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { addResults, addSchedule } from '../../slices/scheduleSlice';
+import {
+  addResults,
+  addSchedule,
+  addSprintResults,
+} from '../../slices/scheduleSlice';
 import CircuitMap from '../shared/CircuitMap';
 import RaceSchedule from './RaceSchedule';
 import CircuitInfo from './CircuitInfo';
@@ -24,6 +28,8 @@ const RacePage = () => {
   const [loading, setLoading] = useState(true);
   const { width } = useWindowSize();
 
+  console.log('race:', race);
+
   const { response: resultsRes, error: resultsError } = useFetch(
     `https://ergast.com/api/f1/2022/${round}/results.json`,
     [],
@@ -37,6 +43,13 @@ const RacePage = () => {
     shapeScheduleData,
     schedule.length > 0
   );
+
+  const { response: sprintRes, error: sprintError } = useFetch(
+    `https://ergast.com/api/f1/2022/${round}/sprint.json`,
+    [],
+    shapeRaceResults
+  );
+  console.log('sprintRes', sprintRes);
 
   useEffect(() => {
     if (Object.keys(schedule).length > 0 && !race.hasOwnProperty('results')) {
@@ -57,9 +70,26 @@ const RacePage = () => {
     }
   }, [round, dispatch, race, schedule, resultsRes, scheduleRes]);
 
+  useEffect(() => {
+    if (
+      Object.keys(schedule).length > 0 &&
+      race?.results?.length > 0 &&
+      race?.schedule?.sprint
+    ) {
+      dispatch(addSprintResults({ round, results: sprintRes }));
+    }
+  }, [
+    dispatch,
+    race?.results?.length,
+    race?.schedule?.sprint,
+    round,
+    schedule,
+    sprintRes,
+  ]);
+
   return (
     <main className='p-4 sm:p-8 md:p-6 lg:px-[200px] xl:px-[calc((100vw-1128px)/2)] row-start-2 row-end-3'>
-      {(resultsError || scheduleError) && <Error />}
+      {(resultsError || scheduleError || sprintError) && <Error />}
       {loading ? (
         <div className='h-full w-full flex flex-row justify-center items-center'>
           <LoadingSpinner />
