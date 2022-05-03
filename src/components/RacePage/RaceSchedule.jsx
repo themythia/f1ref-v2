@@ -5,7 +5,7 @@ const RaceSchedule = ({ schedule }) => {
   const { fp1, fp2, fp3, quali, race, sprint } = schedule;
   return (
     <div className='flex flex-col gap-y-2 md:gap-y-3 md:col-start-7 md:col-end-13'>
-      <span className='hidden sm:block font-poppins text-lg text-bg-800 dark:text-bg-50 mb-1'>
+      <span className='hidden sm:block font-poppins text-lg text-bg-800 dark:text-bg-50'>
         Session Schedule:
       </span>
       <ScheduleItem session='Race' time={race} />

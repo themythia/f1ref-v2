@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Selector from '../shared/Selector/Selector';
 import SwitchTransitionWrapper from '../shared/SwitchTransitionWrapper';
@@ -5,41 +6,57 @@ import CircuitInfo from './CircuitInfo';
 import RaceResults from './RaceResults';
 import RaceSchedule from './RaceSchedule';
 
-const RacePageToggle = ({ race }) => {
+const RacePageToggle = ({ race, resultsOnly }) => {
   const activeButton = useSelector((store) => store.settings.selector.racePage);
+  const [options, setOptions] = useState([]);
 
-  const selectorOptions =
-    race.results.length === 0
-      ? ['Schedule', 'Circuit']
-      : race.results.length > 0 && race?.sprintResults?.length > 0
-      ? ['Circuit', 'Sprint', 'Results']
-      : ['Circuit', 'Results'];
+  useEffect(() => {
+    // check type
+    if (resultsOnly) {
+      // check if its sprint weekend
+      if (race.schedule.sprint) {
+        // check if sprint results available
+        if (race.sprintResults.length > 0) setOptions(['Sprint']);
+        // check if race results available
+        if (race.results.length > 0) setOptions(['Sprint', 'Race']);
+      } else {
+        if (race.results.length > 0) setOptions(['Race']);
+      }
+    } else {
+      setOptions(['Schedule', 'Circuit']);
+      if (race.schedule.sprint) {
+        if (race.sprintResults.length > 0)
+          setOptions(['Schedule', 'Circuit', 'Sprint']);
+        if (race.results.length > 0) setOptions(['Circuit', 'Sprint', 'Race']);
+      } else {
+        if (race.results.length > 0) setOptions(['Circuit', 'Race']);
+      }
+    }
+  }, [
+    race.results.length,
+    race.schedule.sprint,
+    race.sprintResults.length,
+    resultsOnly,
+  ]);
 
   return (
-    <div className='col-span-4 sm:col-span-8 -mt-4'>
-      <Selector options={selectorOptions} type='racePage' />
+    <div
+      className={`col-span-4 sm:col-span-8 -mt-4 ${
+        options.length > 1 ? 'md:-mt-3' : 'md:mt-3'
+      } md:col-span-12`}
+    >
+      {options.length > 1 && <Selector options={options} type='racePage' />}
       <SwitchTransitionWrapper state={activeButton}>
         <div>
-          {race.results.length === 0 &&
-            (activeButton === 0 ? (
-              <RaceSchedule schedule={race.schedule} />
-            ) : (
-              <CircuitInfo race={race} />
-            ))}
-          {race.results.length > 0 &&
-            (race?.sprintResults?.length > 0 ? (
-              activeButton === 0 ? (
-                <CircuitInfo race={race} />
-              ) : activeButton === 1 ? (
-                <RaceResults results={race.sprintResults} />
-              ) : activeButton === 2 ? (
-                <RaceResults results={race.results} />
-              ) : null
-            ) : activeButton === 0 ? (
-              <CircuitInfo race={race} />
-            ) : activeButton === 1 ? (
-              <RaceResults results={race.results} />
-            ) : null)}
+          {options[activeButton] === 'Sprint' ? (
+            <RaceResults results={race.sprintResults} type='sprint' />
+          ) : options[activeButton] === 'Race' ? (
+            <RaceResults results={race.results} type='race' />
+          ) : options[activeButton] === 'Schedule' ? (
+            <RaceSchedule schedule={race.schedule} />
+          ) : options[activeButton] === 'Circuit' ? (
+            <CircuitInfo race={race} />
+          ) : null}
         </div>
       </SwitchTransitionWrapper>
     </div>
