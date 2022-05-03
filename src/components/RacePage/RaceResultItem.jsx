@@ -18,8 +18,8 @@ const RaceResultItem = ({ driver }) => {
             {driver.name}
           </span>
         </div>
-        <span className='ml-auto text-right font-openSans w-28'>{status}</span>
-        <div className='hidden sm:block ml-auto font-openSans text-right'>
+        <span className='ml-auto text-left font-openSans w-32'>{status}</span>
+        <div className='hidden sm:block ml-auto font-openSans text-right w-20'>
           <span className='font-semibold'>{driver.points}</span>
           <span className='text-xs'> PTS</span>
         </div>
