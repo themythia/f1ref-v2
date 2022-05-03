@@ -15,6 +15,7 @@ import { addDrivers } from '../../slices/driversSlice';
 import { setSelector } from '../../slices/settingsSlice';
 import Error from '../shared/Error';
 import LoadingSpinner from '../shared/LoadingSpinner';
+import Drivers from './Drivers';
 
 const TeamPage = () => {
   const { teamId } = useParams();
@@ -26,7 +27,7 @@ const TeamPage = () => {
   const drivers = useSelector((store) => store.drivers);
   const [loading, setLoading] = useState(true);
 
-  console.log('render');
+  console.log('team', team);
   const { response: statsResponse, error: statsError } = useFetch(
     `https://ergast.com/api/f1/constructors/${teamCode}/results.json`,
     [],
@@ -89,6 +90,7 @@ const TeamPage = () => {
           </div>
           <RaceTitle countryCode={team.countryCode} name={team.name} />
           <TeamBio team={team} />
+          <Drivers drivers={team.drivers} />
           <TeamInfoToggle
             seasons={Object.keys(team.stats.seasons).sort((a, b) => b - a)}
             stats={team.stats}
