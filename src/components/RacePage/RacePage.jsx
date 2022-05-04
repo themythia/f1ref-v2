@@ -10,7 +10,6 @@ import CircuitMap from '../shared/CircuitMap';
 import RaceSchedule from './RaceSchedule';
 import CircuitInfo from './CircuitInfo';
 import 'animate.css';
-import RaceResults from './RaceResults';
 import RacePageToggle from './RacePageToggle';
 import useWindowSize from '../../utils/useWindowSize';
 import RaceTitle from './RaceTitle';
@@ -28,8 +27,6 @@ const RacePage = () => {
   const race = useSelector((store) => store.schedule.schedule[round - 1]);
   const [loading, setLoading] = useState(true);
   const { width } = useWindowSize();
-
-  console.log('race:', race);
 
   const { response: resultsRes, error: resultsError } = useFetch(
     `https://ergast.com/api/f1/2022/${round}/results.json`,

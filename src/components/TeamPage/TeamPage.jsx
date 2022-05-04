@@ -27,7 +27,6 @@ const TeamPage = () => {
   const drivers = useSelector((store) => store.drivers);
   const [loading, setLoading] = useState(true);
 
-  console.log('team', team);
   const { response: statsResponse, error: statsError } = useFetch(
     `https://ergast.com/api/f1/constructors/${teamCode}/results.json`,
     [],

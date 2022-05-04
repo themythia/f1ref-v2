@@ -1,6 +1,5 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import LoadingSpinner from './components/shared/LoadingSpinner';
 import Navbar from './components/Navbar/Navbar';
 import ThemeWrapper from './components/shared/ThemeWrapper';
 import HomePage from './components/HomePage/HomePage';
@@ -14,10 +13,6 @@ import TeamPage from './components/TeamPage/TeamPage';
 import FourOhFour from './components/shared/FourOhFour';
 
 function App() {
-  //todo
-  // - clean up duplicate components
-  // - readme
-
   return (
     <ThemeWrapper>
       <Router>

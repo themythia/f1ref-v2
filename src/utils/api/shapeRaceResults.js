@@ -1,5 +1,4 @@
 export const shapeRaceResults = (data) => {
-  console.log('data', data);
   if (data.MRData.RaceTable.Races.length === 0) return [];
   else {
     const resultsData =
