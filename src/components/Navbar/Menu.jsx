@@ -4,7 +4,7 @@ import { CSSTransition } from 'react-transition-group';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useLocation } from 'react-router-dom';
 import { useEffect, useLayoutEffect } from 'react';
-import { closeMenu, toggleMenu } from '../../slices/settingsSlice';
+import { toggleMenu } from '../../slices/settingsSlice';
 
 const Menu = () => {
   const showMenu = useSelector((store) => store.settings.showMenu);
@@ -13,9 +13,8 @@ const Menu = () => {
 
   // closes menu on location change
   useEffect(() => {
-    dispatch(closeMenu());
     window.scrollTo(0, 0);
-  }, [location.pathname, dispatch]);
+  }, [location.pathname]);
 
   useLayoutEffect(() => {
     // locks scrolling when menu is open
