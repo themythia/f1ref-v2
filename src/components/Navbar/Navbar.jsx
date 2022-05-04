@@ -4,6 +4,7 @@ import { MdClose, MdMenu } from 'react-icons/md';
 import { toggleMenu } from '../../slices/settingsSlice';
 import Menu from './Menu';
 import { useNavigate } from 'react-router-dom';
+import Backdrop from './Backdrop';
 
 const Navbar = () => {
   const showMenu = useSelector((store) => store.settings.showMenu);
@@ -27,6 +28,7 @@ const Navbar = () => {
         </p>
       </nav>
       <Menu />
+      {showMenu && <Backdrop />}
     </Fragment>
   );
 };
