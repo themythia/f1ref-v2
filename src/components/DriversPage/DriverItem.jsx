@@ -5,8 +5,10 @@ const DriverItem = ({ driver, forTeamPage }) => {
   return (
     <Link
       className={`${
-        forTeamPage ? 'bg-bg-200 dark:bg-bg-900' : 'bg-bg-50 dark:bg-bg-800'
-      } rounded shadow-2px dark:shadow-2px-dark w-full cursor-pointer hover:scale-[1.02] duration-200 group col-span-4 sm:col-span-4 md:col-span-6 xl:col-span-4 flex flex-row items-center h-[84px]`}
+        forTeamPage
+          ? 'bg-bg-200 dark:bg-bg-900 xl:col-span-6'
+          : 'bg-bg-50 dark:bg-bg-800 xl:col-span-4'
+      } rounded shadow-2px dark:shadow-2px-dark w-full cursor-pointer hover:scale-[1.02] duration-200 group col-span-4 sm:col-span-4 md:col-span-6 flex flex-row items-center h-[84px]`}
       to={`/drivers/${driver.id.replace(/_/gi, '-')}`}
     >
       <div
