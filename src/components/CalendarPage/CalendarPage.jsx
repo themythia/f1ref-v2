@@ -25,7 +25,7 @@ const CalendarPage = () => {
   }, [dispatch, response]);
 
   return (
-    <main className='p-4 sm:p-8 md:p-6 lg:px-[200px] xl:px-[calc((100vw-1128px)/2)] grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12 gap-x-4 md:gap-x-6 gap-y-4 md:gap-y-6 row-start-2 row-end-3'>
+    <main className='p-4 sm:p-8 md:p-6 lg:px-[200px] xl:px-[calc((100vw-1128px)/2)] grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12 gap-x-4 md:gap-x-6 gap-y-4 md:gap-y-6 row-start-2 row-end-3 animate__animated animate__fadeIn'>
       {error && <Error />}
       {!loading &&
         calendar.map((race, index) => <CalendarItem key={index} race={race} />)}

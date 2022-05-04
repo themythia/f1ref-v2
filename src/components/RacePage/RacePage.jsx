@@ -94,7 +94,7 @@ const RacePage = () => {
           <LoadingSpinner />
         </div>
       ) : (
-        <div className='bg-bg-50 dark:bg-bg-800 rounded shadow-2px dark:shadow-2px-dark p-4 md:p-6 w-full h-min grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12 gap-x-4 gap-y-4 md:gap-x-6 md:gap-y-6'>
+        <div className='bg-bg-50 dark:bg-bg-800 rounded shadow-2px dark:shadow-2px-dark p-4 md:p-6 w-full h-min grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12 gap-x-4 gap-y-4 md:gap-x-6 md:gap-y-6 animate__animated animate__fadeIn'>
           <CircuitMap circuit={race.circuitId} />
           <RaceTitle countryCode={race.countryCode} name={race.raceName} />
           {width < 905 && <RacePageToggle race={race} resultsOnly={false} />}
