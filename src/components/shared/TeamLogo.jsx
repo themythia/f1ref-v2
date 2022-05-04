@@ -53,7 +53,6 @@ const TeamLogo = ({ team, type }) => {
         src={logo.round[team]}
         alt={`Logo of ${team}`}
         className='max-h-[84px] w-full'
-        loading='lazy'
       />
     );
   } else if (type === 'big') {
@@ -61,7 +60,6 @@ const TeamLogo = ({ team, type }) => {
       <img
         src={logo.big[team]}
         alt={`Logo of ${team}`}
-        loading='lazy'
         className='w-full aspect-16/9'
       />
     );

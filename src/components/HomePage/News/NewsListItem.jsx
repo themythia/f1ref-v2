@@ -14,7 +14,6 @@ const NewsListItem = ({ news }) => {
             src={image}
             alt={description}
             className='rounded-l shadow-2px dark:shadow-2px-dark'
-            loading='lazy'
           />
         </div>
         <div className='basis-3/5 font-openSans font-semibold text-sm p-2 max-h-full h-full self-start'>

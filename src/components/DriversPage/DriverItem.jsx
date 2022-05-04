@@ -19,7 +19,6 @@ const DriverItem = ({ driver, forTeamPage }) => {
         <img
           src={driver.image.profile}
           alt={driver.name}
-          loading='lazy'
           className='-scale-x-100 max-h-[84px]'
         />
       </div>

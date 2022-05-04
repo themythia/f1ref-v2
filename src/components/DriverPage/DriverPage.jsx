@@ -74,7 +74,6 @@ const DriverPage = () => {
               }
               alt={driver.name}
               className='w-full'
-              loading='lazy'
             />
           </div>
           <RaceTitle countryCode={driver.countryCode} name={driver.name} />
