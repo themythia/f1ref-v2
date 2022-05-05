@@ -23,7 +23,6 @@ const Standings = () => {
 
   const {
     loading: dLoading,
-    status: dStatus,
     response: dResponse,
     error: dError,
   } = useFetch(
@@ -35,7 +34,6 @@ const Standings = () => {
 
   const {
     loading: tLoading,
-    status: tStatus,
     response: tResponse,
     error: tError,
   } = useFetch(
