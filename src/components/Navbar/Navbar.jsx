@@ -28,7 +28,7 @@ const Navbar = () => {
         </p>
       </nav>
       <Menu />
-      {showMenu && <Backdrop />}
+      <Backdrop showMenu={showMenu} />
     </Fragment>
   );
 };

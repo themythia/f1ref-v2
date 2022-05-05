@@ -1,7 +1,7 @@
 import { IoWarning } from 'react-icons/io5';
 const Error = () => {
   return (
-    <div className='px-4 py-2 lg:px-[200px] xl:px-[calc((100vw-1128px)/2)] w-screen h-auto bg-red-600 fixed z-40 top-14 left-0 flex flex-row items-center justify-center font-openSans text-bg-50 text-sm gap-x-4 shadow-2px dark:shadow-2px-dark'>
+    <div className='px-4 py-2 lg:px-[200px] xl:px-[calc((100vw-1128px)/2)] w-screen h-auto bg-red-600 fixed z-40 top-14 left-0 flex flex-row items-center justify-center font-openSans text-bg-50 text-sm gap-x-4 shadow-2px dark:shadow-2px-dark animate__animated animate__fadeIn'>
       <div>
         <IoWarning className='h-8 w-8' />
       </div>
