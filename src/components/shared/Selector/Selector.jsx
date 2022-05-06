@@ -10,8 +10,8 @@ const Selector = (props) => {
 
   const handleDrag =
     ({ scrollContainer }) =>
-    (ev) =>
-      dragMove(ev, (posDiff) => {
+    (e) =>
+      dragMove(e, (posDiff) => {
         if (scrollContainer.current) {
           scrollContainer.current.scrollLeft += posDiff;
         }

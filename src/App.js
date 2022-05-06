@@ -15,7 +15,7 @@ import FourOhFour from './components/shared/FourOhFour';
 function App() {
   // todo
   // change <Fragment> to <></>
-  // take a loot at useFetch
+  // take a look at useDrag
   // check utils funcs
   // useFetch dependency argument
   // add an X icon to 404 page
