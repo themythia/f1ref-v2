@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 import { addDrivers, addDriverStats } from '../../slices/driversSlice';
 import RaceTitle from '../RacePage/RaceTitle';
 import DriverInfoToggle from './DriverInfoToggle';
@@ -17,6 +17,7 @@ const DriverPage = () => {
   const { driverId } = useParams();
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
+  const drivers = useSelector((store) => store.drivers);
   const driver = useSelector((store) =>
     store.drivers.find((driver) => driver.id === driverId.replace(/-/gi, '_'))
   );
@@ -57,6 +58,10 @@ const DriverPage = () => {
       setLoading(false);
     }
   }, [driver, dispatch, driverStats]);
+
+  if (drivers.length > 0 && !drivers.find((driver) => driver.id === driverId)) {
+    return <Navigate to='/drivers' />;
+  }
 
   return (
     <main className='p-4 sm:p-8 md:p-6 lg:px-[200px] xl:px-[calc((100vw-1128px)/2)] row-start-2 row-end-3 '>

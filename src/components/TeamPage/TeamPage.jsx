@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 import TeamLogo from '../shared/TeamLogo';
 import teamColors from '../../utils/teamColors';
 import RaceTitle from '../RacePage/RaceTitle';
@@ -21,6 +21,7 @@ const TeamPage = () => {
   const { teamId } = useParams();
   const teamCode = teamId.replace(/-/gi, '_'); // restores slugged strings
   const dispatch = useDispatch();
+  const teams = useSelector((store) => store.teams);
   const team = useSelector((store) =>
     store.teams.find((team) => team.id === teamCode)
   );
@@ -70,6 +71,10 @@ const TeamPage = () => {
     }
     if (team && team.stats && statsResponse) setLoading(false);
   }, [team, dispatch, statsResponse]);
+
+  if (teams.length > 0 && !teams.find((team) => team.id === teamId)) {
+    return <Navigate to='/teams' />;
+  }
 
   return (
     <main className='p-4 sm:p-8 md:p-6 lg:px-[200px] xl:px-[calc((100vw-1128px)/2)] row-start-2 row-end-3 '>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   addResults,
@@ -82,6 +82,10 @@ const RacePage = () => {
       setLoading(false);
     }
   }, [round, dispatch, race, schedule, resultsRes, scheduleRes, sprintRes]);
+
+  if (Number(round) < 0 || Number(round) > 22 || isNaN(Number(round))) {
+    return <Navigate to='/calendar' />;
+  }
 
   return (
     <main className='p-4 sm:p-8 md:p-6 lg:px-[200px] xl:px-[calc((100vw-1128px)/2)] row-start-2 row-end-3'>

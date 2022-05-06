@@ -18,7 +18,6 @@ function App() {
   // take a look at useDrag
   // check utils funcs
   // useFetch dependency argument
-  // add an X icon to 404 page
 
   return (
     <ThemeWrapper>
