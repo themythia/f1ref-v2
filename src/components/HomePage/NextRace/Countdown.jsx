@@ -31,12 +31,15 @@ const Countdown = ({ time }) => {
       // if countdown ends, disables the current button
       // if there's still another session next,
       // changes activebutton to next session
-      dispatch(addDisabledSelector({ type: 'nextRace', index: activeButton }));
-      if (activeButton < 4) {
-        dispatch(setSelector({ type: 'nextRace', index: activeButton + 1 }));
-      }
       clear();
       setTimeLeft(0);
+      dispatch(addDisabledSelector({ type: 'nextRace', index: activeButton }));
+      // without timeout, timeLeft doesnt get updated fast enough and every button gets disabled
+      window.setTimeout(() => {
+        if (activeButton < 4) {
+          dispatch(setSelector({ type: 'nextRace', index: activeButton + 1 }));
+        }
+      }, 1);
     }
   }, [activeButton, dispatch, timeLeft]);
 
