@@ -13,12 +13,6 @@ import TeamPage from './components/TeamPage/TeamPage';
 import FourOhFour from './components/shared/FourOhFour';
 
 function App() {
-  // todo
-  // change <Fragment> to <></>
-  // take a look at useDrag
-  // check utils funcs
-  // useFetch dependency argument
-
   return (
     <ThemeWrapper>
       <Router>
