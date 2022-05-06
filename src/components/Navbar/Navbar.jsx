@@ -1,15 +1,22 @@
-import { Fragment } from 'react';
+import { Fragment, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { MdClose, MdMenu } from 'react-icons/md';
 import { toggleMenu } from '../../slices/settingsSlice';
 import Menu from './Menu';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Backdrop from './Backdrop';
+import ReactGA from 'react-ga4';
 
 const Navbar = () => {
   const showMenu = useSelector((store) => store.settings.showMenu);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    ReactGA.initialize('G-5K71HY9Q07');
+    ReactGA.send({ hitType: 'pageview', page: location.pathname });
+  }, [location.pathname]);
 
   return (
     <Fragment>
