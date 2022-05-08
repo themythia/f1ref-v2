@@ -72,7 +72,7 @@ const TeamPage = () => {
     if (team && team.stats && statsResponse) setLoading(false);
   }, [team, dispatch, statsResponse]);
 
-  if (teams.length > 0 && !teams.find((team) => team.id === teamId)) {
+  if (teams.length > 0 && !teams.find((team) => team.id === teamCode)) {
     return <Navigate to='/teams' />;
   }
 

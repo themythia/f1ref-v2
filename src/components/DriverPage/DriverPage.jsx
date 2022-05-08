@@ -59,7 +59,10 @@ const DriverPage = () => {
     }
   }, [driver, dispatch, driverStats]);
 
-  if (drivers.length > 0 && !drivers.find((driver) => driver.id === driverId)) {
+  if (
+    drivers.length > 0 &&
+    !drivers.find((driver) => driver.id === driverId.replace(/-/gi, '_'))
+  ) {
     return <Navigate to='/drivers' />;
   }
 
