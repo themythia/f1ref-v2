@@ -90,6 +90,7 @@ export const shapeDriverData = (data) => {
         };
       case 'ALB':
       case 'LAT':
+      case 'DEV':
         return {
           ...driverObj,
           team: 'Williams',

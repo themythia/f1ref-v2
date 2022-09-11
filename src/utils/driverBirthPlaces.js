@@ -20,5 +20,6 @@ const driverBirthPlaces = {
   max_verstappen: 'Hasselt, Belgium',
   gasly: 'Rouen, France',
   vettel: 'Heppenheim, Germany',
+  de_vries: 'Uitwellingerga, Netherlands',
 };
 export default driverBirthPlaces;
