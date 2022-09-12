@@ -198,7 +198,7 @@ const driverPics = (driverCode) => {
     case 'DEV':
       return {
         profile:
-          'https://assets-prd.formulae.cloud/-/media/images/championship/drivers/nyck-de-vries/s8/devries-3-4.png',
+          'https://www.formula1.com/content/dam/fom-website/drivers/N/NYCDEV01_Nyck_De%20Vries/nycdev01.png',
         big: 'https://www.formula1.com/content/dam/fom-website/manual/Misc/2022manual/2022Races/ItalianGP/Pre-race/be29e431-9032-cb82-c761-03e8f554dd04.jpg',
         helmet: '',
       };
