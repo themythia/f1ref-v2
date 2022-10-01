@@ -27,7 +27,7 @@ const CircuitMap = ({ circuit }) => {
     albert_park: AlbertPark,
     americas: Americas,
     bahrain: Bahrain,
-    BAK: Baku,
+    baku: Baku,
     catalunya: Catalunya,
     hungaroring: Hungaroring,
     imola: Imola,
@@ -52,7 +52,7 @@ const CircuitMap = ({ circuit }) => {
   const DynamicSVGMap = components[circuit];
 
   return (
-    <DynamicSVGMap className='w-full aspect-16/9 col-span-4 sm:col-span-8 md:col-start-3 md:col-end-11 fill-bg-800 dark:fill-bg-50' />
+    <DynamicSVGMap className='w-full col-span-4 aspect-16/9 sm:col-span-8 md:col-start-3 md:col-end-11 fill-bg-800 dark:fill-bg-50' />
   );
 };
 export default CircuitMap;

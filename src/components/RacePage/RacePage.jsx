@@ -91,11 +91,11 @@ const RacePage = () => {
     <main className='p-4 sm:p-8 md:p-6 lg:px-[200px] xl:px-[calc((100vw-1128px)/2)] row-start-2 row-end-3'>
       {(resultsError || scheduleError || sprintError) && <Error />}
       {loading ? (
-        <div className='h-full w-full flex flex-row justify-center items-center'>
+        <div className='flex flex-row items-center justify-center w-full h-full'>
           <LoadingSpinner />
         </div>
       ) : (
-        <div className='bg-bg-50 dark:bg-bg-800 rounded shadow-2px dark:shadow-2px-dark p-4 md:p-6 w-full h-min grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12 gap-x-4 gap-y-4 md:gap-x-6 md:gap-y-6 animate__animated animate__fadeIn'>
+        <div className='grid w-full grid-cols-4 p-4 rounded bg-bg-50 dark:bg-bg-800 shadow-2px dark:shadow-2px-dark md:p-6 h-min sm:grid-cols-8 md:grid-cols-12 gap-x-4 gap-y-4 md:gap-x-6 md:gap-y-6 animate__animated animate__fadeIn'>
           <CircuitMap circuit={race.circuitId} />
           <RaceTitle countryCode={race.countryCode} name={race.raceName} />
           {width < 905 && <RacePageToggle race={race} resultsOnly={false} />}
@@ -105,7 +105,7 @@ const RacePage = () => {
               <RaceSchedule schedule={race.schedule} />
               {(race.results.length > 0 || race.sprintResults.length > 0) && (
                 <div className='md:col-span-12'>
-                  <span className='hidden md:block font-poppins text-lg text-bg-800 dark:text-bg-50'>
+                  <span className='hidden text-lg md:block font-poppins text-bg-800 dark:text-bg-50'>
                     {race.results.length === 0
                       ? 'Sprint Results:'
                       : race.sprintResults.length === 0

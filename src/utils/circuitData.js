@@ -132,7 +132,7 @@ const circuitData = {
     },
     sprint: null,
   },
-  BAK: {
+  baku: {
     schedule: {
       fp1: '2022-06-10T11:00:00Z',
       fp2: '2022-06-10T14:00:00Z',
