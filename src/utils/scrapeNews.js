@@ -1,5 +1,5 @@
 const scrapeNews = async () => {
-  const corsProxy = 'https://pacific-caverns-96128.herokuapp.com/';
+  const corsProxy = 'https://corsproxy.fly.dev/';
   const rssFeedUrl = 'https://www.motorsport.com/rss/f1/news/';
 
   try {
