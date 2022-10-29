@@ -22,14 +22,6 @@ const store = configureStore({
   },
 });
 
-// ReactDOM.render(
-//   <Provider store={store}>
-//     <App />
-//   </Provider>,
-//   document.getElementById('root')
-// );
-
-// new in react 18
 createRoot(document.getElementById('root')).render(
   <Provider store={store}>
     <App />

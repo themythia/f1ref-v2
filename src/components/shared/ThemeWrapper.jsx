@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setTheme } from '../../slices/settingsSlice';
@@ -34,7 +35,12 @@ const ThemeWrapper = ({ children }) => {
   }, [dispatch, storedtheme]);
   return (
     <div className={theme}>
-      <div className='bg-bg-200 dark:bg-bg-900 text-bg-800 dark:text-bg-50 h-full min-h-screen w-screen overflow-x-hidden grid grid-rows-rows'>
+      <div
+        className={clsx(
+          'grid w-screen h-full min-h-screen overflow-x-hidden bg-bg-200 text-bg-800 grid-rows-rows',
+          'dark:bg-bg-900 dark:text-bg-50'
+        )}
+      >
         {children}
       </div>
     </div>
