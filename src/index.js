@@ -27,3 +27,6 @@ createRoot(document.getElementById('root')).render(
     <App />
   </Provider>
 );
+
+// TODO:
+// Refactor navigate() to Link components to be able to open in a tab
