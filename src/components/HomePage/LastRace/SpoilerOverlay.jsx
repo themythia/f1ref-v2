@@ -1,7 +1,9 @@
+import clsx from 'clsx';
 import { IoMdEyeOff } from 'react-icons/io';
 import { useDispatch, useSelector } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
 import { toggleLastRace } from '../../../slices/settingsSlice';
+import CSSTransitionWrapper from '../../shared/CSSTransitionWrapper';
 
 const SpoilerOverlay = () => {
   const dispatch = useDispatch();
@@ -18,11 +20,20 @@ const SpoilerOverlay = () => {
       timeout={200}
     >
       <div
-        className='h-[148px] md:h-[156px] w-full bg-spoiler backdrop-blur-lg absolute shadow-4px dark:shadow-4px-dark rounded flex justify-center items-center cursor-pointer group'
+        className={clsx(
+          'h-[148px] w-full bg-spoiler backdrop-blur-lg absolute shadow-4px rounded flex justify-center items-center cursor-pointer group',
+          'dark:shadow-4px-dark',
+          'md:h-[156px]'
+        )}
         onClick={() => dispatch(toggleLastRace())}
       >
         <IoMdEyeOff />
-        <span className='text-sm font-semibold font-openSans ml-2 group-hover:underline duration-200'>
+        <span
+          className={clsx(
+            'ml-2 text-sm font-semibold duration-200 font-openSans',
+            'group-hover:underline'
+          )}
+        >
           Show Race Results
         </span>
       </div>
