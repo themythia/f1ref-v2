@@ -1,6 +1,13 @@
+import clsx from 'clsx';
+
 const InfoItem = ({ title, info }) => {
   return (
-    <div className='flex flex-row justify-between rounded shadow-2px dark:shadow-2px-dark bg-bg-200 dark:bg-bg-900 p-2 font-openSans text-sm text-left w-full h-min col-span-4'>
+    <div
+      className={clsx(
+        'flex flex-row justify-between w-full col-span-4 p-2 text-sm text-left rounded shadow-2px bg-bg-200 font-openSans h-min',
+        'dark:shadow-2px-dark dark:bg-bg-900'
+      )}
+    >
       <span className='font-semibold'>{title}</span>
       <span className='text-right'>{info}</span>
     </div>

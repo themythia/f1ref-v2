@@ -12,6 +12,7 @@ import { shapeDriverRaceStats } from '../../utils/api/shapeRaceStats';
 import { setSelector } from '../../slices/settingsSlice';
 import Error from '../shared/Error';
 import LoadingSpinner from '../shared/LoadingSpinner';
+import clsx from 'clsx';
 
 const DriverPage = () => {
   const { driverId } = useParams();
@@ -67,15 +68,37 @@ const DriverPage = () => {
   }
 
   return (
-    <main className='p-4 sm:p-8 md:p-6 lg:px-[200px] xl:px-[calc((100vw-1128px)/2)] row-start-2 row-end-3 '>
+    <main
+      className={clsx(
+        'p-4 row-start-2 row-end-3',
+        'sm:p-8',
+        'md:p-6',
+        'lg:px-[200px]',
+        'xl:px-[calc((100vw-1128px)/2)]'
+      )}
+    >
       {(error || driverError) && <Error />}
       {loading ? (
-        <div className='h-full w-full flex flex-row justify-center items-center'>
+        <div className='flex flex-row items-center justify-center w-full h-full'>
           <LoadingSpinner />
         </div>
       ) : (
-        <div className='bg-bg-50 dark:bg-bg-800 rounded shadow-2px dark:shadow-2px-dark p-4 md:p-6 w-full h-min grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12 gap-x-4 gap-y-4 md:gap-x-6 md:gap-y-6 animate__animated animate__fadeIn'>
-          <div className='w-full col-span-4 sm:col-span-8 md:col-span-12 aspect-16/9 overflow-hidden rounded shadow-2px dark:shadow-2px-dark'>
+        <div
+          className={clsx(
+            'grid w-full grid-cols-4 h-min p-4 rounded bg-bg-50 shadow-2px gap-x-4 gap-y-4 animate__animated animate__fadeIn',
+            'dark:bg-bg-800 dark:shadow-2px-dark',
+            'sm:grid-cols-8',
+            'md:p-6 md:grid-cols-12 md:gap-x-6 md:gap-y-6'
+          )}
+        >
+          <div
+            className={clsx(
+              'w-full col-span-4 overflow-hidden rounded aspect-16/9 shadow-2px',
+              'dark:shadow-2px-dark',
+              'sm:col-span-8',
+              'md:col-span-12'
+            )}
+          >
             <img
               src={
                 driver.id === 'hulkenberg' ? hulkenbergPic : driver.image.big
