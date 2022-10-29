@@ -1,14 +1,16 @@
+import clsx from 'clsx';
 import { CSSTransition } from 'react-transition-group';
 
 const CSSTransitionWrapper = ({ classNames, children, inState }) => {
+  const { enter, exit } = classNames;
   return (
     <CSSTransition
       in={inState}
       mountOnEnter
       unmountOnExit
       classNames={{
-        enterActive: 'animate__animated animate__faster ' + classNames.enter,
-        exitActive: 'animate__animated animate__faster ' + classNames.exit,
+        enterActive: clsx('animate__animated animate__faster', enter),
+        exitActive: clsx('animate__animated animate__faster', exit),
       }}
       timeout={500}
     >
