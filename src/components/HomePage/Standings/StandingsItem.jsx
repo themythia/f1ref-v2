@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import TeamBar from './TeamBar';
 
 const StandingsItem = ({ data, type }) => {
@@ -27,20 +28,25 @@ const StandingsItem = ({ data, type }) => {
   }
 
   return (
-    <div className='flex items-center p-2 bg-bg-200 dark:bg-bg-900 rounded shadow-2px dark:shadow-2px-dark'>
-      <span className='font-poppins text-lg w-6 text-center'>
+    <div
+      className={clsx(
+        'flex items-center p-2 rounded bg-bg-200 shadow-2px',
+        'dark:bg-bg-900 dark:shadow-2px-dark'
+      )}
+    >
+      <span className='w-6 text-lg text-center font-poppins'>
         {data.position}
       </span>
-      <div className='flex flex-row w-full justify-between items-center font-openSans'>
+      <div className='flex flex-row items-center justify-between w-full font-openSans'>
         <div className='flex flex-row'>
           <TeamBar team={data.team} />
-          <span className='font-semibold text-sm sm:w-32'>{data.name}</span>
+          <span className='text-sm font-semibold sm:w-32'>{data.name}</span>
         </div>
         {type === 'drivers' && (
-          <span className='hidden sm:block text-left w-32 text-sm'>{team}</span>
+          <span className='hidden w-32 text-sm text-left sm:block'>{team}</span>
         )}
         <div className='text-right sm:w-20'>
-          <span className='font-semibold text-sm'>{data.points}</span>
+          <span className='text-sm font-semibold'>{data.points}</span>
           <span className='text-xs'> PTS</span>
         </div>
       </div>
