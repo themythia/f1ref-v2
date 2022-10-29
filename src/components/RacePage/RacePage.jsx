@@ -19,6 +19,7 @@ import { shapeScheduleData } from '../../utils/api/shapeScheduleData';
 import Error from '../shared/Error';
 import LoadingSpinner from '../shared/LoadingSpinner';
 import { setSelector } from '../../slices/settingsSlice';
+import clsx from 'clsx';
 
 const RacePage = () => {
   const { round } = useParams();
@@ -88,19 +89,34 @@ const RacePage = () => {
   }
 
   return (
-    <main className='p-4 sm:p-8 md:p-6 lg:px-[200px] xl:px-[calc((100vw-1128px)/2)] row-start-2 row-end-3'>
+    <main
+      className={clsx(
+        'p-4 row-start-2 row-end-3',
+        'sm:p-8',
+        'md:p-6',
+        'lg:px-[200px]',
+        'xl:px-[calc((100vw-1128px)/2)]'
+      )}
+    >
       {(resultsError || scheduleError || sprintError) && <Error />}
       {loading ? (
         <div className='flex flex-row items-center justify-center w-full h-full'>
           <LoadingSpinner />
         </div>
       ) : (
-        <div className='grid w-full grid-cols-4 p-4 rounded bg-bg-50 dark:bg-bg-800 shadow-2px dark:shadow-2px-dark md:p-6 h-min sm:grid-cols-8 md:grid-cols-12 gap-x-4 gap-y-4 md:gap-x-6 md:gap-y-6 animate__animated animate__fadeIn'>
+        <div
+          className={clsx(
+            'grid w-full grid-cols-4 p-4 rounded bg-bg-50 shadow-2px h-min gap-x-4 gap-y-4 animate__animated animate__fadeIn',
+            'dark:bg-bg-800 dark:shadow-2px-dark',
+            'sm:grid-cols-8',
+            'md:p-6 md:grid-cols-12 md:gap-x-6 md:gap-y-6'
+          )}
+        >
           <CircuitMap circuit={race.circuitId} />
           <RaceTitle countryCode={race.countryCode} name={race.raceName} />
           {width < 905 && <RacePageToggle race={race} resultsOnly={false} />}
           {width >= 905 && (
-            <React.Fragment>
+            <>
               <CircuitInfo race={race} />
               <RaceSchedule schedule={race.schedule} />
               {(race.results.length > 0 || race.sprintResults.length > 0) && (
@@ -115,7 +131,7 @@ const RacePage = () => {
                   <RacePageToggle race={race} resultsOnly={true} />
                 </div>
               )}
-            </React.Fragment>
+            </>
           )}
         </div>
       )}

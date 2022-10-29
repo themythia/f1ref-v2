@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { ReactComponent as AlbertPark } from '../../assets/circuits/albert_park.svg';
 import { ReactComponent as Americas } from '../../assets/circuits/americas.svg';
 import { ReactComponent as Bahrain } from '../../assets/circuits/bahrain.svg';
@@ -52,7 +53,14 @@ const CircuitMap = ({ circuit }) => {
   const DynamicSVGMap = components[circuit];
 
   return (
-    <DynamicSVGMap className='w-full col-span-4 aspect-16/9 sm:col-span-8 md:col-start-3 md:col-end-11 fill-bg-800 dark:fill-bg-50' />
+    <DynamicSVGMap
+      className={clsx(
+        'w-full col-span-4 aspect-16/9 fill-bg-800',
+        'dark:fill-bg-50',
+        'sm:col-span-8',
+        'md:col-start-3 md:col-end-11'
+      )}
+    />
   );
 };
 export default CircuitMap;
