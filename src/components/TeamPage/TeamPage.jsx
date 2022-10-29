@@ -16,6 +16,7 @@ import { setSelector } from '../../slices/settingsSlice';
 import Error from '../shared/Error';
 import LoadingSpinner from '../shared/LoadingSpinner';
 import Drivers from './Drivers';
+import clsx from 'clsx';
 
 const TeamPage = () => {
   const { teamId } = useParams();
@@ -77,18 +78,37 @@ const TeamPage = () => {
   }
 
   return (
-    <main className='p-4 sm:p-8 md:p-6 lg:px-[200px] xl:px-[calc((100vw-1128px)/2)] row-start-2 row-end-3 '>
+    <main
+      className={clsx(
+        'p-4 row-start-2 row-end-3',
+        'sm:p-8',
+        'md:p-6',
+        'lg:px-[200px]',
+        'xl:px-[calc((100vw-1128px)/2)]'
+      )}
+    >
       {(statsError || dError || tError) && <Error />}
       {loading ? (
-        <div className='h-full w-full flex flex-row justify-center items-center'>
+        <div className='flex flex-row items-center justify-center w-full h-full'>
           <LoadingSpinner />
         </div>
       ) : (
-        <div className='bg-bg-50 dark:bg-bg-800 rounded shadow-2px dark:shadow-2px-dark p-4 md:p-6 w-full h-min grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12 gap-x-4 gap-y-4 md:gap-x-6 md:gap-y-6 animate__animated animate__fadeIn'>
+        <div
+          className={clsx(
+            'bg-bg-50 rounded shadow-2px p-4 w-full h-min grid grid-cols-4 gap-x-4 gap-y-4 animate__animated animate__fadeIn',
+            'dark:bg-bg-800 dark:shadow-2px-dark',
+            'sm:grid-cols-8',
+            'md:p-6 md:grid-cols-12 md:gap-x-6 md:gap-y-6'
+          )}
+        >
           <div
-            className={`w-full col-span-4 sm:col-span-8 md:col-span-12 aspect-16/9 overflow-hidden rounded shadow-2px dark:shadow-2px-dark ${teamColors(
-              teamCode
-            )}`}
+            className={clsx(
+              'w-full col-span-4 aspect-16/9 overflow-hidden rounded shadow-2px',
+              'dark:shadow-2px-dark',
+              'sm:col-span-8',
+              'md:col-span-12',
+              teamColors(teamCode)
+            )}
           >
             <TeamLogo type='big' team={teamId} />
           </div>
