@@ -3,6 +3,7 @@ import SelectorScrollArrow from './SelectorScrollArrow';
 import { ScrollMenu } from 'react-horizontal-scrolling-menu';
 import useDrag from '../../../utils/useDrag';
 import { useEffect, useState } from 'react';
+import clsx from 'clsx';
 
 const Selector = (props) => {
   const [centered, setCentered] = useState(true);
@@ -17,12 +18,6 @@ const Selector = (props) => {
         }
       });
 
-  const [style, setStyle] = useState('gap-x-1');
-  useEffect(() => {
-    if (!centered) setStyle('flex flex-row justify-center gap-x-1');
-    else setStyle('gap-x-1');
-  }, [style, centered]);
-
   return (
     <div className='relative' onMouseLeave={dragStop}>
       <ScrollMenu
@@ -35,7 +30,10 @@ const Selector = (props) => {
         onMouseDown={() => dragStart}
         onMouseUp={() => dragStop}
         onMouseMove={handleDrag}
-        scrollContainerClassName={style}
+        scrollContainerClassName={clsx({
+          'gap-x-1': centered,
+          'flex flex-row justify-center gap-x-1': !centered,
+        })}
       >
         {props.options.map((session, index) => (
           <SelectorButton

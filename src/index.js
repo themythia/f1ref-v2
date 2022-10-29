@@ -30,3 +30,4 @@ createRoot(document.getElementById('root')).render(
 
 // TODO:
 // Refactor navigate() to Link components to be able to open in a tab
+// Refactor selector to slick carousel

@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSelector } from '../../../slices/settingsSlice';
@@ -17,11 +18,20 @@ const SelectorButton = ({ type, index, text, itemId }) => {
 
   return (
     <button
-      className={`py-1 px-2 my-4 md:my-6 font-openSans text-sm border rounded-full border-bg-800 dark:border-bg-50 h-7 flex items-center select-none disabled:line-through disabled:decoration-2 disabled:hover:bg-bg-50 disabled:hover:dark:bg-bg-800 disabled:cursor-not-allowed ${
-        active
-          ? 'bg-bg-800 text-bg-50 dark:bg-bg-50 dark:text-bg-800'
-          : 'bg-bg-50 hover:bg-bg-200 duration-200 text-bg-800 dark:bg-bg-800 hover:dark:bg-bg-900 dark:text-bg-50 hover:scale-105 active:scale-100'
-      }`}
+      className={clsx(
+        'py-1 px-2 my-4 font-openSans text-sm border rounded-full border-bg-800 h-7 flex items-center select-none',
+        'dark:border-bg-50',
+        'disabled:line-through disabled:decoration-2 disabled:cursor-not-allowed',
+        'disabled:hover:bg-bg-50 disabled:hover:dark:bg-bg-800',
+        'md:my-6',
+        {
+          'bg-bg-800 text-bg-50 dark:bg-bg-50 dark:text-bg-800': active,
+          'bg-bg-50 text-bg-800 duration-200': !active,
+          'dark:bg-bg-800 dark:text-bg-50': !active,
+          'hover:scale-105 hover:bg-bg-200 hover:dark:bg-bg-900': !active,
+          'active:scale-100': !active,
+        }
+      )}
       onClick={() => dispatch(setSelector({ type, index }))}
       disabled={disabledButtons?.includes(index)}
     >

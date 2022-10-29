@@ -1,9 +1,11 @@
+import clsx from 'clsx';
 import { useState, useEffect, useRef, Fragment } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   addDisabledSelector,
   setSelector,
 } from '../../../slices/settingsSlice';
+import CountdownItem from './CountdownItem';
 
 const Countdown = ({ time }) => {
   const [timeLeft, setTimeLeft] = useState(null);
@@ -69,34 +71,19 @@ const Countdown = ({ time }) => {
   };
 
   return (
-    <div className='flex flex-row justify-center gap-x-4 text-bg-800 dark:text-bg-50'>
+    <div
+      className={clsx(
+        'flex flex-row justify-center gap-x-4 text-bg-800',
+        'dark:text-bg-50'
+      )}
+    >
       {timeLeft > 0 ? (
-        <Fragment>
-          <div className='flex flex-col w-12'>
-            <p className='font-poppins text-4xl w-full text-center'>
-              {daysLeft < 10 ? `0${daysLeft}` : daysLeft}
-            </p>
-            <p className='font-openSans text-center text-xs'>Days</p>
-          </div>
-          <div className='flex flex-col w-12'>
-            <p className='font-poppins text-4xl w-full text-center'>
-              {hoursLeft < 10 ? `0${hoursLeft}` : hoursLeft}
-            </p>
-            <p className='font-openSans text-center text-xs'>Hours</p>
-          </div>
-          <div className='flex flex-col w-12'>
-            <p className='font-poppins text-4xl w-full text-center'>
-              {minutesLeft < 10 ? `0${minutesLeft}` : minutesLeft}
-            </p>
-            <p className='font-openSans text-center text-xs'>Mins</p>
-          </div>
-          <div className='flex flex-col w-12'>
-            <p className='font-poppins text-4xl w-full text-center'>
-              {secondsLeft < 10 ? `0${secondsLeft}` : secondsLeft}
-            </p>
-            <p className='font-openSans text-center text-xs'>Secs</p>
-          </div>
-        </Fragment>
+        <>
+          <CountdownItem content='Days' timeLeft={daysLeft} />
+          <CountdownItem content='Hours' timeLeft={hoursLeft} />
+          <CountdownItem content='Mins' timeLeft={minutesLeft} />
+          <CountdownItem content='Secs' timeLeft={secondsLeft} />
+        </>
       ) : (
         <p>Countdown ended...</p>
       )}

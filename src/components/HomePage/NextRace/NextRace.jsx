@@ -9,6 +9,7 @@ import useFetch from '../../../utils/useFetch';
 import { shapeScheduleData } from '../../../utils/api/shapeScheduleData';
 import Error from '../../shared/Error';
 import LoadingSpinner from '../../shared/LoadingSpinner';
+import clsx from 'clsx';
 
 const NextRace = () => {
   const nextRace = useSelector((store) => store.schedule.nextRace);
@@ -52,21 +53,44 @@ const NextRace = () => {
   }, [activeButton, activeSessionTime, nextRace.circuitId, nextRace]);
 
   return (
-    <div className='bg-bg-50 dark:bg-bg-800 rounded shadow-2px dark:shadow-2px-dark p-4 md:p-6 w-full col-span-full sm:col-span-4 md:col-span-6 mb-4 md:mb-6'>
-      <p className='font-poppins text-lg text-bg-800 dark:text-bg-50 mb-4 md:mb-6'>
+    <div
+      className={clsx(
+        'bg-bg-50 rounded shadow-2px p-4 w-full col-span-full',
+        'dark:bg-bg-800 dark:shadow-2px-dark',
+        'sm:col-span-4',
+        'md:p-6 md:col-span-6 mb-4 md:mb-6'
+      )}
+    >
+      <p
+        className={clsx(
+          'font-poppins text-lg text-bg-800',
+          'dark:text-bg-50',
+          'mb-4 md:mb-6'
+        )}
+      >
         Next Race:
       </p>
       {error && <Error />}
       {loading ? (
-        <div className='relative top-[calc(50% - 44px)] md:top-[calc(50%-52px)]'>
+        <div
+          className={clsx(
+            'relative top-[calc(50% - 44px)]',
+            'md:top-[calc(50%-52px)]'
+          )}
+        >
           <LoadingSpinner />
         </div>
       ) : (
-        <React.Fragment>
+        <>
           <div className='flex'>
             <Flag country={nextRace.countryCode} size='36' />
-            <div className='flex flex-col font-openSans text-bg-800 dark:text-bg-50 ml-4'>
-              <span className='font-semibold text-sm'>{nextRace.raceName}</span>
+            <div
+              className={clsx(
+                'flex flex-col ml-4 font-openSans text-bg-800',
+                'dark:text-bg-50'
+              )}
+            >
+              <span className='text-sm font-semibold'>{nextRace.raceName}</span>
               <span className='text-xs'>{nextRace.circuitName}</span>
             </div>
           </div>
@@ -74,7 +98,7 @@ const NextRace = () => {
           <SwitchTransitionWrapper state={activeButton}>
             <Countdown time={activeSessionTime} />
           </SwitchTransitionWrapper>
-        </React.Fragment>
+        </>
       )}
     </div>
   );

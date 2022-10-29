@@ -1,8 +1,15 @@
+import clsx from 'clsx';
+
 const LoadingSpinner = () => {
   return (
-    <div className='flex flex-row items-center justify-center transition ease-in-out duration-150 text-bg-800 dark:text-bg-50'>
+    <div
+      className={clsx(
+        'flex flex-row items-center justify-center transition duration-150 ease-in-out text-bg-800',
+        'dark:text-bg-50'
+      )}
+    >
       <svg
-        className='animate-spin w-10 h-10'
+        className='w-10 h-10 animate-spin'
         xmlns='http://www.w3.org/2000/svg'
         fill='none'
         viewBox='0 0 24 24'
