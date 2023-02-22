@@ -28,6 +28,7 @@ const LastRace = () => {
 
   return (
     <div
+      id='last-race-test'
       className={clsx(
         'w-full p-4 mb-4 rounded bg-bg-50 shadow-2px col-span-full',
         'dark:bg-bg-800 dark:shadow-2px-dark',
