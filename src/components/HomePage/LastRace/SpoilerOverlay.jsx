@@ -8,7 +8,6 @@ import CSSTransitionWrapper from '../../shared/CSSTransitionWrapper';
 const SpoilerOverlay = () => {
   const dispatch = useDispatch();
   const hideLastRace = useSelector((store) => store.settings.hideLastRace);
-
   return (
     <CSSTransition
       in={hideLastRace}
@@ -26,6 +25,7 @@ const SpoilerOverlay = () => {
           'md:h-[156px]'
         )}
         onClick={() => dispatch(toggleLastRace())}
+        data-testid='spoiler-overlay'
       >
         <IoMdEyeOff />
         <span
