@@ -1,20 +1,12 @@
 import { screen, waitFor } from '@testing-library/react';
 import LastRace from './LastRace';
-import { lastRaceMock } from './LastRace.mock';
-import { renderWithProviders } from '../../../utils/test/reduxProvider';
-import { fetchMock } from '../../../utils/test/fetchMock';
+import { renderWithReduxProvider } from '../../../utils/test/reduxProvider';
 
-global.fetch = fetchMock(lastRaceMock);
-
-beforeEach(() => {
-  fetch.mockClear();
-});
-
-test('LastRace: works', async () => {
-  renderWithProviders(<LastRace />);
+test('LastRace: component getting rendered', async () => {
+  renderWithReduxProvider(<LastRace />);
 
   await waitFor(() => {
-    const lastRaceTitle = screen.getByText(/last race/i);
-    expect(lastRaceTitle).toBeInTheDocument();
+    const lastRace = screen.getByTestId('last-race');
+    expect(lastRace).toBeInTheDocument();
   });
 });

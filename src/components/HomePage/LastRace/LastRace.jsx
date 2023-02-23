@@ -28,13 +28,13 @@ const LastRace = () => {
 
   return (
     <div
-      id='last-race-test'
       className={clsx(
         'w-full p-4 mb-4 rounded bg-bg-50 shadow-2px col-span-full',
         'dark:bg-bg-800 dark:shadow-2px-dark',
         'sm:col-span-4',
         'md:p-6 md:col-span-6 md:mb-6'
       )}
+      data-testid='last-race'
     >
       <p
         className={clsx(

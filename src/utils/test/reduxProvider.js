@@ -21,7 +21,7 @@ export const setupStore = configureStore({
   reducer: rootReducer,
 });
 
-export function renderWithProviders(ui) {
+export function renderWithReduxProvider(ui) {
   function Wrapper({ children }) {
     return <Provider store={setupStore}>{children}</Provider>;
   }
