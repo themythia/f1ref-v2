@@ -15,8 +15,6 @@ export const standingsSlice = createSlice({
     },
     addStandings: (state, action) => {
       return (state = action.payload);
-      // state.drivers.push(...action.payload.drivers);
-      // state.constructors.push(...action.payload.constructors);
     },
   },
 });
