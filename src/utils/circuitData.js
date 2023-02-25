@@ -1,12 +1,5 @@
 const circuitData = {
   bahrain: {
-    schedule: {
-      fp1: '2022-03-18T12:00:00Z',
-      fp2: '2022-03-18T15:00:00Z',
-      fp3: '2022-03-19T12:00:00Z',
-      quali: '2022-03-19T15:00:00Z',
-      race: '2022-03-20T15:00:00Z',
-    },
     stats: {
       firstGp: 2004,
       laps: 57,
@@ -16,16 +9,8 @@ const circuitData = {
       recordHolder: 'Pedro de la Rosa',
       recordYear: 2005,
     },
-    sprint: null,
   },
   jeddah: {
-    schedule: {
-      fp1: '2022-03-25T14:00:00Z',
-      fp2: '2022-03-25T17:00:00Z',
-      fp3: '2022-03-26T14:00:00Z',
-      quali: '2022-03-26T17:00:00Z',
-      race: '2022-03-27T17:00:00Z',
-    },
     stats: {
       firstGp: 2021,
       laps: 50,
@@ -35,35 +20,19 @@ const circuitData = {
       recordHolder: 'Lewis Hamilton',
       recordYear: 2021,
     },
-    sprint: null,
   },
   albert_park: {
-    schedule: {
-      fp1: '2022-04-08T03:00:00Z',
-      fp2: '2022-04-08T06:00:00Z',
-      fp3: '2022-04-09T03:00:00Z',
-      quali: '2022-04-09T06:00:00Z',
-      race: '2022-04-10T05:00:00Z',
-    },
     stats: {
       firstGp: 1996,
       laps: 58,
-      length: 5.303,
-      distance: 307.574,
+      length: 5.278,
+      distance: 306.124,
       record: '1:20.260',
       recordHolder: 'Charles Leclerc',
       recordYear: 2022,
     },
-    sprint: null,
   },
   imola: {
-    schedule: {
-      fp1: 'TBC',
-      fp2: 'TBC',
-      fp3: 'TBC',
-      quali: 'TBC',
-      race: '2022-04-24T13:00:00Z',
-    },
     stats: {
       firstGp: 1980,
       laps: 63,
@@ -73,16 +42,8 @@ const circuitData = {
       recordHolder: 'Lewis Hamilton',
       recordYear: 2020,
     },
-    sprint: null,
   },
   miami: {
-    schedule: {
-      fp1: '2022-05-06T18:30:00Z',
-      fp2: '2022-05-06T21:30:00Z',
-      fp3: '2022-05-07T17::00:00Z',
-      quali: '2022-05-07T20:00:00Z',
-      race: '2022-05-08T19:30:00Z',
-    },
     stats: {
       firstGp: 2022,
       laps: 57,
@@ -92,16 +53,8 @@ const circuitData = {
       recordHolder: 'null',
       recordYear: null,
     },
-    sprint: null,
   },
   catalunya: {
-    schedule: {
-      fp1: '2022-05-20T12:00:00Z',
-      fp2: '2022-05-20T15:00:00Z',
-      fp3: '2022-05-21T11:00:00Z',
-      quali: '2022-05-21T14:00:00Z',
-      race: '2022-05-22T13:00:00Z',
-    },
     stats: {
       firstGp: 1991,
       laps: 66,
@@ -111,16 +64,8 @@ const circuitData = {
       recordHolder: 'Max Verstappen',
       recordYear: '2021',
     },
-    sprint: null,
   },
   monaco: {
-    schedule: {
-      fp1: '2022-05-27T12:00:00Z',
-      fp2: '2022-05-27T15:00:00Z',
-      fp3: '2022-05-28T11:00:00Z',
-      quali: '2022-05-28T14:00:00Z',
-      race: '2022-05-29T13:00:00Z',
-    },
     stats: {
       firstGp: 1950,
       laps: 78,
@@ -130,16 +75,8 @@ const circuitData = {
       recordHolder: 'Lewis Hamilton',
       recordYear: 2021,
     },
-    sprint: null,
   },
   baku: {
-    schedule: {
-      fp1: '2022-06-10T11:00:00Z',
-      fp2: '2022-06-10T14:00:00Z',
-      fp3: '2022-06-11T11:00:00Z',
-      quali: '2022-06-11T14:00:00Z',
-      race: '2022-06-12T11:00:00Z',
-    },
     stats: {
       firstGp: 2016,
       laps: 51,
@@ -149,16 +86,8 @@ const circuitData = {
       recordHolder: 'Charles Leclerc',
       recordYear: 2019,
     },
-    sprint: null,
   },
   villeneuve: {
-    schedule: {
-      fp1: '2022-06-17T18:00:00Z',
-      fp2: '2022-06-17T21:00:00Z',
-      fp3: '2022-06-18T17:00:00Z',
-      quali: '2022-06-18T20:00:00Z',
-      race: '2022-06-19T18:00:00Z',
-    },
     stats: {
       firstGp: 1978,
       laps: 70,
@@ -168,16 +97,8 @@ const circuitData = {
       recordHolder: 'Valtteri Bottas',
       recordYear: 2019,
     },
-    sprint: null,
   },
   silverstone: {
-    schedule: {
-      fp1: '2022-07-01T12:00:00Z',
-      fp2: '2022-07-01T15:00:00Z',
-      fp3: '2022-07-02T11:00:00Z',
-      quali: '2022-07-02T14:00:00Z',
-      race: '2022-07-03-14:00:00Z',
-    },
     stats: {
       firstGp: 1950,
       laps: 52,
@@ -187,16 +108,8 @@ const circuitData = {
       recordHolder: 'Max Verstappen',
       recordYear: 2020,
     },
-    sprint: null,
   },
   red_bull_ring: {
-    schedule: {
-      fp1: 'TBC',
-      fp2: 'TBC',
-      fp3: 'TBC',
-      quali: 'TBC',
-      race: '2022-07-10T13:00:00Z',
-    },
     stats: {
       firstGp: 1970,
       laps: 71,
@@ -206,16 +119,8 @@ const circuitData = {
       recordHolder: 'Carlos Sainz',
       recordYear: 2020,
     },
-    sprint: null,
   },
   ricard: {
-    schedule: {
-      fp1: '2022-07-22T12:00:00Z',
-      fp2: '2022-07-22T15:00:00Z',
-      fp3: '2022-07-23T11:00:00Z',
-      quali: '2022-07-23T14:00:00Z',
-      race: '2022-07-24T3:00:00Z',
-    },
     stats: {
       firstGp: 1971,
       laps: 53,
@@ -225,16 +130,8 @@ const circuitData = {
       recordHolder: 'Sebastian Vettel',
       recordYear: 2019,
     },
-    sprint: null,
   },
   hungaroring: {
-    schedule: {
-      fp1: '2022-07-29T12:00:00Z',
-      fp2: '2022-07-29T15:00:00Z',
-      fp3: '2022-07-30T11:00:00Z',
-      quali: '2022-07-30T14:00:00Z',
-      race: '2022-07-31T13:00:00Z',
-    },
     stats: {
       firstGp: 1986,
       laps: 70,
@@ -244,16 +141,8 @@ const circuitData = {
       recordHolder: 'Lewis Hamilton',
       recordYear: 2020,
     },
-    sprint: null,
   },
   spa: {
-    schedule: {
-      fp1: '2022-08-26T12:00:00Z',
-      fp2: '2022-08-26T15:00:00Z',
-      fp3: '2022-08-27T11:00:00Z',
-      quali: '2022-08-27T14:00:00Z',
-      race: '2022-08-28T13:00:00Z',
-    },
     stats: {
       firstGp: 1950,
       laps: 44,
@@ -263,16 +152,8 @@ const circuitData = {
       recordHolder: 'Valtteri Bottas',
       recordYear: '2018',
     },
-    sprint: null,
   },
   zandvoort: {
-    schedule: {
-      fp1: '2022-09-02T12:00:00Z',
-      fp2: '2022-09-02T15:00:00Z',
-      fp3: '2022-09-03T11:00:00Z',
-      quali: '2022-09-03T14:00:00Z',
-      race: '2022-09-04T13:00:00Z',
-    },
     stats: {
       firstGp: 1952,
       laps: 72,
@@ -282,16 +163,8 @@ const circuitData = {
       recordHolder: 'Lewis Hamilton ',
       recordYear: '2021',
     },
-    sprint: null,
   },
   monza: {
-    schedule: {
-      fp1: '2022-09-09T12:00:00Z',
-      fp2: '2022-09-09T15:00:00Z',
-      fp3: '2022-09-10T11:00:00Z',
-      quali: '2022-09-10T14:00:00Z',
-      race: '2022-09-11T13:00:00Z',
-    },
     stats: {
       firstGp: 1950,
       laps: 53,
@@ -301,16 +174,8 @@ const circuitData = {
       recordHolder: 'Rubens Barrichello',
       recordYear: '2004',
     },
-    sprint: null,
   },
   marina_bay: {
-    schedule: {
-      fp1: '2022-09-30T10:00:00Z',
-      fp2: '2022-09-30T13:00:00Z',
-      fp3: '2022-10-01T10:00:00Z',
-      quali: '2022-10-01T13:00:00Z',
-      race: '2022-10-02T12:00:00Z',
-    },
     stats: {
       firstGp: 2008,
       laps: 61,
@@ -320,16 +185,8 @@ const circuitData = {
       recordHolder: 'Kevin Magnussen',
       recordYear: '2018',
     },
-    sprint: null,
   },
   suzuka: {
-    schedule: {
-      fp1: '2022-10-07T04:00:00Z',
-      fp2: '2022-10-07T07:00:00Z',
-      fp3: '2022-10-08T04:00:00Z',
-      quali: '2022-10-08T07:00:00Z',
-      race: '2022-10-09T05:00:00Z',
-    },
     stats: {
       firstGp: 1987,
       laps: 53,
@@ -339,16 +196,8 @@ const circuitData = {
       recordHolder: 'Lewis Hamilton',
       recordYear: 2019,
     },
-    sprint: null,
   },
   americas: {
-    schedule: {
-      fp1: '2022-10-21T19:00:00Z',
-      fp2: '2022-10-21T22:00:00Z',
-      fp3: '2022-10-22T19:00:00Z',
-      quali: '2022-10-22T22:00:00Z',
-      race: '2022-10-23T19:00:00Z',
-    },
     stats: {
       firstGp: 2012,
       laps: 56,
@@ -358,16 +207,8 @@ const circuitData = {
       recordHolder: 'Charles Leclerc',
       recordYear: 2019,
     },
-    sprint: null,
   },
   rodriguez: {
-    schedule: {
-      fp1: '2022-10-28T18:00:00Z',
-      fp2: '2022-10-28T21:00:00Z',
-      fp3: '2022-10-29T17:00:00Z',
-      quali: '2022-10-29T20:00:00Z',
-      race: '2022-10-30T20:00:00Z',
-    },
     stats: {
       firstGp: 1963,
       laps: 71,
@@ -377,16 +218,8 @@ const circuitData = {
       recordHolder: 'Valtteri Bottas',
       recordYear: 2021,
     },
-    sprint: null,
   },
   interlagos: {
-    schedule: {
-      fp1: 'TBC',
-      fp2: 'TBC',
-      fp3: 'TBC',
-      quali: 'TBC',
-      race: '2022-11-13T18:00:00Z',
-    },
     stats: {
       firstGp: 1973,
       laps: 71,
@@ -396,16 +229,8 @@ const circuitData = {
       recordHolder: 'Valtteri Bottas',
       recordYear: 2018,
     },
-    sprint: null,
   },
   yas_marina: {
-    schedule: {
-      fp1: '2022-11-18T10:00:00Z',
-      fp2: '2022-11-18T13:00:00Z',
-      fp3: '2022-11-19T11:00:00Z',
-      quali: '2022-11-19T14:00:00Z',
-      race: '2022-11-20T13:00:00Z',
-    },
     stats: {
       firstGp: 2009,
       laps: 58,
@@ -415,7 +240,28 @@ const circuitData = {
       recordHolder: 'Max Verstappen',
       recordYear: 2021,
     },
-    sprint: null,
+  },
+  vegas: {
+    stats: {
+      firstGp: 2023,
+      laps: 50,
+      length: 6.12,
+      distance: 305.88,
+      record: 'N/A',
+      recordHolder: 'N/A',
+      recordYear: 2023,
+    },
+  },
+  losail: {
+    stats: {
+      firstGp: 2021,
+      laps: 57,
+      length: 5.38,
+      distance: 308.826,
+      record: '1:23.196',
+      recordHolder: 'Max Verstappen',
+      recordYear: 2021,
+    },
   },
 };
 export default circuitData;

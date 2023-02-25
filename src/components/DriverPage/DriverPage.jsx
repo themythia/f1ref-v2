@@ -4,7 +4,6 @@ import { Navigate, useParams } from 'react-router-dom';
 import { addDrivers, addDriverStats } from '../../slices/driversSlice';
 import RaceTitle from '../RacePage/RaceTitle';
 import DriverInfoToggle from './DriverInfoToggle';
-import hulkenbergPic from '../../assets/driverPics/hulkenberg.webp';
 import DriverBio from './DriverBio';
 import useFetch from '../../utils/useFetch';
 import { shapeDriverData } from '../../utils/api/shapeDriverData';
@@ -99,13 +98,7 @@ const DriverPage = () => {
               'md:col-span-12'
             )}
           >
-            <img
-              src={
-                driver.id === 'hulkenberg' ? hulkenbergPic : driver.image.big
-              }
-              alt={driver.name}
-              className='w-full'
-            />
+            <img src={driver.image.big} alt={driver.name} className='w-full' />
           </div>
           <RaceTitle countryCode={driver.countryCode} name={driver.name} />
           <DriverBio driver={driver} />

@@ -18,7 +18,6 @@ export const shapeDriverData = (data) => {
       image: {
         profile: driverPics(d.code).profile,
         big: driverPics(d.code).big,
-        helmet: driverPics(d.code).helmet,
       },
     };
 

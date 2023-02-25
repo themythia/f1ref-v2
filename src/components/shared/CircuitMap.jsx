@@ -48,6 +48,8 @@ const CircuitMap = ({ circuit }) => {
     villeneuve: Villeneuve,
     yas_marina: YasMarina,
     zandvoort: Zandvoort,
+    losail: Zandvoort,
+    vegas: Zandvoort,
   };
 
   const DynamicSVGMap = components[circuit];

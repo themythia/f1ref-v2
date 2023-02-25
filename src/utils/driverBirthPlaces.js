@@ -21,5 +21,7 @@ const driverBirthPlaces = {
   gasly: 'Rouen, France',
   vettel: 'Heppenheim, Germany',
   de_vries: 'Uitwellingerga, Netherlands',
+  sargenat: 'Fort Lauderdale, Florida',
+  piastri: 'Melbourne, Victoria',
 };
 export default driverBirthPlaces;
