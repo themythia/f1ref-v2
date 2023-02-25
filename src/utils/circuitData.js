@@ -1,5 +1,7 @@
 const circuitData = {
   bahrain: {
+    circuitMap:
+      'https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Bahrain%20carbon.png',
     stats: {
       firstGp: 2004,
       laps: 57,
@@ -11,6 +13,8 @@ const circuitData = {
     },
   },
   jeddah: {
+    circuitMap:
+      'https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Saudi%20Arabia%20carbon.png',
     stats: {
       firstGp: 2021,
       laps: 50,
@@ -22,6 +26,8 @@ const circuitData = {
     },
   },
   albert_park: {
+    circuitMap:
+      'https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Australia%20carbon.png',
     stats: {
       firstGp: 1996,
       laps: 58,
@@ -33,6 +39,8 @@ const circuitData = {
     },
   },
   imola: {
+    circuitMap:
+      'https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Emilia%20Romagna%20carbon.png',
     stats: {
       firstGp: 1980,
       laps: 63,
@@ -44,6 +52,8 @@ const circuitData = {
     },
   },
   miami: {
+    circuitMap:
+      'https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Miami%20carbon.png',
     stats: {
       firstGp: 2022,
       laps: 57,
@@ -55,6 +65,8 @@ const circuitData = {
     },
   },
   catalunya: {
+    circuitMap:
+      'https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Spain%20carbon.png',
     stats: {
       firstGp: 1991,
       laps: 66,
@@ -66,6 +78,8 @@ const circuitData = {
     },
   },
   monaco: {
+    circuitMap:
+      'https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Monte%20Carlo%20carbon.png',
     stats: {
       firstGp: 1950,
       laps: 78,
@@ -77,6 +91,8 @@ const circuitData = {
     },
   },
   baku: {
+    circuitMap:
+      'https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Azerbaijan%20carbon.png',
     stats: {
       firstGp: 2016,
       laps: 51,
@@ -88,6 +104,8 @@ const circuitData = {
     },
   },
   villeneuve: {
+    circuitMap:
+      'https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Canada%20carbon.png',
     stats: {
       firstGp: 1978,
       laps: 70,
@@ -99,6 +117,8 @@ const circuitData = {
     },
   },
   silverstone: {
+    circuitMap:
+      'https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Great%20Britain%20carbon.png',
     stats: {
       firstGp: 1950,
       laps: 52,
@@ -110,6 +130,8 @@ const circuitData = {
     },
   },
   red_bull_ring: {
+    circuitMap:
+      'https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Austria%20carbon.png',
     stats: {
       firstGp: 1970,
       laps: 71,
@@ -121,6 +143,8 @@ const circuitData = {
     },
   },
   ricard: {
+    circuitMap:
+      'https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/France%20carbon.png',
     stats: {
       firstGp: 1971,
       laps: 53,
@@ -132,6 +156,8 @@ const circuitData = {
     },
   },
   hungaroring: {
+    circuitMap:
+      'https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Hungar%20carbon.png',
     stats: {
       firstGp: 1986,
       laps: 70,
@@ -143,6 +169,8 @@ const circuitData = {
     },
   },
   spa: {
+    circuitMap:
+      'https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Belgium%20carbon.png',
     stats: {
       firstGp: 1950,
       laps: 44,
@@ -154,6 +182,8 @@ const circuitData = {
     },
   },
   zandvoort: {
+    circuitMap:
+      'https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Netherlands%20carbon.png',
     stats: {
       firstGp: 1952,
       laps: 72,
@@ -165,6 +195,8 @@ const circuitData = {
     },
   },
   monza: {
+    circuitMap:
+      'https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Italy%20carbon.png',
     stats: {
       firstGp: 1950,
       laps: 53,
@@ -176,6 +208,8 @@ const circuitData = {
     },
   },
   marina_bay: {
+    circuitMap:
+      'https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Singapore%20carbon.png',
     stats: {
       firstGp: 2008,
       laps: 61,
@@ -187,6 +221,8 @@ const circuitData = {
     },
   },
   suzuka: {
+    circuitMap:
+      'https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Japan%20carbon.png',
     stats: {
       firstGp: 1987,
       laps: 53,
@@ -198,6 +234,8 @@ const circuitData = {
     },
   },
   americas: {
+    circuitMap:
+      'https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/USA%20carbon.png',
     stats: {
       firstGp: 2012,
       laps: 56,
@@ -209,6 +247,8 @@ const circuitData = {
     },
   },
   rodriguez: {
+    circuitMap:
+      'https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Mexico%20carbon.png',
     stats: {
       firstGp: 1963,
       laps: 71,
@@ -220,6 +260,8 @@ const circuitData = {
     },
   },
   interlagos: {
+    circuitMap:
+      'https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Brazil%20carbon.png',
     stats: {
       firstGp: 1973,
       laps: 71,
@@ -231,6 +273,8 @@ const circuitData = {
     },
   },
   yas_marina: {
+    circuitMap:
+      'https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Abu%20Dhab%20carbon.png',
     stats: {
       firstGp: 2009,
       laps: 58,
@@ -242,6 +286,8 @@ const circuitData = {
     },
   },
   vegas: {
+    circuitMap:
+      'https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Las%20Vegas%20carbon.png',
     stats: {
       firstGp: 2023,
       laps: 50,
@@ -253,6 +299,8 @@ const circuitData = {
     },
   },
   losail: {
+    circuitMap:
+      'https://www.formula1.com/content/dam/fom-website/2018-redesign-assets/Track%20icons%204x3/Qatar%20carbon.png',
     stats: {
       firstGp: 2021,
       laps: 57,

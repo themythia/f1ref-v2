@@ -27,6 +27,3 @@ createRoot(document.getElementById('root')).render(
     <App />
   </Provider>
 );
-
-// TODO:
-// add losail and vegas track map
