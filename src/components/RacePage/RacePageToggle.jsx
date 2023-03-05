@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Selector from '../shared/Selector/Selector';
@@ -41,9 +42,10 @@ const RacePageToggle = ({ race, resultsOnly }) => {
 
   return (
     <div
-      className={`col-span-4 sm:col-span-8 -mt-4 ${
-        options.length > 1 ? 'md:-mt-3' : 'md:mt-3'
-      } md:col-span-12`}
+      className={clsx('col-span-4 -mt-4', 'sm:col-span-8', 'md:col-span-12', {
+        'md:-mt-3': options.length > 1,
+        'md:mt-3': options.length <= 1,
+      })}
     >
       {options.length > 1 && <Selector options={options} type='racePage' />}
       <SwitchTransitionWrapper state={activeButton}>

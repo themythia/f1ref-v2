@@ -9,6 +9,7 @@ import useFetch from '../../../utils/useFetch';
 import { shapeStandings } from '../../../utils/api/shapeStandings';
 import Error from '../../shared/Error';
 import LoadingSpinner from '../../shared/LoadingSpinner';
+import clsx from 'clsx';
 
 const Standings = () => {
   const dispatch = useDispatch();
@@ -54,9 +55,15 @@ const Standings = () => {
   }, [dispatch, tResponse, dResponse]);
 
   return (
-    <div className='bg-bg-50 dark:bg-bg-800 rounded shadow-2px dark:shadow-2px-dark p-4 lg:p-6 w-full col-span-full'>
+    <div
+      className={clsx(
+        'bg-bg-50 rounded shadow-2px p-4 w-full col-span-full',
+        'dark:bg-bg-800 dark:shadow-2px-dark',
+        'lg:p-6'
+      )}
+    >
       {(dError || tError) && <Error />}
-      <p className='font-poppins text-lg text-bg-800 dark:text-bg-50'>
+      <p className='text-lg font-poppins text-bg-800 dark:text-bg-50'>
         Standings:
       </p>
       {dLoading || tLoading ? (
@@ -64,7 +71,7 @@ const Standings = () => {
           <LoadingSpinner />
         </div>
       ) : (
-        <React.Fragment>
+        <>
           <Selector options={['Drivers', 'Constructors']} type='standings' />
           <SwitchTransitionWrapper state={activeButton}>
             <div className='flex flex-col gap-y-2 md:gap-y-3'>
@@ -77,7 +84,7 @@ const Standings = () => {
               ))}
             </div>
           </SwitchTransitionWrapper>
-        </React.Fragment>
+        </>
       )}
     </div>
   );

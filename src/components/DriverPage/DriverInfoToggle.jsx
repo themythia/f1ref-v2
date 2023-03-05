@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { useSelector } from 'react-redux';
 import Selector from '../shared/Selector/Selector';
 import SwitchTransitionWrapper from '../shared/SwitchTransitionWrapper';
@@ -10,7 +11,13 @@ const DriverInfoToggle = ({ seasons, stats }) => {
 
   return (
     <div className='col-span-4 sm:col-span-8 md:col-span-12'>
-      <p className='font-poppins text-lg text-bg-800 dark:text-bg-50 -mb-2 md:-mb-3'>
+      <p
+        className={clsx(
+          'font-poppins text-lg text-bg-800 -mb-2',
+          'dark:text-bg-50',
+          'md:-mb-3'
+        )}
+      >
         Stats:
       </p>
       <Selector options={['Career', ...seasons]} type='driverPage' />

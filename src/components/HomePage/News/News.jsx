@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addNews } from '../../../slices/newsSlice';
@@ -22,8 +23,20 @@ const News = () => {
   }, [dispatch]);
 
   return (
-    <div className='bg-bg-50 dark:bg-bg-800 rounded shadow-2px dark:shadow-2px-dark p-4 md:p-6 w-full col-span-full mb-4 md:mb-6'>
-      <p className='font-poppins text-lg text-bg-800 dark:text-bg-50 mb-4 md:mb-6'>
+    <div
+      className={clsx(
+        'w-full p-4 mb-4 rounded bg-bg-50 shadow-2px col-span-full',
+        'dark:bg-bg-800 dark:shadow-2px-dark',
+        'md:p-6 md:mb-6'
+      )}
+    >
+      <p
+        className={clsx(
+          'mb-4 text-lg font-poppins text-bg-80',
+          'dark:text-bg-50',
+          'md:mb-6'
+        )}
+      >
         News:
       </p>
       {error && <Error />}

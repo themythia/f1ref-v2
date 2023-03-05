@@ -16,7 +16,8 @@ export const shapeStandings = (data) => {
         ? item.Driver.givenName + ' ' + item.Driver.familyName
         : item.Constructor.name === 'Alpine F1 Team'
         ? 'Alpine'
-        : item.Constructor.name === 'Haas F1 Team'
+        : item.Constructor.name === 'Haas F1 Team' ||
+          item.Constructor.name === 'Moneygram Haas F1 Team'
         ? 'Haas'
         : item.Constructor.name;
 

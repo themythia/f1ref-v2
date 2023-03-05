@@ -1,3 +1,5 @@
+import clsx from 'clsx';
+
 const ScheduleItem = ({ session, time }) => {
   const handleSesssionTime = () => {
     if (time === 'TBC') return 'TBC';
@@ -15,7 +17,12 @@ const ScheduleItem = ({ session, time }) => {
   };
 
   return (
-    <div className='flex flex-row justify-between rounded shadow-2px dark:shadow-2px-dark bg-bg-200 dark:bg-bg-900 p-2 font-openSans text-sm'>
+    <div
+      className={clsx(
+        'flex flex-row justify-between p-2 text-sm rounded shadow-2px bg-bg-200 font-openSans',
+        'dark:shadow-2px-dark dark:bg-bg-900'
+      )}
+    >
       <span className='font-semibold text-left'>{session}</span>
       <span className=''>{handleSesssionTime()}</span>
     </div>

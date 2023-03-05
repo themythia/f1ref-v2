@@ -19,6 +19,7 @@ import { shapeScheduleData } from '../../utils/api/shapeScheduleData';
 import Error from '../shared/Error';
 import LoadingSpinner from '../shared/LoadingSpinner';
 import { setSelector } from '../../slices/settingsSlice';
+import clsx from 'clsx';
 
 const RacePage = () => {
   const { round } = useParams();
@@ -29,7 +30,7 @@ const RacePage = () => {
   const { width } = useWindowSize();
 
   const { response: resultsRes, error: resultsError } = useFetch(
-    `https://ergast.com/api/f1/2022/${round}/results.json`,
+    `https://ergast.com/api/f1/current/${round}/results.json`,
     [],
     shapeRaceResults,
     race?.hasOwnProperty('results')
@@ -43,7 +44,7 @@ const RacePage = () => {
   );
 
   const { response: sprintRes, error: sprintError } = useFetch(
-    `https://ergast.com/api/f1/2022/${round}/sprint.json`,
+    `https://ergast.com/api/f1/current/${round}/sprint.json`,
     [],
     shapeRaceResults,
     race?.hasOwnProperty('sprint')
@@ -83,24 +84,39 @@ const RacePage = () => {
     }
   }, [round, dispatch, race, schedule, resultsRes, scheduleRes, sprintRes]);
 
-  if (Number(round) < 0 || Number(round) > 22 || isNaN(Number(round))) {
+  if (Number(round) < 0 || Number(round) > 23 || isNaN(Number(round))) {
     return <Navigate to='/calendar' />;
   }
 
   return (
-    <main className='p-4 sm:p-8 md:p-6 lg:px-[200px] xl:px-[calc((100vw-1128px)/2)] row-start-2 row-end-3'>
+    <main
+      className={clsx(
+        'p-4 row-start-2 row-end-3',
+        'sm:p-8',
+        'md:p-6',
+        'lg:px-[200px]',
+        'xl:px-[calc((100vw-1128px)/2)]'
+      )}
+    >
       {(resultsError || scheduleError || sprintError) && <Error />}
       {loading ? (
         <div className='flex flex-row items-center justify-center w-full h-full'>
           <LoadingSpinner />
         </div>
       ) : (
-        <div className='grid w-full grid-cols-4 p-4 rounded bg-bg-50 dark:bg-bg-800 shadow-2px dark:shadow-2px-dark md:p-6 h-min sm:grid-cols-8 md:grid-cols-12 gap-x-4 gap-y-4 md:gap-x-6 md:gap-y-6 animate__animated animate__fadeIn'>
+        <div
+          className={clsx(
+            'grid w-full grid-cols-4 p-4 rounded bg-bg-50 shadow-2px h-min gap-x-4 gap-y-4 animate__animated animate__fadeIn',
+            'dark:bg-bg-800 dark:shadow-2px-dark',
+            'sm:grid-cols-8',
+            'md:p-6 md:grid-cols-12 md:gap-x-6 md:gap-y-6'
+          )}
+        >
           <CircuitMap circuit={race.circuitId} />
           <RaceTitle countryCode={race.countryCode} name={race.raceName} />
           {width < 905 && <RacePageToggle race={race} resultsOnly={false} />}
           {width >= 905 && (
-            <React.Fragment>
+            <>
               <CircuitInfo race={race} />
               <RaceSchedule schedule={race.schedule} />
               {(race.results.length > 0 || race.sprintResults.length > 0) && (
@@ -115,7 +131,7 @@ const RacePage = () => {
                   <RacePageToggle race={race} resultsOnly={true} />
                 </div>
               )}
-            </React.Fragment>
+            </>
           )}
         </div>
       )}

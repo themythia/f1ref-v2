@@ -1,8 +1,15 @@
+import clsx from 'clsx';
 import InfoItem from './InfoItem';
 
 const DriverStats = ({ season, showChamp }) => {
   return (
-    <div className='grid grid-cols-4 sm:grid-cols-8 md:grid-cols-12 gap-x-2 md:gap-x-3 gap-y-2 md:gap-y-3'>
+    <div
+      className={clsx(
+        'grid grid-cols-4 gap-x-2 gap-y-2',
+        'sm:grid-cols-8',
+        'md:grid-cols-12 md:gap-x-3 md:gap-y-3'
+      )}
+    >
       {showChamp && <InfoItem title='Championships' info={season.champ} />}
       <InfoItem title='Wins' info={season.wins} />
       <InfoItem title='Podiums' info={season.podiums} />

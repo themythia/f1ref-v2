@@ -1,11 +1,23 @@
+import clsx from 'clsx';
 import React from 'react';
 import ScheduleItem from './ScheduleItem';
 
 const RaceSchedule = ({ schedule }) => {
   const { fp1, fp2, fp3, quali, race, sprint } = schedule;
   return (
-    <div className='flex flex-col gap-y-2 md:gap-y-3 md:col-start-7 md:col-end-13'>
-      <span className='hidden sm:block font-poppins text-lg text-bg-800 dark:text-bg-50'>
+    <div
+      className={clsx(
+        'flex flex-col gap-y-2',
+        'md:gap-y-3 md:col-start-7 md:col-end-13'
+      )}
+    >
+      <span
+        className={clsx(
+          'hidden text-lg font-poppins text-bg-800',
+          'dark:text-bg-50',
+          'sm:block'
+        )}
+      >
         Session Schedule:
       </span>
       <ScheduleItem session='Race' time={race} />
