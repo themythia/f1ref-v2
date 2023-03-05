@@ -84,7 +84,7 @@ const RacePage = () => {
     }
   }, [round, dispatch, race, schedule, resultsRes, scheduleRes, sprintRes]);
 
-  if (Number(round) < 0 || Number(round) > 22 || isNaN(Number(round))) {
+  if (Number(round) < 0 || Number(round) > 23 || isNaN(Number(round))) {
     return <Navigate to='/calendar' />;
   }
 
