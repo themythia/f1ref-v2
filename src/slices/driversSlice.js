@@ -20,7 +20,7 @@ export const driversSlice = createSlice({
           : action.payload.id === 'vettel'
           ? 4
           : action.payload.id === 'max_verstappen'
-          ? 1
+          ? 2
           : action.payload.id === 'alonso'
           ? 2
           : action.payload.id === 'raikkonen'

@@ -10,7 +10,8 @@ export const shapeTeamData = (data) => {
       name:
         team.name === 'Alpine F1 Team'
           ? 'Alpine'
-          : team.name === 'Haas F1 Team'
+          : team.name === 'Haas F1 Team' ||
+            team.name === 'Moneygram Haas F1 Team'
           ? 'Haas'
           : team.name,
       countryCode: countryCodes(team.nationality, 'nationality'),

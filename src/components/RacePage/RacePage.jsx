@@ -30,7 +30,7 @@ const RacePage = () => {
   const { width } = useWindowSize();
 
   const { response: resultsRes, error: resultsError } = useFetch(
-    `https://ergast.com/api/f1/2022/${round}/results.json`,
+    `https://ergast.com/api/f1/current/${round}/results.json`,
     [],
     shapeRaceResults,
     race?.hasOwnProperty('results')
@@ -44,7 +44,7 @@ const RacePage = () => {
   );
 
   const { response: sprintRes, error: sprintError } = useFetch(
-    `https://ergast.com/api/f1/2022/${round}/sprint.json`,
+    `https://ergast.com/api/f1/current/${round}/sprint.json`,
     [],
     shapeRaceResults,
     race?.hasOwnProperty('sprint')
@@ -84,7 +84,7 @@ const RacePage = () => {
     }
   }, [round, dispatch, race, schedule, resultsRes, scheduleRes, sprintRes]);
 
-  if (Number(round) < 0 || Number(round) > 22 || isNaN(Number(round))) {
+  if (Number(round) < 0 || Number(round) > 23 || isNaN(Number(round))) {
     return <Navigate to='/calendar' />;
   }
 

@@ -18,13 +18,13 @@ export const shapeDriverData = (data) => {
       image: {
         profile: driverPics(d.code).profile,
         big: driverPics(d.code).big,
-        helmet: driverPics(d.code).helmet,
       },
     };
 
     switch (d.code) {
       case 'HAM':
       case 'RUS':
+      case 'MSC':
         return {
           ...driverObj,
           team: 'Mercedes',
@@ -32,6 +32,7 @@ export const shapeDriverData = (data) => {
         };
       case 'VER':
       case 'PER':
+      case 'RIC':
         return {
           ...driverObj,
           team: 'Red Bull',
@@ -39,22 +40,21 @@ export const shapeDriverData = (data) => {
         };
 
       case 'NOR':
-      case 'RIC':
+      case 'PIA':
         return {
           ...driverObj,
           team: 'McLaren',
           teamCode: 'mclaren',
         };
       case 'STR':
-      case 'VET':
-      case 'HUL':
+      case 'ALO':
         return {
           ...driverObj,
           team: 'Aston Martin',
           teamCode: 'aston_martin',
         };
       case 'OCO':
-      case 'ALO':
+      case 'GAS':
         return {
           ...driverObj,
           team: 'Alpine',
@@ -67,7 +67,7 @@ export const shapeDriverData = (data) => {
           team: 'Ferrari',
           teamCode: 'ferrari',
         };
-      case 'GAS':
+      case 'DEV':
       case 'TSU':
         return {
           ...driverObj,
@@ -81,16 +81,15 @@ export const shapeDriverData = (data) => {
           team: 'Alfa Romeo',
           teamCode: 'alfa',
         };
-      case 'MSC':
       case 'MAG':
+      case 'HUL':
         return {
           ...driverObj,
           team: 'Haas',
           teamCode: 'haas',
         };
       case 'ALB':
-      case 'LAT':
-      case 'DEV':
+      case 'SAR':
         return {
           ...driverObj,
           team: 'Williams',

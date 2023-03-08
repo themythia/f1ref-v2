@@ -39,7 +39,7 @@ const CalendarPage = () => {
       {!loading &&
         calendar.map((race, index) => <CalendarItem key={index} race={race} />)}
       {loading &&
-        range(0, 22).map((item, index) => <CalendarItemSkeleton key={index} />)}
+        range(0, 23).map((item, index) => <CalendarItemSkeleton key={index} />)}
     </main>
   );
 };
