@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addDrivers } from '../../slices/driversSlice';
 import { shapeDriverData } from '../../utils/api/shapeDriverData';
-import useFetch from '../../utils/useFetch';
+import { useFetch } from '../../utils/useFetch';
 import Error from '../shared/Error';
 import DriverItem from './DriverItem';
 import DriverItemSkeleton from './DriverItemSkeleton';

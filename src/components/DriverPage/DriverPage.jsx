@@ -6,7 +6,7 @@ import RaceTitle from '../RacePage/RaceTitle';
 import DriverInfoToggle from './DriverInfoToggle';
 import hulkenbergPic from '../../assets/driverPics/hulkenberg.webp';
 import DriverBio from './DriverBio';
-import useFetch from '../../utils/useFetch';
+import { useFetch } from '../../utils/useFetch';
 import { shapeDriverData } from '../../utils/api/shapeDriverData';
 import { shapeDriverRaceStats } from '../../utils/api/shapeRaceStats';
 import { setSelector } from '../../slices/settingsSlice';

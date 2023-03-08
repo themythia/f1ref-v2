@@ -6,7 +6,7 @@ import { addDrivers } from '../../slices/driversSlice';
 import { addTeams } from '../../slices/teamsSlice';
 import { shapeDriverData } from '../../utils/api/shapeDriverData';
 import { shapeTeamData } from '../../utils/api/shapeTeamData';
-import useFetch from '../../utils/useFetch';
+import { useFetch } from '../../utils/useFetch';
 import Error from '../shared/Error';
 import TeamItem from './TeamItem';
 import TeamItemSkeleton from './TeamItemSkeleton';

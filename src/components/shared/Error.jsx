@@ -9,6 +9,7 @@ const Error = () => {
         'lg:px-[200px]',
         'xl:px-[calc((100vw-1128px)/2)]'
       )}
+      data-testid='error'
     >
       <div>
         <IoWarning className='w-8 h-8' />

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addSchedule } from '../../slices/scheduleSlice';
 import CalendarItem from './CalendarItem';
 import CalendarItemSkeleton from './CalendarItemSkeleton';
-import useFetch from '../../utils/useFetch';
+import { useFetch } from '../../utils/useFetch';
 import { shapeScheduleData } from '../../utils/api/shapeScheduleData';
 import Error from '../shared/Error';
 import clsx from 'clsx';

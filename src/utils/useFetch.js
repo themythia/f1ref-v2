@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const useFetch = (url, dependency, shapeFunc, isFetched) => {
+export const useFetch = (url, dependency, shapeFunc, isFetched) => {
   const [loading, setLoading] = useState(true);
   const [status, setStatus] = useState(false);
   const [response, setResponse] = useState(null);
@@ -75,4 +75,3 @@ const useFetch = (url, dependency, shapeFunc, isFetched) => {
 
   return { loading, status, response, error };
 };
-export default useFetch;

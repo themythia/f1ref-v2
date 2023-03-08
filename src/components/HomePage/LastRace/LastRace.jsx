@@ -4,7 +4,7 @@ import { addLastRace } from '../../../slices/scheduleSlice';
 import Flag from '../../shared/Flag';
 import LastRaceResult from './LastRaceResult';
 import SpoilerOverlay from './SpoilerOverlay';
-import useFetch from '../../../utils/useFetch';
+import { useFetch } from '../../../utils/useFetch';
 import { shapeScheduleData } from '../../../utils/api/shapeScheduleData';
 import Error from '../../shared/Error';
 import LoadingSpinner from '../../shared/LoadingSpinner';
@@ -52,6 +52,7 @@ const LastRace = () => {
             'relative top-[calc(50% - 44px)]',
             'md:top-[calc(50%-52px)]'
           )}
+          data-testid='loading-spinner'
         >
           <LoadingSpinner />
         </div>

@@ -5,7 +5,7 @@ import Flag from '../../shared/Flag';
 import Selector from '../../shared/Selector/Selector';
 import Countdown from './Countdown';
 import SwitchTransitionWrapper from '../../shared/SwitchTransitionWrapper';
-import useFetch from '../../../utils/useFetch';
+import { useFetch } from '../../../utils/useFetch';
 import { shapeScheduleData } from '../../../utils/api/shapeScheduleData';
 import Error from '../../shared/Error';
 import LoadingSpinner from '../../shared/LoadingSpinner';

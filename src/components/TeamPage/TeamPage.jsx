@@ -8,7 +8,7 @@ import { addTeams, addTeamStats } from '../../slices/teamsSlice';
 import TeamBio from './TeamBio';
 import TeamInfoToggle from './TeamInfoToggle';
 import { shapeTeamRaceStats } from '../../utils/api/shapeRaceStats';
-import useFetch from '../../utils/useFetch';
+import { useFetch } from '../../utils/useFetch';
 import { shapeTeamData } from '../../utils/api/shapeTeamData';
 import { shapeDriverData } from '../../utils/api/shapeDriverData';
 import { addDrivers } from '../../slices/driversSlice';

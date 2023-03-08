@@ -5,7 +5,7 @@ import StandingsItem from './StandingsItem';
 import Selector from '../../shared/Selector/Selector';
 import 'animate.css';
 import SwitchTransitionWrapper from '../../shared/SwitchTransitionWrapper';
-import useFetch from '../../../utils/useFetch';
+import { useFetch } from '../../../utils/useFetch';
 import { shapeStandings } from '../../../utils/api/shapeStandings';
 import Error from '../../shared/Error';
 import LoadingSpinner from '../../shared/LoadingSpinner';

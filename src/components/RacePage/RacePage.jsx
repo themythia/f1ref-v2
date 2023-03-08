@@ -13,7 +13,7 @@ import 'animate.css';
 import RacePageToggle from './RacePageToggle';
 import useWindowSize from '../../utils/useWindowSize';
 import RaceTitle from './RaceTitle';
-import useFetch from '../../utils/useFetch';
+import { useFetch } from '../../utils/useFetch';
 import { shapeRaceResults } from '../../utils/api/shapeRaceResults';
 import { shapeScheduleData } from '../../utils/api/shapeScheduleData';
 import Error from '../shared/Error';
