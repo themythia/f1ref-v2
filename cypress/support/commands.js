@@ -28,3 +28,13 @@
 Cypress.Commands.add('getByTestId', (selector) => {
   return cy.get(`[data-testid=${selector}]`);
 });
+
+Cypress.Commands.add('navigateToPageFromMenu', (menuButton, pathname) => {
+  cy.getByTestId('menu-button').click();
+  cy.getByTestId('menu-container')
+    .should('exist')
+    .contains(menuButton)
+    .should('exist')
+    .click();
+  cy.location('pathname').should('be.equal', pathname);
+});

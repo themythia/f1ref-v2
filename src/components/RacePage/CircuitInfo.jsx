@@ -16,6 +16,7 @@ const CircuitInfo = ({ race }) => {
         'sm:flex-row sm:flex-wrap',
         'md:gap-y-3 md:col-start-1 md:col-end-7'
       )}
+      data-testid='circuit-info'
     >
       <span
         className={clsx(
