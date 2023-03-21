@@ -34,6 +34,7 @@ const CalendarPage = () => {
         'lg:px-[200px]',
         'xl:px-[calc((100vw-1128px)/2)]'
       )}
+      data-testid='calendar-page-container'
     >
       {error && <Error />}
       {!loading &&

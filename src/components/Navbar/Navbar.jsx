@@ -30,6 +30,7 @@ const Navbar = () => {
         <button
           onClick={() => dispatch(toggleMenu())}
           className='absolute left-4'
+          data-testid='menu-button'
         >
           {showMenu ? <MdClose size={32} /> : <MdMenu size={32} />}
         </button>

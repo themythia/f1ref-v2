@@ -44,12 +44,14 @@ const Menu = () => {
           'dark:bg-bg-800 dark:shadow-4px-dark',
           'md:w-1/3'
         )}
+        data-testid='menu-container'
       >
         <ul
           className={clsx(
             'pt-4 pb-2 text-lg border-b font-poppins border-bg-300',
             'dark:border-bg-600'
           )}
+          data-testid='nav-menu-list'
         >
           <Link to='/' content='Home' />
           <Link to='calendar' content='Calendar' />
