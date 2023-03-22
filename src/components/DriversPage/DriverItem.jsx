@@ -17,6 +17,7 @@ const DriverItem = ({ driver, forTeamPage }) => {
         }
       )}
       to={`/drivers/${driver.id.replace(/_/gi, '-')}`}
+      data-testid='driver-item'
     >
       <div
         className={clsx(

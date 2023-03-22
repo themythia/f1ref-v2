@@ -9,6 +9,7 @@ const RaceTitle = ({ countryCode, name }) => {
         'sm:col-span-8 sm:justify-center',
         'md:col-span-12'
       )}
+      data-testid='race-title'
     >
       <Flag size='40' country={countryCode} />
       <span className='ml-4 text-xl font-poppins md:ml-6'>{name}</span>

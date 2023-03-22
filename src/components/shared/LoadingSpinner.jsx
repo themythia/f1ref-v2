@@ -7,6 +7,7 @@ const LoadingSpinner = () => {
         'flex flex-row items-center justify-center transition duration-150 ease-in-out text-bg-800',
         'dark:text-bg-50'
       )}
+      data-testid='loading-spinner'
     >
       <svg
         className='w-10 h-10 animate-spin'

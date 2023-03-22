@@ -9,6 +9,7 @@ const DriverBio = ({ driver }) => {
         'sm:col-span-8',
         'md:col-span-12'
       )}
+      data-testid='driver-bio'
     >
       <span
         className={clsx(
