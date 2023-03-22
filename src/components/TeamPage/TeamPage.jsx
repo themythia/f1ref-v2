@@ -86,6 +86,7 @@ const TeamPage = () => {
         'lg:px-[200px]',
         'xl:px-[calc((100vw-1128px)/2)]'
       )}
+      data-testid='team-page-container'
     >
       {(statsError || dError || tError) && <Error />}
       {loading ? (

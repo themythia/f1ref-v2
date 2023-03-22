@@ -10,7 +10,6 @@ describe('drivers page spec', () => {
 
     for (let i = 0; i < 20; i++) {
       cy.getByTestId('driver-item').eq(i).click();
-
       cy.getByTestId('loading-spinner').should('not.exist');
       cy.getByTestId('driver-page-container').should('exist');
       cy.getByTestId('driver-image').should('exist');
