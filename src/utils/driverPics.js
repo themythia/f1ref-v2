@@ -120,14 +120,14 @@ const driverPics = (driverCode) => {
           'https://www.formula1.com/content/dam/fom-website/drivers/O/OSCPIA01_Oscar_Piastri/oscpia01.png',
         big: 'https://media.formula1.com/content/dam/fom-website/drivers/2023Drivers/piastri.jpg.img.1920.medium.jpg',
       };
-
-    //retired
     case 'RIC':
       return {
         profile:
           'https://www.formula1.com/content/dam/fom-website/drivers/D/DANRIC01_Daniel_Ricciardo/danric01.png',
-        big: '',
+        big: 'https://media.formula1.com/content/dam/fom-website/drivers/2023Drivers/ricciardo.jpg.img.1920.medium.jpg',
       };
+
+    //retired
     case 'VET':
       return {
         profile:
