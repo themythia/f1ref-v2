@@ -1,5 +1,5 @@
 const scrapeNews = async () => {
-  const corsProxy = 'https://corsproxy.fly.dev/';
+  const corsProxy = process.env.REACT_APP_CORS_PROXY;
   const rssFeedUrl = 'https://www.motorsport.com/rss/f1/news/';
 
   try {
