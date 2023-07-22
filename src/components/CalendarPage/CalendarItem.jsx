@@ -23,6 +23,7 @@ const CalendarItem = ({ race }) => {
         'xl:col-span-4'
       )}
       to={`/calendar/${race.round}`}
+      data-testid='calendar-item'
     >
       <div className='flex flex-row justify-between text-sm font-poppins'>
         <span className='text-left'>{`Round ${race.round}`}</span>

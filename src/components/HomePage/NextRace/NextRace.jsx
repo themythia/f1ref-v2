@@ -41,8 +41,8 @@ const NextRace = () => {
       let sessions = { fp1, fp2, fp3, quali, race };
 
       if (nextRace.schedule.sprint) {
-        sessions = { fp1, quali, fp2, sprint, race };
-        setSelectorOptions(['FP1', 'Quali', 'FP2', 'Sprint', 'Race']);
+        sessions = { fp1, quali, sprint, race };
+        setSelectorOptions(['FP1', 'Quali', 'Sprint', 'Race']);
       }
 
       const activeSession = selectorOptions[activeButton].toLowerCase();

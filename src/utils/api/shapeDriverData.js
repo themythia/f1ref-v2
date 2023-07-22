@@ -32,7 +32,6 @@ export const shapeDriverData = (data) => {
         };
       case 'VER':
       case 'PER':
-      case 'RIC':
         return {
           ...driverObj,
           team: 'Red Bull',
@@ -69,6 +68,7 @@ export const shapeDriverData = (data) => {
         };
       case 'DEV':
       case 'TSU':
+      case 'RIC':
         return {
           ...driverObj,
           team: 'AlphaTauri',

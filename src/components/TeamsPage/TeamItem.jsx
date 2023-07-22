@@ -15,6 +15,7 @@ const TeamItem = ({ team }) => {
         'xl:col-span-4'
       )}
       to={`/teams/${team.id.replace(/_/gi, '-')}`}
+      data-testid='team-item'
     >
       <div
         className={clsx(

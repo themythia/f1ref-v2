@@ -10,6 +10,7 @@ const RaceSchedule = ({ schedule }) => {
         'flex flex-col gap-y-2',
         'md:gap-y-3 md:col-start-7 md:col-end-13'
       )}
+      data-testid='race-schedule'
     >
       <span
         className={clsx(
@@ -26,7 +27,7 @@ const RaceSchedule = ({ schedule }) => {
         time={sprint ? sprint : quali}
       />
       <ScheduleItem
-        session={sprint ? 'Practice 2' : 'Practice 3'}
+        session={sprint ? null : 'Practice 3'}
         time={sprint ? fp2 : fp3}
       />
       <ScheduleItem

@@ -61,6 +61,7 @@ const TeamLogo = ({ team, type }) => {
         src={logo.big[team]}
         alt={`Logo of ${team}`}
         className='w-full aspect-16/9'
+        data-testid='team-logo'
       />
     );
   }

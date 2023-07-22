@@ -10,7 +10,10 @@ const DriverInfoToggle = ({ seasons, stats }) => {
   );
 
   return (
-    <div className='col-span-4 sm:col-span-8 md:col-span-12'>
+    <div
+      className='col-span-4 sm:col-span-8 md:col-span-12'
+      data-testid='driver-info-toggle'
+    >
       <p
         className={clsx(
           'font-poppins text-lg text-bg-800 -mb-2',

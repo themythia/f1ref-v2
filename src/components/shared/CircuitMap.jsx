@@ -9,6 +9,7 @@ const CircuitMap = ({ circuit }) => {
         'sm:col-span-8',
         'md:col-start-3 md:col-end-11'
       )}
+      data-testid='circuit-map'
     >
       <img
         src={circuitData[circuit].circuitMap}

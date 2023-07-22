@@ -75,6 +75,7 @@ const DriverPage = () => {
         'lg:px-[200px]',
         'xl:px-[calc((100vw-1128px)/2)]'
       )}
+      data-testid='driver-page-container'
     >
       {(error || driverError) && <Error />}
       {loading ? (
@@ -98,7 +99,12 @@ const DriverPage = () => {
               'md:col-span-12'
             )}
           >
-            <img src={driver.image.big} alt={driver.name} className='w-full' />
+            <img
+              src={driver.image.big}
+              alt={driver.name}
+              className='w-full'
+              data-testid='driver-image'
+            />
           </div>
           <RaceTitle countryCode={driver.countryCode} name={driver.name} />
           <DriverBio driver={driver} />

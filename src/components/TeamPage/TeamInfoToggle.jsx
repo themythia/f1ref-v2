@@ -15,6 +15,7 @@ const TeamInfoToggle = ({ seasons, stats }) => {
           'dark:text-bg-50',
           'md:-mb-3'
         )}
+        data-testid='team-info-toggle'
       >
         Stats:
       </p>
