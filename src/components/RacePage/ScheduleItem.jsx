@@ -15,7 +15,7 @@ const ScheduleItem = ({ session, time }) => {
       return event.toLocaleDateString('en-GB', options);
     }
   };
-
+  if (!session) return null;
   return (
     <div
       className={clsx(

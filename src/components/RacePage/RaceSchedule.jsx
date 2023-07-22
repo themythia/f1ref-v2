@@ -27,7 +27,7 @@ const RaceSchedule = ({ schedule }) => {
         time={sprint ? sprint : quali}
       />
       <ScheduleItem
-        session={sprint ? 'Practice 2' : 'Practice 3'}
+        session={sprint ? null : 'Practice 3'}
         time={sprint ? fp2 : fp3}
       />
       <ScheduleItem
