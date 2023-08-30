@@ -69,6 +69,7 @@ export const shapeDriverData = (data) => {
       case 'DEV':
       case 'TSU':
       case 'RIC':
+      case 'LAW':
         return {
           ...driverObj,
           team: 'AlphaTauri',
