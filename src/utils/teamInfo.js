@@ -16,12 +16,12 @@ const teamInfo = {
   alpine: {
     fullName: 'BWT Alpine F1 Team',
     base: 'Enstone, United Kingdom',
-    teamChief: 'Otmar Szafnauer',
+    teamChief: 'Bruno Famin',
     chassis: 'A523',
     powerUnit: 'Renault',
   },
   aston_martin: {
-    fullName: 'Aston Martin Aramco Cognizant Formula One Team',
+    fullName: 'Aston Martin Aramco Cognizant F1 Team',
     base: 'Silverstone, United Kingdom',
     teamChief: 'Mike Krack',
     chassis: 'AMR23',
@@ -42,7 +42,7 @@ const teamInfo = {
     powerUnit: 'Mercedes',
   },
   mercedes: {
-    fullName: 'Mercedes-AMG PETRONAS Formula One Team',
+    fullName: 'Mercedes-AMG PETRONAS F1 Team',
     base: 'Brackley, United Kingdom',
     teamChief: 'Toto Wolff',
     chassis: 'W14',

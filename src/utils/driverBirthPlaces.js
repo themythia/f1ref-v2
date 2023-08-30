@@ -23,5 +23,6 @@ const driverBirthPlaces = {
   de_vries: 'Uitwellingerga, Netherlands',
   sargenat: 'Fort Lauderdale, Florida',
   piastri: 'Melbourne, Victoria',
+  lawson: 'Hastings, New Zealand',
 };
 export default driverBirthPlaces;

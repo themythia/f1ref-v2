@@ -33,8 +33,6 @@ const useFetch = (url, dependency, shapeFunc, isFetched) => {
           let res = await fetch(url);
           let data = await res.json();
 
-          // pagination test code start
-
           // ergast api has a limit of 1000 results per page with default limit 30
           // for api calls with results more than 30 needs a ?limit=limit
           // at the end of endpoint url
