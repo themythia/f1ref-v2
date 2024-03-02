@@ -1,13 +1,13 @@
 const teamInfo = {
-  alfa: {
-    fullName: 'Alfa Romeo F1 Team Stake',
+  sauber: {
+    fullName: 'Stake F1 Team Kick Sauber',
     base: 'Hinwil, Switzerland',
     teamChief: 'Alessandro Alunni Bravi',
     chassis: 'C43',
     powerUnit: 'Ferrari',
   },
-  alphatauri: {
-    fullName: 'Scuderia AlphaTauri',
+  rb: {
+    fullName: 'Visa Cash App RB Formula One Team',
     base: 'Faenza, Italy',
     teamChief: 'Franz Tost',
     chassis: 'AT04',

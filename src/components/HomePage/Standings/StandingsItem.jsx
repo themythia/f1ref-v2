@@ -18,10 +18,10 @@ const StandingsItem = ({ data, type }) => {
       ? (team = 'Williams')
       : data.team === 'aston_martin'
       ? (team = 'Aston Martin')
-      : data.team === 'alfa'
-      ? (team = 'Alfa Romeo')
-      : data.team === 'alphatauri'
-      ? (team = 'AlphaTauri')
+      : data.team === 'sauber'
+      ? (team = 'Kick Sauber')
+      : data.team === 'rb'
+      ? (team = 'RB F1 Team')
       : data.team === 'alpine'
       ? (team = 'Alpine')
       : (team = '');

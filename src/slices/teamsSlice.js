@@ -17,7 +17,7 @@ export const teamsSlice = createSlice({
           : action.payload.id === 'mercedes'
           ? 8
           : action.payload.id === 'red_bull'
-          ? 5
+          ? 6
           : action.payload.id === 'mclaren'
           ? 8
           : action.payload.id === 'williams'

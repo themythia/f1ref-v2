@@ -72,15 +72,15 @@ export const shapeDriverData = (data) => {
       case 'LAW':
         return {
           ...driverObj,
-          team: 'AlphaTauri',
-          teamCode: 'alphatauri',
+          team: 'RB F1 Team',
+          teamCode: 'rb',
         };
       case 'BOT':
       case 'ZHO':
         return {
           ...driverObj,
-          team: 'Alfa Romeo',
-          teamCode: 'alfa',
+          team: 'Kick Sauber',
+          teamCode: 'sauber',
         };
       case 'MAG':
       case 'HUL':

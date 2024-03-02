@@ -22,8 +22,8 @@ import williamsBig from '../../assets/teamlogos/big/williams.svg';
 const TeamLogo = ({ team, type }) => {
   const logo = {
     round: {
-      alfa,
-      alphatauri,
+      sauber: alfa,
+      rb: alphatauri,
       alpine,
       aston_martin,
       ferrari,
@@ -34,8 +34,8 @@ const TeamLogo = ({ team, type }) => {
       williams,
     },
     big: {
-      alfa: alfaBig,
-      alphatauri: alphatauriBig,
+      sauber: alfaBig,
+      rb: alphatauriBig,
       alpine: alpineBig,
       'aston-martin': aston_martinBig,
       ferrari: ferrariBig,

@@ -4,7 +4,7 @@ describe('calendar page spec', () => {
     cy.visit('http://localhost:3000');
   });
   it('should visit every track on the calendar', () => {
-    const lengthOfSeason = 22;
+    const lengthOfSeason = 24;
     cy.navigateToPageFromMenu('Calendar', '/calendar');
     cy.getByTestId('calendar-page-container').should('exist');
     cy.getByTestId('calendar-item').should('have.lengthOf', lengthOfSeason);
