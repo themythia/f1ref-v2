@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import circuitData from '../../utils/circuitData';
 
 const CircuitMap = ({ circuit }) => {
+  if (!circuitData?.[circuit]?.circuitMap) return null;
   return (
     <div
       className={clsx(

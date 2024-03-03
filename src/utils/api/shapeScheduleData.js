@@ -28,7 +28,7 @@ export const shapeScheduleData = (data) => {
           ? race.Qualifying.date + 'T' + race.Qualifying.time
           : null,
         sprint: race.Sprint ? race.Sprint.date + 'T' + race.Sprint.time : null,
-        race: race.date + 'T' + race.time,
+        race: race.date + 'T' + (race?.time ?? '00:00:00Z'),
       },
     };
   });

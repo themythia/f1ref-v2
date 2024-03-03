@@ -22,8 +22,6 @@ const Standings = () => {
   const driverStandings = useSelector((store) => store.standings.drivers);
   const teamStandings = useSelector((store) => store.standings.constructors);
 
-  console.log({ teamStandings });
-
   const {
     loading: dLoading,
     response: dResponse,

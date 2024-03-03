@@ -2,14 +2,15 @@ import clsx from 'clsx';
 
 const ScheduleItem = ({ session, time }) => {
   const handleSesssionTime = () => {
-    if (time === 'TBC') return 'TBC';
+    if (time === 'TBC' || !time) return 'TBC';
     else {
+      const showShortDate = time.includes('T00:00:00Z');
       const event = new Date(time);
       const options = {
         month: 'long',
         day: 'numeric',
-        hour: 'numeric',
-        minute: 'numeric',
+        hour: showShortDate ? undefined : 'numeric',
+        minute: showShortDate ? undefined : 'numeric',
       };
 
       return event.toLocaleDateString('en-GB', options);

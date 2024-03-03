@@ -3,12 +3,15 @@ import { Link } from 'react-router-dom';
 import clsx from 'clsx';
 
 const CalendarItem = ({ race }) => {
-  const event = new Date(race?.date + 'T' + race.time);
+  const time = race?.time
+    ? race?.date + 'T' + race.time
+    : race?.date + 'T00:00:00Z';
+  const event = new Date(time);
   const options = {
     month: 'short',
     day: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric',
+    hour: race?.time ? 'numeric' : undefined,
+    minute: race?.time ? 'numeric' : undefined,
   };
 
   return (

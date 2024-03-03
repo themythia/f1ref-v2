@@ -4,7 +4,8 @@ import React from 'react';
 import clsx from 'clsx';
 
 const CircuitInfo = ({ race }) => {
-  const { stats } = circuitData[race.circuitId];
+  const { stats } = circuitData?.[race.circuitId];
+  if (!stats) return null;
   const location = `${race.locality}, ${race.country}`;
   const record =
     stats.record + ' - ' + stats.recordHolder + ' (' + stats.recordYear + ')';
