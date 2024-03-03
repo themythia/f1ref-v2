@@ -29,7 +29,7 @@ module.exports = {
         ferrari: '#DC0000',
         rb: '#6692FF',
         astonmartin: '#006F62',
-        alpine: '#0091FF',
+        alpine: '#FF87BC',
         sauber: '#52E252',
         williams: '#0059FF',
         haas: {
