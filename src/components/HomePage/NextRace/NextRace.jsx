@@ -23,7 +23,6 @@ const NextRace = () => {
     'Quali',
     'Race',
   ]);
-  console.log({ nextRace });
 
   const { response, error, loading } = useFetch(
     'https://ergast.com/api/f1/current/next.json',
