@@ -6,9 +6,9 @@ describe('drivers page spec', () => {
   it('should visit every driver on the grid', () => {
     cy.navigateToPageFromMenu('Drivers', '/drivers');
     cy.getByTestId('drivers-page-container').should('exist');
-    cy.getByTestId('driver-item').should('have.lengthOf.at.least', 20);
+    cy.getByTestId('driver-item').should('have.lengthOf.at.least', 21);
 
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 21; i++) {
       cy.getByTestId('driver-item').eq(i).click();
       cy.getByTestId('loading-spinner').should('not.exist');
       cy.getByTestId('driver-page-container').should('exist');

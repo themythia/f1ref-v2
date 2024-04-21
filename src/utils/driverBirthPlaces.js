@@ -24,5 +24,6 @@ const driverBirthPlaces = {
   sargenat: 'Fort Lauderdale, Florida',
   piastri: 'Melbourne, Victoria',
   lawson: 'Hastings, New Zealand',
+  bearman: 'Chelmsford, UK',
 };
 export default driverBirthPlaces;
