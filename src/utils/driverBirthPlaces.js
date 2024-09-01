@@ -25,5 +25,7 @@ const driverBirthPlaces = {
   piastri: 'Melbourne, Victoria',
   lawson: 'Hastings, New Zealand',
   bearman: 'Chelmsford, UK',
+  'colapinto ': 'Buenos Aires, Argentina',
+  colapinto: 'Buenos Aires, Argentina',
 };
 export default driverBirthPlaces;

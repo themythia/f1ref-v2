@@ -39,7 +39,6 @@ const NextRace = () => {
     if (Object.keys(nextRace).length > 0) {
       const { fp1, fp2, fp3, quali, race, sprint } = nextRace.schedule;
       let sessions = { fp1, fp2, fp3, quali, race };
-      console.log({ schedule: nextRace.schedule });
       if (nextRace.schedule.sprint) {
         sessions = { fp1, fp2, sprint, quali, race };
         setSelectorOptions(['FP1', 'S. Quali', 'Sprint', 'Quali', 'Race']);

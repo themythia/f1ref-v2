@@ -4,6 +4,7 @@ import driverPics from '../driverPics';
 
 export const shapeDriverData = (data) => {
   const driverData = data.MRData.DriverTable.Drivers;
+
   const drivers = driverData.map((d) => {
     const driverObj = {
       no: d.permanentNumber,
@@ -14,7 +15,7 @@ export const shapeDriverData = (data) => {
       givenName: d.givenName,
       birthPlace: driverBirthPlaces[d.driverId],
       nationality: d.nationality,
-      countryCode: countryCodes(d.nationality, 'nationality'),
+      countryCode: countryCodes(d.nationality?.trim(), 'nationality'),
       image: {
         profile: driverPics(d.code).profile,
         big: driverPics(d.code).big,
@@ -91,6 +92,7 @@ export const shapeDriverData = (data) => {
         };
       case 'ALB':
       case 'SAR':
+      case 'COL':
         return {
           ...driverObj,
           team: 'Williams',
