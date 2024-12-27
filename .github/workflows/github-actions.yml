@@ -45,6 +45,6 @@ jobs:
 
       - name: Run Codacy Analysis
         run: |
-          ./codacy-coverage-reporter analyze -r .
-        env:
-          CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+          ./codacy-coverage-reporter analyze -t ${{ secrets.CODACY_PROJECT_TOKEN }} -r .
+        # env:
+        #   CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
