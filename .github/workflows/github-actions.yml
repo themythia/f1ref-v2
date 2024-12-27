@@ -27,24 +27,9 @@ jobs:
           CI: 'false'
 
   codacy-analysis:
+    name: Codacy Analysis CLI
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Debug Codacy Token
-        run: |
-          echo "Token length: ${#CODACY_PROJECT_TOKEN}"
-        env:
-          CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
-
-      - name: Install Codacy CLI
-        run: |
-          curl -Ls https://coverage.codacy.com/get.sh | bash
-          chmod +x codacy-coverage-reporter
-
-      - name: Run Codacy Analysis
-        run: |
-          ./codacy-coverage-reporter analyze -t ${{ secrets.CODACY_PROJECT_TOKEN }} -r .
-        # env:
-        #   CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+      - uses: actions/checkout@main
+      - name: Run Codacy Analysis CLI
+        uses: codacy/codacy-analysis-cli-action@master
