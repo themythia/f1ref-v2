@@ -30,6 +30,6 @@ jobs:
     name: Codacy Analysis CLI
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@main
       - name: Run Codacy Analysis CLI
-        uses: ./codacy.yml
+        uses: codacy/codacy-analysis-cli-action@master
