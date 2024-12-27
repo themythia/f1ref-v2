@@ -32,4 +32,4 @@ jobs:
     steps:
       - uses: actions/checkout@main
       - name: Run Codacy Analysis CLI
-        uses: ./.github/workflows/codacy.yml
+        uses: ./codacy.yml
