@@ -69,10 +69,9 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y wrk
 
-      - name: Build and start Next.js app
+      - name: Start React dev server
         run: |
-          npm run build
-          npm run start & # Run in background
+          npm run start & # Run CRA dev server
           sleep 10 # Wait for app to start
 
       - name: Run wrk benchmark
@@ -112,10 +111,9 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y erlang tsung
 
-      - name: Build and start Next.js app
+      - name: Start React dev server
         run: |
-          npm run build
-          npm run start & # Run in background
+          npm run start & # Run CRA dev server
           sleep 10 # Wait for app to start
 
       - name: Run Tsung benchmark
