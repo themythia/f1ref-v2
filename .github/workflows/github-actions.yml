@@ -39,9 +39,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main
-      - name: Run Snyk to check for vulnerabilities
-        uses: snyk/actions/node@master
+
+      - name: Run Snyk Security Analysis
+        uses: ./.github/actions/snyk
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        with:
-          command: test
