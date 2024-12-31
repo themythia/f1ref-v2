@@ -47,3 +47,116 @@ jobs:
         # uses: snyk/actions/node@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+  wrk-benchmark:
+    name: WRK Performance Benchmark
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.3.x'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install wrk
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y wrk
+
+      - name: Build and start Next.js app
+        run: |
+          npm run build
+          npm run start & # Run in background
+          sleep 10 # Wait for app to start
+
+      - name: Run wrk benchmark
+        run: |
+          mkdir -p benchmark-results/wrk
+          wrk -t12 -c400 -d30s http://localhost:3000 > benchmark-results/wrk/results.txt
+          cat benchmark-results/wrk/results.txt
+
+      - name: Upload wrk results
+        uses: actions/upload-artifact@v3
+        with:
+          name: wrk-benchmark-results
+          path: benchmark-results/wrk/*
+
+      - name: Cleanup
+        run: |
+          pkill -f "npm run start" || true
+
+  tsung-benchmark:
+    name: Tsung Performance Benchmark
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.3.x'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Tsung
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y erlang tsung
+
+      - name: Build and start Next.js app
+        run: |
+          npm run build
+          npm run start & # Run in background
+          sleep 10 # Wait for app to start
+
+      - name: Run Tsung benchmark
+        run: |
+          mkdir -p benchmark-results/tsung
+          # Create Tsung config file
+          cat > tsung.xml << EOF
+          <?xml version="1.0"?>
+          <!DOCTYPE tsung SYSTEM "/usr/share/tsung/tsung-1.0.dtd">
+          <tsung loglevel="notice">
+            <clients>
+              <client host="localhost" use_controller_vm="true" maxusers="30000"/>
+            </clients>
+            <servers>
+              <server host="localhost" port="3000" type="tcp"/>
+            </servers>
+            <load>
+              <arrivalphase phase="1" duration="30" unit="second">
+                <users arrivalrate="100" unit="second"/>
+              </arrivalphase>
+            </load>
+            <sessions>
+              <session name="http-example" type="ts_http" weight="1">
+                <request> <http url="/" method="GET"/> </request>
+              </session>
+            </sessions>
+          </tsung>
+          EOF
+
+          tsung -f tsung.xml start
+          sleep 35 # Wait for benchmark to complete
+
+          # Copy Tsung results to dedicated subdirectory
+          cp -r ~/.tsung/log/* benchmark-results/tsung/
+
+      - name: Upload Tsung results
+        uses: actions/upload-artifact@v3
+        with:
+          name: tsung-benchmark-results
+          path: benchmark-results/tsung/*
+
+      - name: Cleanup
+        run: |
+          pkill -f "npm run start" || true
