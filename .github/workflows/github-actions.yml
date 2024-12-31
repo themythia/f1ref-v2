@@ -1,0 +1,77 @@
+name: Github Actions
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20.3.x]
+    steps:
+      - uses: actions/checkout@main
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build
+        env:
+          CI: 'false'
+
+  codacy-analysis:
+    name: Codacy Analysis CLI
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+      - name: Run Codacy Analysis CLI
+        uses: ./.github/actions/codacy
+        # Official Codacy action
+        # uses: codacy/codacy-analysis-cli-action@master
+
+  snyk-analysis:
+    name: Snyk Security Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+      - name: Run Snyk Security Analysis
+        uses: ./.github/actions/snyk
+        # Official Snyk node action
+        # uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+  wrk-benchmark:
+    name: WRK Performance Benchmark
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+      - name: Setup React dev environment
+        uses: ./.github/actions/setup-react-dev
+      - name: Run WRK benchmark
+        uses: ./.github/actions/wrk
+      - name: Cleanup
+        run: |
+          pkill -f "npm run start" || true
+
+  tsung-benchmark:
+    name: Tsung Performance Benchmark
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+      - name: Setup React dev environment
+        uses: ./.github/actions/setup-react-dev
+      - name: Run Tsung benchmark
+        uses: ./.github/actions/tsung
+      - name: Cleanup
+        run: |
+          pkill -f "npm run start" || true

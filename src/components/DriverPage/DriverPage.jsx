@@ -19,7 +19,9 @@ const DriverPage = () => {
   const [loading, setLoading] = useState(true);
   const drivers = useSelector((store) => store.drivers);
   const driver = useSelector((store) =>
-    store.drivers.find((driver) => driver.id === driverId.replace(/-/gi, '_'))
+    store.drivers.find(
+      (driver) => driver.id.trim() === driverId.replace(/-/gi, '_')
+    )
   );
 
   const { response, error } = useFetch(
@@ -61,7 +63,9 @@ const DriverPage = () => {
 
   if (
     drivers.length > 0 &&
-    !drivers.find((driver) => driver.id === driverId.replace(/-/gi, '_'))
+    !drivers.find((driver) => {
+      return driver.id.trim() === driverId.replace(/-/gi, '_');
+    })
   ) {
     return <Navigate to='/drivers' />;
   }
