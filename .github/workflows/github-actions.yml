@@ -15,7 +15,7 @@ jobs:
       matrix:
         node-version: [20.3.x]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@main
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
@@ -33,3 +33,15 @@ jobs:
       - uses: actions/checkout@main
       - name: Run Codacy Analysis CLI
         uses: codacy/codacy-analysis-cli-action@master
+
+  snyk-analysis:
+    name: Snyk Security Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          command: test
