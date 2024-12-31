@@ -38,18 +38,9 @@ runs:
         EOF
 
         tsung -f tsung.xml start
+        sleep 35 # Wait for benchmark to complete
 
-        # Wait for Tsung to complete
-        while pgrep -x tsung > /dev/null; do
-          echo "Waiting for Tsung to complete..."
-          sleep 5
-        done
-
-        # Generate the HTML report before copying
-        cd ~/.tsung/log/$(ls -t ~/.tsung/log/ | head -1)
-        /usr/lib/tsung/bin/tsung_stats.pl
-
-        # Use original copy command with absolute path
+        # Copy Tsung results to dedicated subdirectory
         cp -r ~/.tsung/log/* benchmark-results/tsung/
     - name: Upload Tsung results
       uses: actions/upload-artifact@v3
