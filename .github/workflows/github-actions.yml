@@ -32,15 +32,18 @@ jobs:
     steps:
       - uses: actions/checkout@main
       - name: Run Codacy Analysis CLI
-        uses: codacy/codacy-analysis-cli-action@master
+        uses: ./.github/actions/codacy
+        # Official Codacy action
+        # uses: codacy/codacy-analysis-cli-action@master
 
   snyk-analysis:
     name: Snyk Security Analysis
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main
-
       - name: Run Snyk Security Analysis
         uses: ./.github/actions/snyk
+        # Official Snyk node action
+        # uses: snyk/actions/node@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
