@@ -1,0 +1,25 @@
+name: 'Setup React Dev Environment'
+description: 'Sets up Node.js, installs dependencies, and starts the React dev server'
+
+inputs:
+  node-version:
+    description: 'Node.js version to use'
+    required: false
+    default: '20.3.x'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Use Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node-version }}
+        cache: 'npm'
+    - name: Install dependencies
+      shell: bash
+      run: npm ci
+    - name: Start React dev server
+      shell: bash
+      run: |
+        npm run start & # Run CRA dev server
+        sleep 10 # Wait for app to start

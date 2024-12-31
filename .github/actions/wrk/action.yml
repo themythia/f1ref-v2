@@ -1,0 +1,22 @@
+name: 'WRK Performance Benchmark'
+description: 'Execute WRK performance benchmark against a web application'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Install wrk
+      shell: bash
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y wrk
+    - name: Run wrk benchmark
+      shell: bash
+      run: |
+        mkdir -p benchmark-results/wrk
+        wrk -t12 -c400 -d30s http://localhost:3000 > benchmark-results/wrk/results.txt
+        cat benchmark-results/wrk/results.txt
+    - name: Upload wrk results
+      uses: actions/upload-artifact@v3
+      with:
+        name: wrk-benchmark-results
+        path: benchmark-results/wrk/*

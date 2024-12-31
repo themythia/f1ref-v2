@@ -1,0 +1,49 @@
+name: 'Tsung Performance Benchmark'
+description: 'Execute Tsung performance benchmark against a web application'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Install Tsung
+      shell: bash
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y erlang tsung
+    - name: Run Tsung benchmark
+      shell: bash
+      run: |
+        mkdir -p benchmark-results/tsung
+        # Create Tsung config file
+        cat > tsung.xml << EOF
+        <?xml version="1.0"?>
+        <!DOCTYPE tsung SYSTEM "/usr/share/tsung/tsung-1.0.dtd">
+        <tsung loglevel="notice">
+          <clients>
+            <client host="localhost" use_controller_vm="true" maxusers="30000"/>
+          </clients>
+          <servers>
+            <server host="localhost" port="3000" type="tcp"/>
+          </servers>
+          <load>
+            <arrivalphase phase="1" duration="30" unit="second">
+              <users arrivalrate="100" unit="second"/>
+            </arrivalphase>
+          </load>
+          <sessions>
+            <session name="http-example" type="ts_http" weight="1">
+              <request> <http url="/" method="GET"/> </request>
+            </session>
+          </sessions>
+        </tsung>
+        EOF
+
+        tsung -f tsung.xml start
+        sleep 35 # Wait for benchmark to complete
+
+        # Copy Tsung results to dedicated subdirectory
+        cp -r ~/.tsung/log/* benchmark-results/tsung/
+    - name: Upload Tsung results
+      uses: actions/upload-artifact@v3
+      with:
+        name: tsung-benchmark-results
+        path: benchmark-results/tsung/*
